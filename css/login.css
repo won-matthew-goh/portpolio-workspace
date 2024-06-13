@@ -1,0 +1,12 @@
+/* content-wrapper css*/
+.content-wrapper {margin-top: 164px; display: flex; }
+.content-wrapper .content-wrap {width: 1247px; margin-top: 20%; display: flex; font-size: 24px; justify-content: center; align-content: center;}
+.content-wrapper .content-wrap .login-input .img {width: 50px; height: 50px; display: inline;}
+
+/* login-input*/
+.content-wrapper .content-wrap .input {width: 300px; height: 40px; margin-bottom: 5%; font-size: 18px;}
+.content-wrapper .content-wrap .login-input {display: flex; flex-direction: column; align-content: center; justify-content: center;}
+.content-wrapper .content-wrap .login-input h1,h2,.img-wp {display: flex; justify-content: center;}
+.content-wrapper .content-wrap .login-input .nav-bt {height: auto; font-size: 20px; align-content: center; padding: 2%;}
+.content-wrapper .content-wrap .login-input .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
+.content-wrapper .content-wrap .login-input .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;}  

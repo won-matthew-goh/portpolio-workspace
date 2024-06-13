@@ -1,0 +1,24 @@
+/* content-wrapper css*/
+.content-wrapper {margin-top: 164px; }
+.content-wrapper .content-wrap {width: 1247px; font-size: 24px; }
+.content-wrapper .content-wrap .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
+.content-wrapper .content-wrap .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;}  
+
+/* boarder */
+.board-table {
+    margin: auto;
+    width: 1247px;
+    border-radius: 5px;
+    border-collapse: collapse;
+    border-top: none;
+}
+.page {
+    text-align: center;
+}
+.bottom-btn {
+    display: flex;
+    justify-content: right;
+}
+.board-table .table-head{
+    background-color: brown;
+}

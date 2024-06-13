@@ -1,0 +1,67 @@
+/* content-wrapper css*/
+.content-wrapper{
+    margin-top: 164px;
+}
+
+.content-wrapper .content-wrap {
+    width: 1247px; margin:auto;
+}
+
+
+/* search css*/
+.search {
+    position: relative;
+    width: 300px;
+    margin-left: auto;
+    
+}
+  
+  input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    
+}
+
+
+/* movie-list css*/
+.movie-list {
+    width : 675px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movie {
+    width: 225px;
+    text-align: center;
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.movie-name {
+    color :black;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.release-date {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.nation{
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+
+  
+ 
+
+
