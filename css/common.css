@@ -26,9 +26,19 @@ html, body {
 .header-wrapper .logo-wrap .logo {font-size: 48px; font-weight: bold; letter-spacing: 3px;}
 
 .header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around; flex-wrap: wrap;}
+.header-wrapper .navi-wrap .nav-bt:hover {background-color: #777; color: white; border-radius: 8%;}
 
 .header-wrapper .navi-wrap .lang-wp {align-content: center; position: relative; width: 2.5em; justify-content: center;}
+.header-wrapper .navi-wrap .lang-wp .globeicon:hover {background-color: white; color: black;}
 .header-wrapper .navi-wrap .lang-wp .langs {position: absolute; background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .5); margin-top: 15px; display: none; right: -3; width: 60px;}
-.header-wrapper .navi-wrap .lang-wp:hover .langs {display: block;}
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5); margin-top: 12px; display: none; right: -3; width: 60px;}
+.header-wrapper .navi-wrap .lang-wp:hover .langs {display: flex; flex-direction: column;}
 .header-wrapper .navi-wrap .lang-wp .langs a {font-size: 16px; line-height: 2em; padding: 15% 10% 15% 10%;}
+.header-wrapper .navi-wrap .lang-wp .langs a:hover {background-color: #777; color: white;}
+
+/******************* 반응형 ******************/
+@media (max-width: 1399px) {}
+@media (max-width: 1199px) {}
+@media (max-width: 991px) {}
+@media (max-width: 767px) {}
+@media (max-width: 575px) {}

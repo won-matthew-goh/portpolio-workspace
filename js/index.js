@@ -1,47 +1,71 @@
-const carouselSlide = document.querySelector('.banner-slide');
-const carouselContents = document.querySelectorAll('.slide-item');
+AOS.init({ duration: 1200 });
 
-const prevBtn = document.querySelector('.prevBtn');
-const nextBtn = document.querySelector('.nextBtn');
+/********* Jquery 이용한 Carousels *******/
+/*************** global init **************/
+var $wrapper = $('.banner-wrapper');
+var $slide = $wrapper.find('.banner-slide');
+var $pager = $wrapper.find('.pager');
+var $btPrev = $wrapper.find('.prevBtn');
+var $btNext = $wrapper.find('.nextBtn');
+var interval; // setInterval을 넣어놓을 변수
+var idx = 0; // animation이 움직일 값의 인자 0, -100%, -200% ...
+var gap = 3000; // setInterval의 간격
+var speed = 500; // animation speed
+var depth = 1; // z-index
+var last = $slide.find('.slide-item').length - 1; // $('.slide')의 마지막 index
 
-const btTop = document.querySelector('.arrow-top');
+/*************** user function **************/
+function ani() {
+  $slide.stop().animate({ left: -(idx * 100) + '%' }, speed);
+  $pager.removeClass('active');
+  $pager.eq(idx === last ? 0 : idx).addClass('active');
+}
 
-// Carousel 구현 부 --------------------------------------------------
+/*************** event callback *************/
+function onEnter() {
+  clearInterval(interval);
+}
 
-//counter
-let counter = 1;
-const size = carouselContents[0].clientWidth;
+function onLeave() {
+  interval = setInterval(onInterval, gap);
+}
 
-carouselSlide.style.transform = 'translateX(' + -size * counter + 'px)';
+function onInterval() {
+  interval = setInterval(onNext, gap);
+}
 
-//Button Listeners
-nextBtn.addEventListener('click', () => {
-  if (counter >= carouselContents.length - 1) return;
-  carouselSlide.style.transition = 'transform 0.3s ease-in-out';
-  counter++;
-  carouselSlide.style.transform = 'translateX(' + -size * counter + 'px)';
-});
+function onPager() {
+  idx = $(this).index();
+  ani();
+}
 
-prevBtn.addEventListener('click', () => {
-  if (counter <= 0) return;
-  carouselSlide.style.transition = 'transform 0.3s ease-in-out';
-  counter--;
-  carouselSlide.style.transform = 'translateX(' + -size * counter + 'px)';
-});
-console.log(carouselContents.length);
-
-carouselSlide.addEventListener('transitionend', function () {
-  if (carouselContents[counter].id === 'lastClone') {
-    carouselSlide.style.transition = 'none';
-    counter = carouselContents.length - 2;
-    carouselSlide.style.transform = 'translateX(' + -size * counter + 'px)';
+function onPrev() {
+  // idx = idx === 0 ? last - 1 : idx - 1;
+  if (idx === 0) {
+    $slide.css('left', -last * 100 + '%');
+    idx = last;
   }
-  if (carouselContents[counter].id === 'firstClone') {
-    carouselSlide.style.transition = 'none';
-    counter = carouselContents.length - counter;
-    carouselSlide.style.transform = 'translateX(' + -size * counter + 'px)';
+  idx--;
+  ani();
+}
+
+function onNext() {
+  if (idx === last) {
+    $slide.css('left', 0);
+    idx = 0;
   }
-});
+  idx++;
+  ani();
+}
+
+/*************** event init *****************/
+// $wrapper.mouseenter(onEnter).mouseleave(onLeave);
+$pager.click(onPager);
+$btPrev.click(onPrev);
+$btNext.click(onNext);
+
+/*************** start init *****************/
+interval = setInterval(onNext, gap);
 
 // Top scroll 버튼 구현부
 btTop.addEventListener('click', function () {
