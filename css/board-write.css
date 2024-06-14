@@ -7,22 +7,20 @@
     width: 500px;
     font-size: 24px;
     height:500px; 
-    display: flex;
     justify-content: center;
     align-content: center;
-    text-align: center;
     font-size: 15px;
+    margin:auto;
 }
 .content-wrapper .content-wrap .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
 .content-wrapper .content-wrap .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;}  
 
 /* boarder-write */
 .bottom-btn {
-    margin-top: 1%;
-    margin-left: 99%;
     display: flex;
     justify-content: right;
     text-align: center;
+    width: 200px; margin-top: 1%;
 }
 .bottom-btn .bt-black {
     width: 100px;
@@ -39,4 +37,28 @@
 }
 .content-wrapper .content-wrap .form {
     line-height: 50%;
+}
+
+.content-wrapper .content-wrap h2 {
+    margin-bottom: 1.5em; padding-top: 3%; font-weight: bold; color: #444; border-bottom: 0.1px solid #999; width: fit-content;
+}
+
+.content-wrapper .content-wrap ul {
+    justify-content: center;  width: 100%
+}
+.content-wrapper .content-wrap ul li {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    display: flex;
+    
+}
+.content-wrapper .content-wrap ul li input {
+    line-height: 200%; width: 200px; 
+    margin-right: 3%;
+}
+.content-wrapper .content-wrap ul li select {
+    height: 30px; font-size: 16px;
+}
+.content-wrapper .content-wrap ul li textarea{
+    width: 500px; height: 300px;
 }

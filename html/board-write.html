@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/all.min.css" />
-    <link rel="stylesheet" href="../css/board.css" />
+    <link rel="stylesheet" href="../css/board-write.css" />
     <title>Movie Go</title>
   </head>
   <body>
@@ -33,13 +33,13 @@
     </header>
     
         <div class="content-wrapper w100">
-          <div class="content-wrap" style="width: 1247px">
-            <h2 style="margin-bottom: 24px; margin-left: 50%; padding-top: 3%;">리뷰 글쓰기</h2>
-            <ul style="justify-content: center; margin-left: 50%;  width: 100%">
-              <li style="line-height: 200%; ">사용자 ID</li>
-              <li style="line-height: 200%; display: inline-block;" >영화명<input type="text" style="line-height: 200%; width: 200px; "></li><br>
-              <li style="line-height: 200%; display: inline-block;" >평점
-                <select style="line-height: 200%; width: 200px; height: 30px; font-size: 16px;">
+          <div class="content-wrap">
+            <h2>리뷰 글쓰기</h2>
+            <ul>
+              <li>사용자 ID</li>
+              <li>영화명<input type="text"></li><br>
+              <li>평점
+                <select>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
@@ -47,13 +47,13 @@
                   <option value="1">1</option>
                 </select>
               </li>
-              <li style="line-height: 200%;">관객평</li>
-              <textarea style="width: 500px; height: 300px;"></textarea>
+              <li>관객평</li>
+              <textarea></textarea>
             </ul>
 
-              <div class = "bottom-btn" style="width: 200px; margin-top: 1%; margin-left: 60%;">
-                <a class= "nav-bt bt-black" style= "width: 100px; height: 50px; text-align: center; align-content: center; ">등록</a>
-                <a class= "nav-bt bt-gray" style= "width: 100px; height: 50px; text-align: center; align-content: center;">취소</a>
+              <div class = "bottom-btn" >
+                <a class= "nav-bt bt-black">등록</a>
+                <a class= "nav-bt bt-gray">취소</a>
               </div>
           </div>
         </div>
@@ -61,5 +61,4 @@
 
   </body>
 
-  <script src="../js/index.js"></script>
   </html>
