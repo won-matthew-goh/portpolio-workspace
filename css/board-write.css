@@ -1,0 +1,95 @@
+/**작성 순서 최대한 맞추자 
+    width
+    height
+    font 관련
+    align 관련
+    margin 관련
+**/
+/* content-wrapper css*/
+.content-wrapper {
+    margin-top: 164px;
+
+}
+.content-wrapper .content-wrap {
+    width: 700px;
+    font-size: 24px;
+    height:700px; 
+    justify-content: center;
+    align-content: center;
+    margin:auto;
+}
+
+/* board-write content 메인 관련*/
+.content-wrapper .content-wrap .content {
+    width: 700px;
+    height: 500px;
+    font-size: 18px;
+    margin-top: 2%;
+}
+.content-wrapper .content-wrap .content .title{
+    width: 700px
+    
+}
+.content-wrapper .content-wrap .content input {
+    width: 600px;
+    line-height: 200%;
+    float: right;
+}
+.content-wrapper .content-wrap .content select {
+    width: 600px;
+    line-height: 200%;
+    font-size: 18px;
+    float: right;
+}
+.content-wrapper .content-wrap .content div {
+    line-height: 200%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    
+}
+
+.content-wrapper .content-wrap {
+    justify-content: center;  width: 100%
+}
+.content-wrapper .content-wrap {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    display: flex;
+    
+}
+
+/* text area 관련*/
+.content-wrapper .content-wrap textarea{
+    display: flex;
+    width: 700px;
+    height: 300px;
+    margin-bottom: 3%;
+}
+
+/**bottom-btn 하단 버튼 관련**/
+.bottom-btn {
+    display: flex;
+    justify-content: right;
+    text-align: center;
+    width: 200px; margin-top: 1%;
+}
+.bottom-btn .bt-black {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    margin-right: 3%;
+}
+.bottom-btn .bt-gray {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+}
+
+.content-wrapper .content-wrap .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
+.content-wrapper .content-wrap .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;} 
+.content-wrapper .content-wrap .content .bottom-btn {
+    margin: auto;
+
+}
