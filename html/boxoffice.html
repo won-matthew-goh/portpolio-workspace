@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/boxoffice.css" />
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Movie Go</title>
+  </head>
+  <body>
+    <header class="header-wrapper w100">
+      <div class="logo-wrap">
+        <a class="logo" href="./index.html">Movie Go</a>
+      </div>
+      <div class="navi-wrap">
+        <a href="#" class="nav-bt">영화 목록</a>
+        <a href="#" class="nav-bt">리뷰 목록</a>
+        <a href="./boxoffice.html" class="nav-bt">박스오피스</a>
+        <a href="#" class="nav-bt bt-black">로그인</a>
+        <a href="#" class="nav-bt bt-black">회원가입</a>
+        <div class="lang-wp">
+          <a href="#" class="nav-bt globeicon"><i class="fa-solid fa-earth-americas"></i></a>
+          <div class="langs">
+            <a href="#">한국어</a>
+            <a href="#">English</a>
+            <a href="#">日本語</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper w100">
+      <div class="rank-wrap">
+        <h1>금주의 관객별 박스오피스 순위</h1>
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th scope="col">순위</th>
+              <th scope="col">영화명</th>
+              <th scope="col">개봉일</th>
+              <th scope="col">주간 관객수</th>
+              <th scope="col">누적 관객수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>원더랜드</td>
+              <td>2024-06-05</td>
+              <td>464330</td>
+              <td>468801</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>퓨리오사: 매드맥스 사가</td>
+              <td>2024-05-22</td>
+              <td>367596</td>
+              <td>1418622</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>그녀가 죽었다</td>
+              <td>2024-05-15</td>
+              <td>181122</td>
+              <td>1134094</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>범죄도시4</td>
+              <td>2024-04-24</td>
+              <td>148225</td>
+              <td>11421632</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>설계자</td>
+              <td>2024-05-29</td>
+              <td>129786</td>
+              <td>501892</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-wrap">
+        <!-- <h1>영화별 누적 관객수</h1>
+        <div class="chart-wp">
+          <canvas id="accChart" width="300" height="100"></canvas>
+        </div> -->
+        <h1>관객수 증감</h1>
+        <div class="chart-wp">
+          <canvas id="weekChart" width="300" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/boxoffice.js"></script>
+</html>
