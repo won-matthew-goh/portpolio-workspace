@@ -1,67 +1,104 @@
 /* content-wrapper css*/
-.content-wrapper{
-    margin-top: 164px;
+
+.content-wrapper {
+  margin-top: 164px;
 }
 
 .content-wrapper .content-wrap {
-    width: 1247px; margin:auto;
+  width: 1247px;
+  margin: auto;
 }
-
 
 /* search css*/
 .search {
-    position: relative;
-    width: 300px;
-    margin-left: auto;
-    
-}
-  
-  input {
-    width: 100%;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 14px;
-    
+  position: relative;
+  width: 300px;
+  margin-left: auto;
 }
 
+input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
 
 /* movie-list css*/
 .movie-list {
-    width : 675px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 675px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .movie {
-    width: 225px;
-    text-align: center;
-    display: block;
-    color: #000000;
-    text-decoration: none;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
+  width: 225px;
+  text-align: center;
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .movie-name {
-    color :black;
-    margin-top: 10px;
-    margin-bottom: 2px;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
 .release-date {
-    margin-top: 10px;
-    margin-bottom: 2px;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
-.nation{
-    margin-top: 10px;
-    margin-bottom: 2px;
+.nation {
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
+/* modal */
+.modal-wp {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  height: 700px;
+  width: 600px;
+  flex-wrap: wrap;
+}
 
-  
- 
+.modal_poster {
+  margin: 10% 0% 0% 10%;
+  flex: 1;
+  width: 50%;
+  height: 50%;
+}
 
+.modal_info {
+  margin: 10% 0% 0% 10%;
+  flex: 1;
+  width: 50%;
+  height: 50%;
+}
 
+.modal_close {
+  background-color: black;
+  color: white;
+  border-radius: 8%;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  height: 10%;
+}
+
+.modal_box {
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}

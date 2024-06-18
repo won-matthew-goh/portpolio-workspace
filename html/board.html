@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/board.css" />
     <title>Movie Go</title>
   </head>
+
   <body>
     <header class="header-wrapper w100">
       <div class="logo-wrap">
@@ -31,64 +32,50 @@
         </div>
       </div>
     </header>
-        <div class="content-wrapper w100">
-          <div class="content-wrap">
-            <h2>관객 리뷰</h2>
-              <input class="input" type= "text" name= "serach" placeholder= "영화 검색"><br>
-              
-              <table class="board-table">
-                <thead class="table-head">
-                  <td>NO</td>
-                  <td>영화명</td>
-                  <td>글제목</td>
-                  <td>작성자</td>
-                  <td>작성일자</td>
-                </thead>
-                
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>인사이드아웃2</td>
-                    <td>추천합니다</td>
-                    <td>김씨</td>
-                    <td>2024-06-13</td>
-                  </tr>
 
-                  <tr>
-                    <td>2</td>
-                    <td>하이재킹</td>
-                    <td>별로예요</td>
-                    <td>고씨</td>
-                    <td>2024-06-13</td>
-                  </tr>
-                </tbody>
 
-                <tfoot>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tfoot>
-              </table>
-              <hr>
-              <div class="page">
-                <a href  = "https://www.naver.com/">◀ 이전</a> 
-                <a href  = "https://www.naver.com/">1</a>  
-                <a href  = "https://www.naver.com/">2</a>
-                <a href  = "https://www.naver.com/">다음 ▶</a><br>
+    <div class="board_wrap">
+      <div class="board_title">
+          <h2>관객 리뷰</h2>
+
+      </div>
+      <div class="board_list_wrap">
+          <div class="board_list">
+              <div class="top">
+                  <div class="num">NO.</div>
+                  <div class="name">영화명</div>
+                  <div class="title">글제목</div>
+                  <div class="writer">작성자</div>
+                  <div class="date">작성일자</div>
+              </div>
+              <div onclick="/html/board-write.html">
+                  <div class="num">1</div>
+                  <div class="name"><a>인사이드아웃2</a></div>
+                  <div class="title">추천합니다</div>
+                  <div class="writer">김씨</div>
+                  <div class="date">2024-06-16</div>
               </div>
               
-              <div class = "bottom-btn">
-                <a class= "nav-bt bt-black" style= "width: 100px; height: 50px;">등록</a>
-                <a class= "nav-bt bt-gray" style= "width: 100px; height: 50px;">취소</a>
-              </div>
-                     
           </div>
-        </div>
-        
 
+          <div class="board_page">
+              <a href="#" class="bt first"><<</a>
+              <a href="#" class="bt prev"><</a>
+              <a href="#" class="num on">1</a>
+              <a href="#" class="num">2</a>
+              <a href="#" class="num">3</a>
+              <a href="#" class="num">4</a>
+              <a href="#" class="num">5</a>
+              <a href="#" class="bt next">></a>
+              <a href="#" class="bt last">>></a>
+          </div>
+
+          <div class="bt_wrap">
+              <a href="../html/board-write.html" class="nav-bt bt-black">글쓰기</a>
+          
+          </div>
+      </div>
+  </div>
   </body>
 
-  <script src="../js/index.js"></script>
   </html>
