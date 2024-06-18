@@ -1,21 +1,72 @@
+/**작성 순서 최대한 맞추자 
+    width
+    height
+    font 관련
+    align 관련
+    margin 관련
+**/
 /* content-wrapper css*/
 .content-wrapper {
     margin-top: 164px;
 
 }
 .content-wrapper .content-wrap {
-    width: 500px;
+    width: 700px;
     font-size: 24px;
-    height:500px; 
+    height:700px; 
     justify-content: center;
     align-content: center;
-    font-size: 15px;
     margin:auto;
 }
-.content-wrapper .content-wrap .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
-.content-wrapper .content-wrap .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;}  
 
-/* boarder-write */
+/* board-write content 메인 관련*/
+.content-wrapper .content-wrap .content {
+    width: 700px;
+    height: 500px;
+    font-size: 18px;
+    margin-top: 2%;
+}
+.content-wrapper .content-wrap .content .title{
+    width: 700px
+    
+}
+.content-wrapper .content-wrap .content input {
+    width: 600px;
+    line-height: 200%;
+    float: right;
+}
+.content-wrapper .content-wrap .content select {
+    width: 600px;
+    line-height: 200%;
+    font-size: 18px;
+    float: right;
+}
+.content-wrapper .content-wrap .content div {
+    line-height: 200%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    
+}
+
+.content-wrapper .content-wrap {
+    justify-content: center;  width: 100%
+}
+.content-wrapper .content-wrap {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    display: flex;
+    
+}
+
+/* text area 관련*/
+.content-wrapper .content-wrap textarea{
+    display: flex;
+    width: 700px;
+    height: 300px;
+    margin-bottom: 3%;
+}
+
+/**bottom-btn 하단 버튼 관련**/
 .bottom-btn {
     display: flex;
     justify-content: right;
@@ -35,30 +86,10 @@
     text-align: center;
     align-content: center;
 }
-.content-wrapper .content-wrap .form {
-    line-height: 50%;
-}
 
-.content-wrapper .content-wrap h2 {
-    margin-bottom: 1.5em; padding-top: 3%; font-weight: bold; color: #444; border-bottom: 0.1px solid #999; width: fit-content;
-}
+.content-wrapper .content-wrap .bt-black {background-color: black; color: white; border-radius: 8%; font-size: 18px;}  
+.content-wrapper .content-wrap .bt-gray {background-color: gray; color: white; border-radius: 8%; font-size: 18px;} 
+.content-wrapper .content-wrap .content .bottom-btn {
+    margin: auto;
 
-.content-wrapper .content-wrap ul {
-    justify-content: center;  width: 100%
-}
-.content-wrapper .content-wrap ul li {
-    line-height: 1.5em;
-    margin-bottom: 1em;
-    display: flex;
-    
-}
-.content-wrapper .content-wrap ul li input {
-    line-height: 200%; width: 200px; 
-    margin-right: 3%;
-}
-.content-wrapper .content-wrap ul li select {
-    height: 30px; font-size: 16px;
-}
-.content-wrapper .content-wrap ul li textarea{
-    width: 500px; height: 300px;
 }
