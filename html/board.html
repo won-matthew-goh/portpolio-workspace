@@ -36,20 +36,23 @@
 
     <div class="board_wrap">
       <div class="board_title">
-          <h2>관객 리뷰</h2>
-
+        <h2>관객 리뷰</h2>
+        <div class="search">
+          <input class= "search-bar" type="text" placeholder="영화 입력 "  > </input>
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </div>
       </div>
       <div class="board_list_wrap">
           <div class="board_list">
               <div class="top">
-                  <div class="num">NO.</div>
+                  <div class="pnum">NO.</div>
                   <div class="name">영화명</div>
                   <div class="title">글제목</div>
                   <div class="writer">작성자</div>
                   <div class="date">작성일자</div>
               </div>
-              <div onclick="/html/board-write.html">
-                  <div class="num">1</div>
+              <div class = "inside" onclick="/html/board-write.html">
+                  <div class="pnum">1</div>
                   <div class="name"><a>인사이드아웃2</a></div>
                   <div class="title">추천합니다</div>
                   <div class="writer">김씨</div>
@@ -59,15 +62,17 @@
           </div>
 
           <div class="board_page">
-              <a href="#" class="bt first"><<</a>
-              <a href="#" class="bt prev"><</a>
-              <a href="#" class="num on">1</a>
-              <a href="#" class="num">2</a>
-              <a href="#" class="num">3</a>
-              <a href="#" class="num">4</a>
-              <a href="#" class="num">5</a>
-              <a href="#" class="bt next">></a>
-              <a href="#" class="bt last">>></a>
+              <a href="#" class="btn first"><<</a>
+              <a href="#" class="btn prev"><</a>
+
+              <a href="#" class="pnum click">1</a>
+              <a href="#" class="pnum">2</a>
+              <a href="#" class="pnum">3</a>
+              <a href="#" class="pnum">4</a>
+              <a href="#" class="pnum">5</a>
+              
+              <a href="#" class="btn next">></a>
+              <a href="#" class="btn last">>></a>
           </div>
 
           <div class="bt_wrap">
