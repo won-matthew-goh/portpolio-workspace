@@ -1,16 +1,23 @@
+/********** modal 열기 **********/
 const movie = document.querySelector(".movie");
-const modalwp = document.querySelector(".modal-wp");
-const modalbackground = document.querySelector(".modal-background");
+const modalwrap = document.querySelector(".modal-wrap");
+const modalwrapper = document.querySelector(".modal-wrapper");
 
 movie.addEventListener("click", function () {
-  //display 속성을 block로 변경
-  modalwp.style.display = "flex";
-  modalbackground.style.display = "flex";
+  modalwrap.style.display = "block";
+  modalwrapper.style.display = "block";
 });
 
-const modalclose = document.querySelector(".modal_close");
+/********** modal 닫기 **********/
+const btn = document.querySelector(".btn");
+const closebtn = document.querySelector(".close-btn");
 
-modalclose.addEventListener("click", function () {
-  modalwp.style.display = "none";
-  modalbackground.style.display = "none";
+btn.addEventListener("click", function () {
+  modalwrap.style.display = "none";
+  modalwrapper.style.display = "none";
+});
+
+closebtn.addEventListener("click", function () {
+  modalwrap.style.display = "none";
+  modalwrapper.style.display = "none";
 });
