@@ -1,4 +1,4 @@
-/* content-wrapper css*/
+/********** content-wrapper css **********/
 
 .content-wrapper {
   margin-top: 164px;
@@ -6,17 +6,31 @@
 
 .content-wrapper .content-wrap {
   width: 1247px;
-  margin: auto;
+  margin: 180px auto;
+  height: 2050px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* search css*/
-.search {
+.content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between;}
+
+/********** search css **********/
+.content-wrapper .content-wrap .search {
   position: relative;
   width: 300px;
   margin-left: auto;
+  display: flex;
+  justify-content: right;
+  margin-top: auto;
+}
+.content-wrapper .content-wrap .search i {
+  position: absolute;
+  padding-right: 3%;
+  padding-top: 3%;
+  font-size: 18px;
 }
 
-input {
+.content-wrapper .content-wrap .search input {
   width: 100%;
   border: 1px solid #bbb;
   border-radius: 8px;
@@ -24,81 +38,111 @@ input {
   font-size: 14px;
 }
 
-/* movie-list css*/
-.movie-list {
-  width: 675px;
-  margin-left: auto;
-  margin-right: auto;
+/********** movie-list css **********/
+.content-wrapper .content-wrap h2 {
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
-.movie {
+.content-wrapper .content-wrap .movie {
   width: 225px;
   text-align: center;
   display: block;
   color: #000000;
   text-decoration: none;
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
-.movie-name {
-  color: black;
+.content-wrapper .content-wrap .movie .movie-name {
   margin-top: 10px;
   margin-bottom: 2px;
 }
 
-.release-date {
+.content-wrapper .content-wrap .movie .release-date {
   margin-top: 10px;
   margin-bottom: 2px;
 }
 
-.nation {
+.content-wrapper .content-wrap .movie .nation {
   margin-top: 10px;
   margin-bottom: 2px;
 }
 
-/* modal */
-.modal-wp {
-  background-color: gray;
-  color: white;
-  text-align: center;
+/********** modal **********/
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: block;
+}
+
+.modal-wrap {
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
   height: 700px;
   width: 600px;
-  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 1100;
 }
 
-.modal_poster {
-  margin: 10% 0% 0% 10%;
-  flex: 1;
-  width: 50%;
+.modal-wrap .modal-wp {
+  position: relative;
+  display: flex;
+  height: 350px;
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.modal-wrap .modal-wp .btn {
+  width: 30px;
+  height: 30px;
+  margin-right: auto;
+}
+
+.modal-wrap .modal-wp .modal-info {
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 200px;
   height: 50%;
+  text-align: left;
+  font-size: 18px;
 }
 
-.modal_info {
-  margin: 10% 0% 0% 10%;
-  flex: 1;
-  width: 50%;
-  height: 50%;
+.modal-wrap .modal-box {
+  width: 600px;
+  height: 280px;
+  text-align: center;
+  font-size: 18px;
 }
 
-.modal_close {
+.modal-wrap .modal-box .btn {
+  margin-top: 35%;
+}
+
+.modal-wrap .btn i {
+  margin-left: 94.5%;
+  font-size: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-wrap .modal-box .btn .close-btn {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  align-content: center;
   background-color: black;
   color: white;
-  border-radius: 8%;
-  font-size: 16px;
-  text-align: center;
-  width: 100%;
-  height: 10%;
-}
-
-.modal_box {
-  width: 100%;
-  height: 40%;
-  text-align: center;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
 }
