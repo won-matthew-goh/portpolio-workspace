@@ -25,6 +25,8 @@
     height: 500px;
     font-size: 18px;
     margin-top: 2%;
+    display: flex;
+    flex-direction: column;
 }
 .content-wrapper .content-wrap .content image{
     max-width: 490px;
