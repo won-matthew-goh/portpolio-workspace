@@ -8,7 +8,11 @@
   width: 1247px;
   margin: 180px auto;
   height: 2050px;
+  display: flex;
+  flex-direction: column;
 }
+
+.content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between;}
 
 /********** search css **********/
 .content-wrapper .content-wrap .search {
@@ -47,8 +51,6 @@
   color: #000000;
   text-decoration: none;
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .content-wrapper .content-wrap .movie .movie-name {
@@ -67,19 +69,19 @@
 }
 
 /********** modal **********/
-.modal-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-  display: none;
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: block;
 }
 
 .modal-wrap {
-  position: relative;
+  position: fixed;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -87,9 +89,10 @@
   width: 600px;
   background-color: white;
   border-radius: 5px;
+  z-index: 1100;
 }
 
-.modal-wrapper .modal-wrap .modal-wp {
+.modal-wrap .modal-wp {
   position: relative;
   display: flex;
   height: 350px;
@@ -98,13 +101,13 @@
   margin-left: 40px;
 }
 
-.modal-wrapper .modal-wrap .modal-wp .btn {
+.modal-wrap .modal-wp .btn {
   width: 30px;
   height: 30px;
   margin-right: auto;
 }
 
-.modal-wrapper .modal-wrap .modal-wp .modal-info {
+.modal-wrap .modal-wp .modal-info {
   margin-top: 30px;
   margin-left: 30px;
   width: 200px;
@@ -113,25 +116,25 @@
   font-size: 18px;
 }
 
-.modal-wrapper .modal-wrap .modal-box {
+.modal-wrap .modal-box {
   width: 600px;
   height: 280px;
   text-align: center;
   font-size: 18px;
 }
 
-.modal-wrapper .modal-wrap .modal-box .btn {
+.modal-wrap .modal-box .btn {
   margin-top: 35%;
 }
 
-.modal-wrapper .modal-wrap .btn i {
+.modal-wrap .btn i {
   margin-left: 94.5%;
   font-size: 30px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.modal-wrapper .modal-wrap .modal-box .btn .close-btn {
+.modal-wrap .modal-box .btn .close-btn {
   text-align: center;
   width: 100px;
   height: 40px;
