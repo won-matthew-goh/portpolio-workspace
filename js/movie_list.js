@@ -1,16 +1,14 @@
-AOS.init({});
+AOS.init({ duration: 1200 });
 
 /********** modal 열기 **********/
 
 const modalwrap = document.querySelector('.modal-wrap');
-const modalwrapper = document.querySelector('.modal-wrapper');
 const movie = document.querySelectorAll('.movie');
 const modalBg = document.querySelector('.modal-bg');
 
 movie.forEach(function (a) {
   a.addEventListener('click', function () {
     modalwrap.style.display = 'block';
-    modalwrapper.style.display = 'block';
     modalBg.style.display = 'block';
   });
 });
@@ -33,6 +31,5 @@ modalBg.addEventListener('click', function () {
 
 function close() {
   modalwrap.style.display = 'none';
-  modalwrapper.style.display = 'none';
   modalBg.style.display = 'none';
 }
