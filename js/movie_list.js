@@ -17,6 +17,10 @@ movie.forEach(function (a) {
 const btn = document.querySelector('.btn');
 const closebtn = document.querySelector('.close-btn');
 
+modalBg.addEventListener('click', function () {
+  close();
+});
+
 btn.addEventListener('click', function () {
   close();
 });
@@ -25,11 +29,8 @@ closebtn.addEventListener('click', function () {
   close();
 });
 
-modalBg.addEventListener('click', function () {
-  close();
-});
-
 function close() {
   modalwrap.style.display = 'none';
   modalBg.style.display = 'none';
+  // modalwrap.innerHTML = '';
 }
