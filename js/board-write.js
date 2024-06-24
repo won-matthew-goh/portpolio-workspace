@@ -1,81 +1,50 @@
 /********board-write*********/
-/********새로운 별점 매기기 스크립트*******/
-const ratingStars = [...document.getElementsByClassName("rating__star")];
-const ratingResult = document.querySelector(".rating__result");
+const rateWrap = document.querySelectorAll('.rating');
+const label = document.querySelectorAll('.rating .rating-label');
+const input = document.querySelectorAll('.rating .rating-input');
+let labelLength = label.length;
+const opacityHover = '0.5';
 
-printRatingResult(ratingResult);
-
-function executeRating(stars, result) {
-  const starClassActive = "rating__star fas fa-star";
-  const starClassUnactive = "rating__star far fa-star";
-  const starsLength = stars.length;
-  let i;
-  stars.map((star) => {
-    star.onclick = () => {
-      i = stars.indexOf(star);
-
-      if (star.className.indexOf(starClassUnactive) !== -1) {
-        printRatingResult(result, i + 1);
-        for (i; i >= 0; --i) stars[i].className = starClassActive;
-      } else {
-        printRatingResult(result, i);
-        for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
-      }
-    };
-  });
-}
-
-function printRatingResult(result, num = 0) {
-  result.textContent = `${num}/5`;
-}
-
-executeRating(ratingStars, ratingResult);
-
-/////
-
-const rateWrap = document.querySelectorAll(".rating"),
-  label = document.querySelectorAll(".rating.rating-label"),
-  input = document.querySelectorAll(".rating.rating-input"),
-  labelLength = label.length,
-  opacityHover = "0.5";
-
-let stars = document.querySelectorAll(".rating.star-icon");
+let stars = document.querySelectorAll('.rating .star-icon');
 
 checkedRate();
 
-rateWrap.forEach((rating) => {
-  rating.addEventListener("mouseenter", () => {
-    stars = rating.querySelectorAll(".star-icon"); //star-icon class 잡아서 stars에 담기
+rateWrap.forEach((wrap) => {
+  wrap.addEventListener('mouseenter', () => {
+    stars = wrap.querySelectorAll('.star-icon');
 
     stars.forEach((starIcon, idx) => {
-      starIcon.addEventListener("mouseenter", () => {
-        if (rating.classList.contains("readonly") == false) {
-          initStars();
-          filledRate(idx, labelLengh);
+      starIcon.addEventListener('mouseenter', () => {
+        if (wrap.classList.contains('readonly') == false) {
+          initStars(); // 기선택된 별점 무시하고 초기화
+          filledRate(idx, labelLength); // hover target만큼 별점 active
 
+          // hover 시 active된 별점의 opacity 조정
           for (let i = 0; i < stars.length; i++) {
-            if (stars[i].classList.contains("filled")) {
-              stars[i].computedStyleMap.opacity = opacityHover; // computedStyleMap 제대로 알아보기
+            if (stars[i].classList.contains('filled')) {
+              stars[i].style.opacity = opacityHover;
             }
           }
         }
-      }); //addEventListner mouseenter 시 function
+      });
 
-      starIcon.addEventListener("mouseleave", () => {
-        if (rating.classList.contains("readonly") == false) {
-          starIcon.style.opacity = "1";
-          checkedRate();
-        }
-      }); //addEventListner mouseleave 시 function
-
-      rating.addEventListener("mouseleave", () => {
-        if (rating.classList.contains("readonly") == false) {
-          starIcon.style.opacity = "1";
+      starIcon.addEventListener('mouseleave', () => {
+        if (wrap.classList.contains('readonly') == false) {
+          starIcon.style.opacity = '1';
+          checkedRate(); // 체크된 라디오 버튼 만큼 별점 active
         }
       });
 
-      rating.addEventListener("click", (e) => {
-        if (rating.classList.contains("readonly")) {
+      // rate wrap을 벗어날 때 active된 별점의 opacity = 1
+      wrap.addEventListener('mouseleave', () => {
+        if (wrap.classList.contains('readonly') == false) {
+          starIcon.style.opacity = '1';
+        }
+      });
+
+      // readonnly 일 때 비활성화
+      wrap.addEventListener('click', (e) => {
+        if (wrap.classList.contains('readonly')) {
           e.preventDefault();
         }
       });
@@ -83,29 +52,28 @@ rateWrap.forEach((rating) => {
   });
 });
 
-/******function****** */
+// target보다 인덱스가 낮은 .star-icon에 .filled 추가 (별점 구현)
 function filledRate(index, length) {
   if (index <= length) {
     for (let i = 0; i <= index; i++) {
-      stars[i].classList.add("filled");
+      stars[i].classList.add('filled');
     }
   }
 }
 
-//funtion 구간
-//checkRate = 선택된 라디오 버튼 이하 인덱스 별점 활성화
+// 선택된 라디오버튼 이하 인덱스는 별점 active
 function checkedRate() {
-  let checkedRadio = document.querySelectorAll('.rating input[type = "radio"]:checked');
+  let checkedRadio = document.querySelectorAll('.rating input[type="radio"]:checked');
 
   initStars();
   checkedRadio.forEach((radio) => {
     let previousSiblings = prevAll(radio);
 
     for (let i = 0; i < previousSiblings.length; i++) {
-      previousSiblings[i].querySelector(".star-icon").classList.add("filled");
+      previousSiblings[i].querySelector('.star-icon').classList.add('filled');
     }
 
-    radio.nextElementSibling.classList.add("filled");
+    radio.nextElementSibling.classList.add('filled');
 
     function prevAll() {
       let radioSiblings = [],
@@ -115,14 +83,14 @@ function checkedRate() {
         radioSiblings.push(prevSibling);
         prevSibling = prevSibling.previousElementSibling;
       }
-      return radioSiblings; //이 부분 이해 필요
+      return radioSiblings;
     }
   });
 }
 
-/********별점 초기화*********/
+// 별점 초기화 (0)
 function initStars() {
   for (let i = 0; i < stars.length; i++) {
-    stars[i].classList.remove("filled");
+    stars[i].classList.remove('filled');
   }
 }
