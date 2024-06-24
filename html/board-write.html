@@ -30,33 +30,75 @@
         </div>
       </div>
     </header>
-
     <div class="content-wrapper w100">
       <div class="content-wrap">
         <div class="content">
           <h2>리뷰 글쓰기</h2>
-          <div>사용자 ID</div>
-          <div>영화명</div>
-          <div class="title">글제목<input type="text" /></div>
-          <div>
-            평점
-            <select>
-              <option value="5">5</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
+          <div class="txt">사용자 ID<span class="txtspan">김씨</span></div>
+          <div class="txt">
+            영화명
+            <input class="movienm-input" type="text" placeholder="영화명을 입력해주세요" />
           </div>
-          <div>관객평</div>
-          <textarea></textarea>
-
+          <div class="title txt">
+            글제목
+            <input class="title-input" type="text" placeholder="제목을 입력해주세요" />
+          </div>
+          <div class="score txt">
+            평점
+            <div class="rating">
+              <label class="rating-label rating-half" for="starhalf">
+                <input type="radio" id="starhalf" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-full" for="star1">
+                <input type="radio" id="star1" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-half" for="star1half">
+                <input type="radio" id="star1half" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-full" for="star2">
+                <input type="radio" id="star2" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-half" for="star2half">
+                <input type="radio" id="star2half" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-full" for="star3">
+                <input type="radio" id="star3" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-half" for="star3half">
+                <input type="radio" id="star3half" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-full" for="star4">
+                <input type="radio" id="star4" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-half" for="star4half">
+                <input type="radio" id="star4half" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+              <label class="rating-label rating-full" for="star5">
+                <input type="radio" id="star5" class="rating-input" name="rating" value="" />
+                <span class="star-icon"></span>
+              </label>
+            </div>
+          </div>
+          <div class="txt txtarea-div">
+            관객평
+            <textarea placeholder="관객평을 입력해주세요"></textarea>
+          </div>
           <div class="bottom-btn">
-            <a class="nav-bt bt-black">등록</a>
-            <a class="nav-bt bt-gray">취소</a>
+            <a href="#" class="nav-bt bt-black">등록</a>
+            <a href="#" class="nav-bt bt-gray">취소</a>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script src="../js/board-write.js"></script>
 </html>
