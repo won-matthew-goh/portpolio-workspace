@@ -141,6 +141,8 @@ btNext.addEventListener('click', onNext);
 interval = setInterval(onNext, gap);
 
 // Top scroll 버튼 구현부
+const btTop = document.querySelector('.arrow-top');
+
 btTop.addEventListener('click', function () {
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 });

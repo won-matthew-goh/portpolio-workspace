@@ -6,47 +6,46 @@
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/all.min.css" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/member_join.css" />
     <title>Movie Go</title>
   </head>
   <body>
     <header class="header-wrapper w100">
       <div class="logo-wrap">
-        <a class="logo" href="#">Movie Go</a>
+        <a class="logo" href="./index.html">Movie Go</a>
       </div>
       <div class="navi-wrap">
-        <a href="#" class="nav-bt">영화 목록</a>
-        <a href="#" class="nav-bt">리뷰 목록</a>
-        <a href="#" class="nav-bt">박스오피스</a>
-        <a href="#" class="nav-bt bt-black">로그인</a>
-        <a href="#" class="nav-bt bt-black">회원가입</a>
+        <a href="./movie_list.html" class="nav-bt">영화 목록</a>
+        <a href="./board.html" class="nav-bt">리뷰 목록</a>
+        <a href="./boxoffice.html" class="nav-bt">박스오피스</a>
+        <a href="./login.html" class="nav-bt bt-black">로그인</a>
+        <a href="./member_join.html" class="nav-bt bt-black">회원가입</a>
         <div class="lang-wp">
-          <a href="#" class="nav-bt"><i class="fa-solid fa-earth-americas"></i></a>
+          <a href="#" class="nav-bt globeicon"><i class="fa-solid fa-earth-americas"></i></a>
           <div class="langs">
             <a href="#">한국어</a>
             <a href="#">English</a>
             <a href="#">日本語</a>
           </div>
         </div>
-        </div>
       </div>
     </header>
-    <div class="content-wrapper w100 back" style="height: 2000px; background-color: blue">
+    <div class="content-wrapper w100">
       <div class="content-wrap">
-      
-      <form class= "login-input">
-        <h1>MOVIE GO</h1><br>
-        <h2>회원가입</h2><br>
-          <input class="input" type= "text" name= "login" placeholder= "USER NAME"><br>
-          <input class="input" type= "password" name= "password" placeholder= "비밀번호"><br>
-          <input class="input" type= "text" name= "login" placeholder= "이메일"><br>
-          
-          <button class= "nav-bt bt-black" style= "width: 100px; height: 50px;">가입</button>
-          <button class= "nav-bt bt-gray" style= "width: 100px; height: 50px;">취소</button>
-                 
-      </form>
+        <form class="join-form">
+          <h1>Movie Go</h1>
+          <h2>회원가입</h2>
+          <p class="notice-txt">* 중복되는 사용자 명이 존재합니다.</p>
+          <p>유저명은 영문 소문자와 숫자, '_', '-'의 특수기호만 사용하실 수 있습니다.</p>
+          <input class="usernm-input" type="text" name="login" placeholder="유저명" />
+          <p class="notice-txt">* 비밀번호가 일치하지 않습니다.</p>
+          <input class="pw-input" type="password" name="password" placeholder="비밀번호" />
+          <input class="pw-vali-input" type="password" name="password_vali" placeholder="비밀번호 확인" />
+          <input class="email-input" type="text" name="login" placeholder="이메일" />
+          <button class="nav-bt bt-black">가입</button>
+          <button class="nav-bt bt-gray">취소</button>
+        </form>
       </div>
     </div>
   </body>
-  <script src="../js/index.js"></script>
 </html>

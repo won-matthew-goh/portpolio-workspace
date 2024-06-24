@@ -20,6 +20,12 @@ html, body {
   font-size: 16px;
 }
 
+.bt-black:hover {
+  background-color: #777;
+  color: white;
+  border-radius: 8%;
+}
+
 /****** header-wrapper ******/
 .header-wrapper {height: 164px; display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: stretch; padding: 2em 2em 2em 2em; top: 0; left: 0; position: fixed; background-color: white; border-bottom: 0.1px solid #777; z-index: 9999;}
 .header-wrapper .logo-wrap {align-content: center; width: 50%;}
