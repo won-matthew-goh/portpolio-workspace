@@ -1,23 +1,28 @@
 /**search window 관련**/
-.search {
+.board_wrap .board_title .search {
+  position: relative;
   width: 100%;
-  height: 35px;
   display: flex;
   justify-content: right;
 }
 
-.search .search-bar {
-  width: 300px;
-  z-index: -1;
+.board_wrap .board_title .search i {
+  position: absolute;
+  padding: 0.5em;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.board_wrap .board_title .search i:hover {
+  color: #888;
+}
+
+.board_wrap .board_title .search input {
+  width: 25%;
   border: 1px solid #bbb;
   border-radius: 8px;
   padding: 10px 12px;
   font-size: 14px;
-}
-.search i {
-  position: absolute;
-  font-size: 18px;
-  padding: 0.5%;
 }
 
 /**** board-wrap css*/
