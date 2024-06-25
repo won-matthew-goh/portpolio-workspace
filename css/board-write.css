@@ -30,6 +30,7 @@
   border: 0.1px solid #bbb;
   border-radius: 3%;
   padding: 2%;
+  /* box-shadow: 11px 10px 5px 0px #B7B7B7; */
 }
 
 .content-wrapper .content-wrap .content h2 {
@@ -50,6 +51,7 @@
   width: 50%;
   line-height: 200%;
   margin-left: 40px;
+  padding-left: 0.3em;
 }
 
 /********* textarea 관련****************/
@@ -62,6 +64,7 @@
   height: 300px;
   margin: 0 0 1% 40px;
   resize: none;
+  padding: 1em 0.3em;
 }
 .content-wrapper .content-wrap .content textarea:focus {
   outline: none;
@@ -122,20 +125,20 @@
 }
 .bottom-btn .bt-black {
   background-color: black;
-  width: 100px;
-  height: 50px;
+  width: 3em;
+  height: 1em;
   text-align: center;
   margin-right: 3%;
   color: white;
   border-radius: 8%;
-  font-size: 18px;
+  font-size: 14px;
 }
 .bottom-btn .bt-gray {
   background-color: gray;
-  width: 100px;
-  height: 50px;
+  width: 3em;
+  height: 1em;
   text-align: center;
   color: white;
   border-radius: 8%;
-  font-size: 18px;
+  font-size: 14px;
 }

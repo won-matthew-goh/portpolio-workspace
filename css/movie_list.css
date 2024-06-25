@@ -104,50 +104,93 @@
 
 .modal-wrap .btn {display: flex; justify-content: right;}
 
+.modal-wrap .movie-name {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
 .modal-wrap .modal-wp {
   position: relative;
   display: flex;
-  height: 350px;
-  width: 100%;
-  margin-top: 20px;
-  margin-left: 40px;
+  height: 45%;
+  width: 80%;
+  padding: 0.5em;
+  margin: 0 auto;
 }
 
 .modal-wrap .modal-wp .btn {
   width: 30px;
-  height: 30px;
+  height: 10%;
   margin-right: auto;
-}
-
-.modal-wrap .modal-wp .modal-info {
-  margin-top: 30px;
-  margin-left: 30px;
-  width: 200px;
-  height: 50%;
-  text-align: left;
-  font-size: 18px;
-}
-
-.modal-wrap .modal-box {
-  width: 600px;
-  height: 280px;
-  text-align: center;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.modal-wrap .modal-box .btn {
-  margin-top: 35%;
-  display: flex;
-  justify-content: center;
 }
 
 .modal-wrap .btn i {
   font-size: 30px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.modal-wrap .modal-wp .modal-poster {
+  width: 38%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-wrap .modal-wp .modal-poster img {
+  width: 100%;
+}
+
+.modal-wrap .modal-wp .modal-info {
+  display: flex;
+  flex-direction: column;
+  width: 62%;
+  height: 100%;
+  text-align: left;
+  font-size: 18px;
+  justify-content: space-between;
+  padding: 5% 2%;
+}
+
+.modal-wrap .modal-wp .modal-info > div {
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+}
+
+.modal-wrap .modal-wp .modal-info > div .title {
+  width: 35%;
+}
+
+.modal-wrap .modal-box {
+  width: 600px;
+  height: 43%;
+  margin-top: 2%;
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.modal-wrap .modal-box .content {
+  height: 84%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(230, 203, 203, 0.201);
+  border-radius: 5%;
+  text-align: start;
+  padding: 1.5%;
+  margin-bottom: 1%;
+}
+
+.modal-wrap .modal-box .btn {
+  display: flex;
+  justify-content: center;
+  height: 15%;
+  align-items: center;
 }
 
 .modal-wrap .modal-box .btn .close-btn {

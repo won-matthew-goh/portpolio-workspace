@@ -25,98 +25,20 @@
   font-size: 14px;
 }
 
-/**** board-wrap css*/
-@media (max-width: 1000px) {
-  .board_wrap {
-    width: 100%;
-    min-width: 320px;
-    padding: 0 30px;
-    box-sizing: border-box;
-  }
-
-  .board_list .pnum,
-  .board_list .writer,
-  .board_list .count {
-    display: none;
-  }
-
-  .board_list .date {
-    width: 40%;
-  }
-
-  .board_list .title {
-    text-indent: 10px;
-  }
-
-  .board_list .top .title {
-    text-indent: 0;
-  }
-
-  .board_page a {
-    width: 26px;
-    height: 26px;
-  }
-
-  .board_page a.btn {
-    padding-top: 7px;
-  }
-
-  .board_page a.pnum {
-    padding-top: 6px;
-  }
-
-  .board_view .info dl {
-    width: 50%;
-    padding: 0;
-  }
-
-  .board_view .info dl:nth-child(-n + 2) {
-    margin-bottom: 5px;
-  }
-
-  .board_view .info dl::before {
-    display: none;
-  }
-
-  .board_view .info dl dt,
-  .board_view .info dl dd {
-    font-size: 1.2rem;
-  }
-
-  .board_write .info dl {
-    width: 49%;
-  }
-
-  .board_write .info dl:first-child {
-    margin-right: 2%;
-  }
-
-  .board_write .title dt,
-  .board_write .info dt {
-    display: none;
-  }
-
-  .board_write .title dd,
-  .board_write .info dd {
-    width: 100%;
-  }
-
-  .board_write .title input[type="text"],
-  .board_write .info input[type="text"],
-  .board_write .info input[type="password"] {
-    width: 100%;
-  }
+/**** board-wrapper css*/
+.board-wrapper {
+  width: 100%;
+  margin-top: 164px;
 }
 
-/****  ****/
-
 .board_wrap {
-  width: 1000px;
-  margin: 200px auto;
+  width: 80%;
+  margin: auto;
 }
 
 .board_title {
-  margin-bottom: 30px;
+  margin-bottom: 2%;
+  padding-top: 3%;
 }
 
 .board_title strong {
@@ -129,9 +51,13 @@
 }
 
 .bt_wrap {
-  margin-top: 30px;
+  width: fit-content;
+  display: flex;
   text-align: center;
   font-size: 0;
+  position: absolute;
+  right: 10%;
+  bottom: 7%;
 }
 
 .bt_wrap a {
@@ -209,6 +135,10 @@
 }
 .board_list .inside {
   font-size: 16px;
+}
+
+.board_list .inside:hover {
+  background-color: #eee;
 }
 /*******board-page*******/
 .board_page {
@@ -385,9 +315,76 @@
   border-radius: 8%;
   font-size: 16px;
 }
-.bt_wrap .bt-gray {
-  background-color: gray;
+
+.bt_wrap .bt-black:hover {
+  background-color: #777;
   color: white;
-  border-radius: 8%;
-  font-size: 16px;
+  border: none;
+}
+
+/****** 반응형 ******/
+@media (max-width: 1000px) {
+  .board_wrap {
+    width: 100%;
+    min-width: 320px;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+  .board_list .pnum,
+  .board_list .writer,
+  .board_list .count {
+    display: none;
+  }
+  .board_list .date {
+    width: 40%;
+  }
+  .board_list .title {
+    text-indent: 10px;
+  }
+  .board_list .top .title {
+    text-indent: 0;
+  }
+  .board_page a {
+    width: 26px;
+    height: 26px;
+  }
+  .board_page a.btn {
+    padding-top: 7px;
+  }
+  .board_page a.pnum {
+    padding-top: 6px;
+  }
+  .board_view .info dl {
+    width: 50%;
+    padding: 0;
+  }
+  .board_view .info dl:nth-child(-n + 2) {
+    margin-bottom: 5px;
+  }
+  .board_view .info dl::before {
+    display: none;
+  }
+  .board_view .info dl dt,
+  .board_view .info dl dd {
+    font-size: 1.2rem;
+  }
+  .board_write .info dl {
+    width: 49%;
+  }
+  .board_write .info dl:first-child {
+    margin-right: 2%;
+  }
+  .board_write .title dt,
+  .board_write .info dt {
+    display: none;
+  }
+  .board_write .title dd,
+  .board_write .info dd {
+    width: 100%;
+  }
+  .board_write .title input[type="text"],
+  .board_write .info input[type="text"],
+  .board_write .info input[type="password"] {
+    width: 100%;
+  }
 }
