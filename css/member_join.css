@@ -2,7 +2,7 @@
 
 /* content-wrapper */
 .content-wrapper {margin-top: 164px; display: flex;}
-.content-wrapper .content-wrap {width: 1247px; margin: 5% auto 0 auto; display: flex; justify-content: center; align-content: center;}
+.content-wrapper .content-wrap {width: 80%; margin: 1% auto 0 auto; display: flex; justify-content: center; align-content: center;}
 
 .content-wrapper .content-wrap .join-form {border: 0.1px dotted #aaa; border-radius: 8%; padding: 3%; display: flex; flex-direction: column; align-content: center; justify-content: center;}
 .content-wrapper .content-wrap .join-form h1 {font-weight: bold; letter-spacing: 3px;}

@@ -54,20 +54,17 @@
   width: fit-content;
   display: flex;
   text-align: center;
-  font-size: 0;
-  position: absolute;
-  right: 10%;
-  bottom: 7%;
+  margin-left: auto;
 }
 
 .bt_wrap a {
-  display: inline-block;
+  display: flex;
   min-width: 80px;
   margin-left: 10px;
-  padding: 10px;
   border: 1px solid #000;
   border-radius: 2px;
   font-size: 1.4rem;
+  align-items: center;
 }
 
 .bt_wrap a:first-child {
@@ -145,6 +142,9 @@
   margin-top: 30px;
   text-align: center;
   font-size: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .board_page a {
@@ -156,6 +156,10 @@
   border: 1px solid #ddd;
   border-left: 0;
   line-height: 100%;
+}
+
+.board_page a:first-child {
+  margin-left: auto;
 }
 
 .board_page a.btn {
