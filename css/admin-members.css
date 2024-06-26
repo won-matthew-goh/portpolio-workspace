@@ -5,7 +5,7 @@ body {
 }
 .board-container {
   width: 80%;
-  margin: 10% auto;
+  margin: 3% auto;
 }
 .board-container .menu-wrapper {
   display: flex;
