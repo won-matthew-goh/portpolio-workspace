@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/admin-members.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <title>Movie Go Admin Page</title>
+  </head>
+  <body>
+    <article class="board-container">
+      <form action="#" method="post" enctype="multipart/form-data" name="defaultForm">
+        <input type="hidden" name="boardId" value="#" />
+        <div class="menu-wrapper w100">
+          <h2 class="title">회원 관리</h2>
+          <div class="navi-wrap">
+            <a href="#" class="navi">신고 관리</a>
+            <a href="#" class="navi">회원 관리</a>
+          </div>
+        </div>
+        <table class="table table-light">
+          <thead>
+            <tr>
+              <th scope="col">회원번호</th>
+              <th scope="col">UserName</th>
+              <th scope="col">E-Mail</th>
+              <th scope="col">가입일</th>
+              <th scope="col">등급</th>
+              <th scope="col">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto@naver.com</td>
+              <td>2024.04.20</td>
+              <td>일반회원</td>
+              <td><a href="#" class="delete btn btn-danger">삭제</a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton@naver.com</td>
+              <td>2024.04.20</td>
+              <td>일반회원</td>
+              <td><a href="#" class="delete btn btn-danger">삭제</a></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td>Larry the Bird@naver.com</td>
+              <td>2024.04.20</td>
+              <td>관리자</td>
+              <td><button href="#" class="delete btn btn-danger">삭제</ㅠ></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </article>
+  </body>
+</html>
