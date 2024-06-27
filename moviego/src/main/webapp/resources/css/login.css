@@ -1,0 +1,11 @@
+/* content-wrapper */
+.content-wrapper {margin-top: 164px; display: flex; }
+.content-wrapper .content-wrap {width: 1247px; margin: 10% auto 0 auto; display: flex; justify-content: center; align-content: center;}
+
+.content-wrapper .content-wrap .login-form {border: 0.1px dotted #aaa; border-radius: 8%; padding: 3%; display: flex; flex-direction: column; align-content: center; justify-content: center;}
+.content-wrapper .content-wrap .login-form h1 {font-weight: bold; letter-spacing: 3px;}
+.content-wrapper .content-wrap .login-form h2 {color: #444;}
+.content-wrapper .content-wrap .login-form input {width: 300px; height: 40px; font-size: 18px;}
+.content-wrapper .content-wrap .login-form input,button,h1,h2,.img-wp {display: flex; justify-content: center; margin-bottom: 8%;}
+.content-wrapper .content-wrap .login-form .img-wp img {width: 50px; height: 50px; display: inline;}
+.content-wrapper .content-wrap .login-form .img-wp img:not(:last-child) {margin-right: 3%;}

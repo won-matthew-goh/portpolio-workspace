@@ -1,0 +1,207 @@
+/********** content-wrapper css **********/
+
+.content-wrapper {
+  margin-top: 164px;
+}
+
+.content-wrapper .content-wrap {
+  width: 1247px;
+  margin: 180px auto;
+  height: 2050px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between;}
+
+/********** search css **********/
+.content-wrapper .content-wrap .search {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.content-wrapper .content-wrap .search i {
+  position: absolute;
+  padding: 0.5em;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.content-wrapper .content-wrap .search i:hover {
+  color: #888;
+}
+
+.content-wrapper .content-wrap .search input {
+  width: 25%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+/********** movie-list css **********/
+.content-wrapper .content-wrap h2 {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.content-wrapper .content-wrap .movie {
+  width: 225px;
+  text-align: center;
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  float: left;
+  cursor: zoom-in;
+}
+
+.content-wrapper .content-wrap .movie:hover {
+  opacity: 0.8;
+}
+
+.content-wrapper .content-wrap .movie .movie-name {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.content-wrapper .content-wrap .movie .release-date {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.content-wrapper .content-wrap .movie .nation {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+/********** modal **********/
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+}
+
+.modal-wrap {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 700px;
+  width: 600px;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 1100;
+  display: none;
+}
+
+.modal-wrap .btn {display: flex; justify-content: right;}
+
+.modal-wrap .movie-name {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.modal-wrap .modal-wp {
+  position: relative;
+  display: flex;
+  height: 45%;
+  width: 80%;
+  padding: 0.5em;
+  margin: 0 auto;
+}
+
+.modal-wrap .modal-wp .btn {
+  width: 30px;
+  height: 10%;
+  margin-right: auto;
+}
+
+.modal-wrap .btn i {
+  font-size: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-wrap .modal-wp .modal-poster {
+  width: 38%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-wrap .modal-wp .modal-poster img {
+  width: 100%;
+}
+
+.modal-wrap .modal-wp .modal-info {
+  display: flex;
+  flex-direction: column;
+  width: 62%;
+  height: 100%;
+  text-align: left;
+  font-size: 18px;
+  justify-content: space-between;
+  padding: 5% 2%;
+}
+
+.modal-wrap .modal-wp .modal-info > div {
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+}
+
+.modal-wrap .modal-wp .modal-info > div .title {
+  width: 35%;
+}
+
+.modal-wrap .modal-box {
+  width: 600px;
+  height: 43%;
+  margin-top: 2%;
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.modal-wrap .modal-box .content {
+  height: 84%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(230, 203, 203, 0.201);
+  border-radius: 5%;
+  text-align: start;
+  padding: 1.5%;
+  margin-bottom: 1%;
+}
+
+.modal-wrap .modal-box .btn {
+  display: flex;
+  justify-content: center;
+  height: 15%;
+  align-items: center;
+}
+
+.modal-wrap .modal-box .btn .close-btn {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  align-content: center;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
