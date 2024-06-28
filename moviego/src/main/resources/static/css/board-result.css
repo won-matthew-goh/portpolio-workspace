@@ -1,0 +1,130 @@
+/**작성 순서 최대한 맞추자 
+    width
+    height
+    font 관련
+    align 관련
+    margin 관련
+**/
+/* content-wrapper css*/
+.content-wrapper {
+  margin-top: 164px;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+}
+.content-wrapper .content-wrap {
+  display: flex;
+  width: 65%;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.content-wrapper .content-wrap h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+  color: #444;
+}
+
+.content-wrapper .content-wrap .content-wp {
+  display: flex;
+  padding: 3% 1.5%;
+  justify-content: space-between;
+  border: 0.1px solid #bbb;
+  border-radius: 5%;
+  box-shadow: 11px 10px 5px 0px #B7B7B7;
+}
+
+.content-wrapper .content-wrap .content-wp .contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 69%;
+}
+
+.content-wrapper .content-wrap .content-wp .contents .content {
+  display: flex;
+  flex-direction: row;
+  height: 15%;
+  align-items: center;
+  gap: 5%;
+}
+
+.content-wrapper .content-wrap .content-wp .contents .content:last-child {
+  height: 55%;
+  align-items:flex-start;
+  padding-top: 5%;
+}
+
+.content-wrapper .content-wrap p {
+  font-size: 20px;
+}
+
+.content-wrapper .content-wrap .content-wp .contents .content > p:first-child {
+  width: 15%;
+
+}
+.content-wrapper .content-wrap .content-wp .contents .content > p:last-child {
+  width: 80%;
+}
+
+.content-wrapper .content-wrap .content-wp .contents .content:not(:last-child) > p:last-child {
+  border-bottom: 0.1px dotted #666;
+}
+
+
+
+
+/**right-content 관련**/
+.content-wrapper .content-wrap .img-btn-div {
+  display: flex;
+  flex-direction: column;
+  width: 29%;
+  border: 0.1px solid #bbb;
+  border-radius: 5%;
+}
+
+.content-wrapper .content-wrap .img-btn-div img {
+  border: 0.1px solid #bbb;
+  border-radius: 5%;
+}
+
+.bottom-btn {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  width: 100%;
+  margin-top: 3%;
+}
+.bottom-btn .bt-black {
+  background-color: black;
+  width: 3em;
+  height: 1em;
+  text-align: center;
+  margin-right: 1%;
+  color: white;
+  border-radius: 8%;
+  font-size: 14px;
+}
+
+.bt-black:hover {
+  background-color: #777;
+  color: white;
+  border-radius: 8%;
+}
+
+.bottom-btn .bt-gray {
+  background-color: gray;
+  width: 3em;
+  height: 1em;
+  text-align: center;
+  color: white;
+  border-radius: 8%;
+  font-size: 14px;
+}
+
+.bt-gray:hover {
+  background-color: #bbb;
+  color: white;
+  border-radius: 8%;
+}

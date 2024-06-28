@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+/* font-family: 'Lato', sans-serif; */
+html, body {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+.nav-bt {
+  height: auto;
+  font-size: 20px;
+  align-content: center;
+  padding: 2%;
+}
+
+.bt-black {
+  background-color: black;
+  color: white;
+  border-radius: 8%;
+  font-size: 16px;
+}
+
+.bt-black:hover {
+  background-color: #777;
+  color: white;
+  border-radius: 8%;
+}
+
+/****** header-wrapper ******/
+.header-wrapper {height: 164px; display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: stretch; padding: 0 2em; top: 0; left: 0; position: fixed; background-color: white; border-bottom: 0.1px solid #777; z-index: 9999;}
+.header-wrapper .logo-wrap {align-content: center; width: 50%;}
+.header-wrapper .logo-wrap .logo {font-size: 48px; font-weight: bold; letter-spacing: 3px;}
+
+.header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around; flex-wrap: wrap;}
+.header-wrapper .navi-wrap .nav-bt:hover {background-color: #777; color: white; border-radius: 8%;}
+
+.header-wrapper .navi-wrap .lang-wp {align-content: center; position: relative; width: 2.5em; justify-content: center;}
+.header-wrapper .navi-wrap .lang-wp .globeicon:hover {background-color: white; color: black;}
+.header-wrapper .navi-wrap .lang-wp .langs {position: absolute; background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5); margin-top: 12px; display: none; right: -3; width: 60px;}
+.header-wrapper .navi-wrap .lang-wp:hover .langs {display: flex; flex-direction: column;}
+.header-wrapper .navi-wrap .lang-wp .langs a {font-size: 16px; line-height: 2em; padding: 15% 10% 15% 10%;}
+.header-wrapper .navi-wrap .lang-wp .langs a:hover {background-color: #777; color: white;}
+
+/******************* 반응형 ******************/
+@media (max-width: 1399px) {}
+@media (max-width: 1199px) {}
+@media (max-width: 991px) {}
+@media (max-width: 767px) {}
+@media (max-width: 575px) {}

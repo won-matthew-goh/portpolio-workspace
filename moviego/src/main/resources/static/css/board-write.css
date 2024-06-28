@@ -1,0 +1,144 @@
+/****작성 순서 최대한 맞추자 
+    width
+    height
+    font 관련
+    align 관련
+    margin 관련
+******/
+
+/******* content-wrapper css*************/
+.content-wrapper {
+  margin-top: 164px;
+  display: flex;
+}
+
+.content-wrapper .content-wrap {
+  width: 100%;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  line-height: 200%;
+  padding: 2% 0;
+}
+
+/******* board-write content 메인 관련*********/
+.content-wrapper .content-wrap .content {
+  width: 700px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  border: 0.1px solid #bbb;
+  border-radius: 3%;
+  padding: 2%;
+  /* box-shadow: 11px 10px 5px 0px #B7B7B7; */
+}
+
+.content-wrapper .content-wrap .content h2 {
+  font-size: 24px;
+  line-height: 200%;
+  margin-bottom: 0.8em;
+}
+
+.content-wrapper .content-wrap .content .txt {
+  margin: 1.5% 0;
+}
+
+.content-wrapper .content-wrap .content .txtspan {
+  margin-left: 20px;
+}
+
+.content-wrapper .content-wrap .content .movienm-input, .title-input {
+  width: 50%;
+  line-height: 200%;
+  margin-left: 40px;
+  padding-left: 0.3em;
+}
+
+/********* textarea 관련****************/
+.content-wrapper .content-wrap .content .txtarea-div {
+  display: flex;
+}
+
+.content-wrapper .content-wrap .content textarea {
+  width: 80%;
+  height: 300px;
+  margin: 0 0 1% 40px;
+  resize: none;
+  padding: 1em 0.3em;
+}
+.content-wrapper .content-wrap .content textarea:focus {
+  outline: none;
+}
+
+
+/**********별점 매기기 관련*****************/
+.content-wrapper .content-wrap .content .score {
+  display: flex;
+  align-items: center;
+}
+
+.content-wrapper .content-wrap .content .rating {
+  width: 200px;
+  display: flex;
+  margin-left: 50px;
+}
+
+.content-wrapper .content-wrap .content .rating-input {
+    display: none;
+  }
+
+.content-wrapper .content-wrap .content .rating-label {
+    width: 20px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+.content-wrapper .content-wrap .content .rating-label .star-icon {
+    width: 20px;
+    height: 40px;
+    display: block;
+    position: relative;
+    left: 0;
+    background-image: url('https://velog.velcdn.com/images/jellykelly/post/9957327f-f358-4c25-9989-5bb3dd5755d6/image.svg');
+    background-repeat: no-repeat;
+    background-size: 40px;
+  }
+.content-wrapper .content-wrap .content .rating-label .star-icon.filled {
+  background-image: url(' https://velog.velcdn.com/images/jellykelly/post/10caf033-b0ef-4d58-804b-6e33395e4ea5/image.svg');
+}
+.content-wrapper .content-wrap .content .rating-full .star-icon {
+  background-position: right;
+}
+.content-wrapper .content-wrap .content .rating-half .star-icon {
+  background-position: left;
+}
+.content-wrapper .content-wrap .content .rating-label.readonly .star-icon {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/***********bottom-btn 하단 버튼 관련****/
+.content-wrapper .content-wrap .content .bottom-btn {
+  margin-top: 1%;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+}
+.bottom-btn .bt-black {
+  background-color: black;
+  width: 3em;
+  height: 1em;
+  text-align: center;
+  margin-right: 3%;
+  color: white;
+  border-radius: 8%;
+  font-size: 14px;
+}
+.bottom-btn .bt-gray {
+  background-color: gray;
+  width: 3em;
+  height: 1em;
+  text-align: center;
+  color: white;
+  border-radius: 8%;
+  font-size: 14px;
+}
