@@ -28,6 +28,8 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 //	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	
+	implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+	
 	runtimeOnly 'com.mysql:mysql-connector-j'
     
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
