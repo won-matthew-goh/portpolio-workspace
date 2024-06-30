@@ -22,12 +22,6 @@ public class BoxofficeController {
   @GetMapping("/boxoffice")
   public String boxoffice(Model model) {
     List<BoxofficeVO> movies = boxofficeService.getWeeklyBoxOffice();
-
-    for (int i = 0; i < movies.size(); i++) {
-      System.out.println(movies.get(i).getMovieNm());
-      System.out.println(movies.get(i).getAudiCnt());
-    }
-
     model.addAttribute("movies", movies);
     return "/boxoffice";
   }
