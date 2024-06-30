@@ -22,6 +22,7 @@ create table tb_users(
     username varchar(50),
     passwd varchar(50),
     email varchar(50),
+    grade enum('0', '1') default '0',
     created_at datetime default current_timestamp,
     deleted_at datetime,
     provider varchar(20),
