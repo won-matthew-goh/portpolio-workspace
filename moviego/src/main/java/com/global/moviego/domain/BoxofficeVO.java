@@ -6,6 +6,7 @@ public class BoxofficeVO {
     private int audiCnt;
     private int audiInten;
     private int audiAcc;
+    private int rank;
 
     // Getters and Setters
     public String getMovieNm() {
@@ -14,6 +15,14 @@ public class BoxofficeVO {
 
     public void setMovieNm(String movieNm) {
         this.movieNm = movieNm;
+    }
+
+    public int getRank() {
+      return rank;
+    }
+
+    public void setRank(int rrank) {
+      this.rank = rrank;
     }
 
     public String getOpenDt() {

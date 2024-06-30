@@ -3,12 +3,8 @@
 <%@include file="./includes/header.jsp"%>
 <link rel="stylesheet" href="/css/boxoffice.css" />
     <div class="content-wrapper w100">
-    <h1>${movie }</h1>
       <div class="rank-wrap">
-        <c:forEach var="movie" items="${movies}">
-          <h1>${movie.movieNm}</h1>
-          <h1>${movie.audiCnt}</h1>
-        </c:forEach>
+      <h1>금주의 관객별 박스오피스 순위</h1>
         <table class="rank-table">
           <thead>
             <tr>
@@ -20,41 +16,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>원더랜드</td>
-              <td>2024-06-05</td>
-              <td>464330</td>
-              <td>468801</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>퓨리오사: 매드맥스 사가</td>
-              <td>2024-05-22</td>
-              <td>367596</td>
-              <td>1418622</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>그녀가 죽었다</td>
-              <td>2024-05-15</td>
-              <td>181122</td>
-              <td>1134094</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>범죄도시4</td>
-              <td>2024-04-24</td>
-              <td>148225</td>
-              <td>11421632</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>설계자</td>
-              <td>2024-05-29</td>
-              <td>129786</td>
-              <td>501892</td>
-            </tr>
+            <c:forEach var="movie" items="${movies}">
+              <tr>
+                <td>${movie.rank}</td>
+                <td>${movie.movieNm}</td>
+                <td>${movie.openDt}</td>
+                <td>${movie.audiCnt}</td>
+                <td>${movie.audiAcc}</td>
+              </tr>
+            </c:forEach>
           </tbody>
         </table>
       </div>
@@ -66,5 +36,28 @@
       </div>
     </div>
   </body>
-  <script src="/js/boxoffice.js"></script>
+<!--   <script src="/js/boxoffice.js"></script> -->
+  <script>
+  	let weekCt = document.getElementById('weekChart');
+  	
+  	let weekChart = new Chart(weekCt, {
+  	  type: 'bar',
+  	  data: {
+  	    axis: 'y',
+  	    labels: ['원더랜드', '퓨리오사: 매드맥스 사가', '그녀가 죽었다', '범죄도시4', '설계자'],
+  	    datasets: [
+  	      {
+  	        label: '관객수 증감',
+  	        data: [460191, -118731, -61083, -79408, -240543],
+  	        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 205, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+  	        borderColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)'],
+  	        borderWidth: 1,
+  	      },
+  	    ],
+  	  },
+  	  options: {
+  	    indexAxis: 'y',
+  	  },
+  	});
+  </script>
 </html>

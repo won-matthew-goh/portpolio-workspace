@@ -40,6 +40,7 @@ public class BoxofficeServiceImpl implements BoxofficeService {
                 movie.setAudiCnt(movieNode.path("audiCnt").asInt());
                 movie.setAudiInten(movieNode.path("audiInten").asInt());
                 movie.setAudiAcc(movieNode.path("audiAcc").asInt());
+                movie.setRank(movieNode.path("rank").asInt());
                 movies.add(movie);
             }
             

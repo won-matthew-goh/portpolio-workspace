@@ -15,20 +15,21 @@ import com.global.moviego.service.BoxofficeServiceImpl;
 @Controller
 //@RequestMapping("/boxoffice")
 public class BoxofficeController {
-  
-  @Autowired BoxofficeServiceImpl boxofficeService;
+
+  @Autowired
+  BoxofficeServiceImpl boxofficeService;
 
   @GetMapping("/boxoffice")
   public String boxoffice(Model model) {
     List<BoxofficeVO> movies = boxofficeService.getWeeklyBoxOffice();
-    
-    for(int i = 0; i < movies.size(); i++) {
-    System.out.println(movies.get(i).getMovieNm());
-    System.out.println(movies.get(i).getAudiCnt());
+
+    for (int i = 0; i < movies.size(); i++) {
+      System.out.println(movies.get(i).getMovieNm());
+      System.out.println(movies.get(i).getAudiCnt());
     }
-    
+
     model.addAttribute("movies", movies);
     return "/boxoffice";
   }
-  
+
 }
