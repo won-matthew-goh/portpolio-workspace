@@ -1,12 +1,15 @@
 package com.global.moviego.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.global.moviego.service.SampleService;
 
@@ -23,8 +26,8 @@ public class SampleController {
 	 * @param paramMap
 	 * @return
 	 */
-	@GetMapping("/sample/sample")
-	public String test(Model model, @RequestParam Map<String, Object> paramMap) {
+	@GetMapping("/sample/sampleMapParam")
+	public String sampleMapParam(Model model, @RequestParam Map<String, Object> paramMap) {
 		System.out.println("@@ START @@");
 		
 		// VO 없이 파라미터를 편하게 받을수있음.
@@ -39,6 +42,28 @@ public class SampleController {
 		System.out.println("@@ END @@");
 		
 		return "/sample/sample";
+		
+	}
+	
+	/**
+	 * AJAX 데이터 호출
+	 * @param model
+	 * @param paramMap
+	 * @return
+	 */
+	@RequestMapping("/sample/sampleAjax")
+	public @ResponseBody Map<String, Object> sampleAjax(Model model, @RequestParam Map<String, Object> paramMap) {
+		System.out.println("@@ sampleAjax START @@");
+		
+		Map<String, Object> rtnMap    = new HashMap<String, Object>();
+		
+		Map<String, Object> getUsrMap = new HashMap<String, Object>();
+		getUsrMap = sampleService.selectSampleList(paramMap);
+		rtnMap.put("userData", getUsrMap);
+		
+		System.out.println("@@ sampleAjax END @@");
+		
+		return rtnMap;
 		
 	}
   
