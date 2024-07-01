@@ -86,17 +86,15 @@ document.addEventListener('scroll', () => {
 })();
 */
 
-let movieArray = [];
-  let currentPage = 2;
-  const totalPages = 10;
- 
+  let movieArray = [];
+  let currentPage = 1;
 	
   const fetchMovies = async (page) => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=ko-KR&page=${page}`);
+	  const response = await fetch(`/movieList/ajax?pageCnt=${page}`);
       const data = await response.json();
-      movieArray = movieArray.concat(data.results);
-      return data.results;
+      movieArray = movieArray.concat(data.movies);
+      return data.movies;
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -112,6 +110,8 @@ let movieArray = [];
         return "브루나이";
       case "pl":
         return "폴란드";
+      case "th":
+        return "태국";
       default:
         return "미상";
     }
@@ -123,11 +123,11 @@ let movieArray = [];
     movies.forEach(movie => {
       const movieHTML = `
         <div class="movie" data-aos="flip-up">
-          <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" width="225" height="337.5"/>
+          <img src="https://image.tmdb.org/t/p/w200${movie.posterPath}" width="225" height="337.5"/>
           <div class="movie-id">${movie.id}</div>
           <div class="movie-name">${movie.title}</div>
-          <div class="release-date">${movie.release_date}</div>
-          <div class="nation">${translateNation(movie.original_language)}</div>
+          <div class="release-date">${movie.releaseDate}</div>
+          <div class="nation">${translateNation(movie.originalLanguage)}</div>
         </div>
       `;
       moviebox.innerHTML += movieHTML;
@@ -135,7 +135,7 @@ let movieArray = [];
   };
 
   document.addEventListener('scroll', async () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && currentPage < totalPages) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       currentPage++;
       const newMovies = await fetchMovies(currentPage);
       loadMoreMovies(newMovies);

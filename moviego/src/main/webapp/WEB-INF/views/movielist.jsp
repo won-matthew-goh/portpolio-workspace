@@ -9,7 +9,7 @@
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="box">
-        <c:forEach var="movie" items="${movies}">
+<%--         <c:forEach var="movie" items="${movies}">
           <div class="movie" data-aos="flip-up">
             <img
               src="https://image.tmdb.org/t/p/w200${movie.posterPath}"
@@ -41,7 +41,7 @@
             </c:choose>
             </div>
           </div>
-        </c:forEach>
+        </c:forEach> --%>
         </div>
       </div>
     </div>
@@ -94,8 +94,5 @@
       </div>
     </div>
   </body>
-  <script>
-  const apiKey = "${apikey}";
-  </script>
   <script src="/js/movie_list.js"></script>
 </html>

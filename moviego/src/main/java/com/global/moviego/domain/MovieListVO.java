@@ -2,8 +2,6 @@ package com.global.moviego.domain;
 
 public class MovieListVO {
   
-  private int page;
-  
   private int id;
   
   private String title;
@@ -27,14 +25,6 @@ public class MovieListVO {
   private int voteCount;
   
   // Getters and Setters
-
-  public int getPage() {
-    return page;
-  }
-
-  public void setPage(int page) {
-    this.page = page;
-  }
 
   public int getId() {
     return id;

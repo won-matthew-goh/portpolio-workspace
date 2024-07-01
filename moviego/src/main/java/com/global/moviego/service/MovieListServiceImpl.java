@@ -2,6 +2,7 @@ package com.global.moviego.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,15 +25,16 @@ public class MovieListServiceImpl implements MovieListService {
   @Value("${movielist.tmdb.url}")
   private String apiUrl;
   
-  public List<MovieListVO> getMovieList() {
-    int pageCnt = 1;
+  public List<MovieListVO> getMovieList(Map<String, Object> paramMap) {
+    if(paramMap.get("pageCnt") == null || paramMap.get("pageCnt") == "") paramMap.put("pageCnt", "1");
+    
+    int pageCnt = Integer.parseInt((String) paramMap.get("pageCnt"));
     
     try {
       String response = restTemplate.getForObject(apiUrl + pageCnt, String.class);
       
       ObjectMapper objectMapper = new ObjectMapper();
       JsonNode rootNode = objectMapper.readTree(response);
-      JsonNode pagesNode = rootNode.path("page");
       JsonNode moviesNode = rootNode.path("results");
       
       List<MovieListVO> movies = new ArrayList<>();
@@ -49,11 +51,9 @@ public class MovieListServiceImpl implements MovieListService {
             movie.setAdult(movieNode.path("adult").asBoolean());
             movie.setVoteAverage(movieNode.path("vote_average").asInt());
             movie.setVoteCount(movieNode.path("vote_count").asInt());
-            movie.setPage(pagesNode.path("page").asInt());
             
             movies.add(movie);
         }
-        pageCnt++;
       return movies;
       
       
