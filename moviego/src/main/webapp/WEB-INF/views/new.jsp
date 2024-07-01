@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="./includes/header.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="/css/base.css" />
-<link rel="stylesheet" href="/css/common.css" />
-<link rel="stylesheet" href="/css/all.min.css" />
 <link rel="stylesheet" href="/css/board-write.css" />
-<title>Review New</title>
-</head>
-<body>
  <div class="content-wrapper w100">
       <div class="content-wrap">
         <div class="content">

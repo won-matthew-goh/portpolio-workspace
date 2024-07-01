@@ -7,12 +7,11 @@
 .content-wrapper .content-wrap {
   width: 1247px;
   margin: 180px auto;
-  height: 2050px;
   display: flex;
   flex-direction: column;
 }
 
-.content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between;}
+.content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; gap: 2em 2%;}
 
 /********** search css **********/
 .content-wrapper .content-wrap .search {
@@ -20,6 +19,7 @@
   width: 100%;
   display: flex;
   justify-content: right;
+  margin-bottom: 1em;
 }
 
 .content-wrapper .content-wrap .search i {
@@ -42,19 +42,15 @@
 }
 
 /********** movie-list css **********/
-.content-wrapper .content-wrap h2 {
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
 .content-wrapper .content-wrap .movie {
-  width: 225px;
+  width: 18%;
   text-align: center;
   display: block;
   color: #000000;
   text-decoration: none;
-  float: left;
   cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-wrapper .content-wrap .movie:hover {

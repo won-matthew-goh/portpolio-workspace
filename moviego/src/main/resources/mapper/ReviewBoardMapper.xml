@@ -15,11 +15,10 @@
 		insert into tb_reiview(rating
 							, username
 							, movie_nm
-							, movie_title
 							, poster_url
 							, comment
 							, created_at)
-		values(#{rating},#{username},#{movie_nm},#{movie_title},#{poster_url},#{comment},#{created_at})
+		values(#{rating},#{username},#{movie_nm},#{poster_url},#{comment},#{created_at})
 	</select>
 	
 	<select id="selectReviewCnt" resultType="Integer">

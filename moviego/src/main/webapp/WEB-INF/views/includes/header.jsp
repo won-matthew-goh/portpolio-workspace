@@ -21,7 +21,7 @@
         <a class="logo" href="/">Movie Go</a>
       </div>
       <div class="navi-wrap">
-        <a href="./movie_list.html" class="nav-bt">리뷰 영화 찾기</a>
+        <a href="/movieList" class="nav-bt">리뷰 영화 찾기</a>
         <h1>|</h1>
         <a href="./board.html" class="nav-bt">모든 리뷰 목록</a>
         <h1>|</h1>

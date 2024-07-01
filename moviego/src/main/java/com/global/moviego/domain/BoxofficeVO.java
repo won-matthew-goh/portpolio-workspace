@@ -21,8 +21,8 @@ public class BoxofficeVO {
       return rank;
     }
 
-    public void setRank(int rrank) {
-      this.rank = rrank;
+    public void setRank(int rank) {
+      this.rank = rank;
     }
 
     public String getOpenDt() {
