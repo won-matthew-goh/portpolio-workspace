@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
+
+	<select id="selectReview" resultType="com.global.moviego.domain.ReviewBoardVO">
+		SELECT user_id
+			 , username 
+		  FROM tb_users 
+	  ORDER BY user_id asc
+	</select>
+	
+	<select id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO" resultType="com.global.moviego.domain.ReviewBoardVO">
+		insert into tb_reiview(rating
+							, username
+							, movie_nm
+							, movie_title
+							, poster_url
+							, comment
+							, created_at)
+		values(#{rating},#{username},#{movie_nm},#{movie_title},#{poster_url},#{comment},#{created_at})
+	</select>
+	
+	<select id="selectReviewCnt" resultType="Integer">
+		SELECT count(*)
+		  FROM tb_users
+	</select>
+	
+</mapper>
