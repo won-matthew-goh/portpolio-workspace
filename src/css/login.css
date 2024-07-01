@@ -1,5 +1,5 @@
 /* content-wrapper */
-.content-wrapper {margin-top: 164px; display: flex; }
+.content-wrapper {margin-top: 130px; display: flex; }
 .content-wrapper .content-wrap {width: 1247px; margin: 10% auto 0 auto; display: flex; justify-content: center; align-content: center;}
 
 .content-wrapper .content-wrap .login-form {border: 0.1px dotted #aaa; border-radius: 8%; padding: 3%; display: flex; flex-direction: column; align-content: center; justify-content: center;}
