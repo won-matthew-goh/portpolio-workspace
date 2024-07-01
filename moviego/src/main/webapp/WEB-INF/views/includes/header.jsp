@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/index.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -26,6 +26,7 @@ public class BoxofficeServiceImpl implements BoxofficeService {
     @Override
     public List<BoxofficeVO> getWeeklyBoxOffice() {
         try {
+            
             String response = restTemplate.getForObject(apiUrl + DateCalc.getLastWeek(), String.class);
             
             ObjectMapper objectMapper = new ObjectMapper();
