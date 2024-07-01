@@ -57,6 +57,10 @@
   opacity: 0.8;
 }
 
+.content-wrapper .content-wrap .movie .movie-id {
+  display: none;
+}
+
 .content-wrapper .content-wrap .movie .movie-name {
   margin-top: 10px;
   margin-bottom: 2px;
@@ -187,6 +191,7 @@
   justify-content: center;
   height: 15%;
   align-items: center;
+  gap: 1em;
 }
 
 .modal-wrap .modal-box .btn .close-btn {
@@ -199,5 +204,11 @@
   color: white;
   border-radius: 5px;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.modal-wrap .modal-box .btn .btn-light {
+  border: 0.1px solid #555;
+  height: 40px;
   cursor: pointer;
 }

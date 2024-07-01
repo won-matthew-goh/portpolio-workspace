@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,18 +22,23 @@ public class MovieListController {
 
   @Autowired
   MovieListServiceImpl movieListService;
+  
+  @Value("${apikey.tmdb.url}")
+  private String apikey;
 
   @GetMapping("/movieList")
   public String movieList(Model model) {
     List<MovieListVO> movies = movieListService.getMovieList();
 
-    for (int i = 0; i < movies.size(); i++) {
-      System.out.println(movies.get(i).getTitle());
-      System.out.println(movies.get(i).getOverview());
-      System.out.println(movies.get(i).getPosterPath());
-    }
-
+//    for (int i = 0; i < movies.size(); i++) {
+//      System.out.println(movies.get(i).getTitle());
+//      System.out.println(movies.get(i).getOverview());
+//      System.out.println(movies.get(i).getOriginalLanguage());
+//      System.out.println(movies.get(i).getPage());
+//    }
+    
     model.addAttribute("movies", movies);
+    model.addAttribute("apikey", apikey);
     return "/movielist";
   }
 

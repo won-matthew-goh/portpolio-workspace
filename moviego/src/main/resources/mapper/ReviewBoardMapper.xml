@@ -11,15 +11,17 @@
 	  ORDER BY user_id asc
 	</select>
 	
-	<select id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO" resultType="com.global.moviego.domain.ReviewBoardVO">
-		insert into tb_reiview(rating
+	<insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
+		insert into tb_reiview(
+							  rating
 							, username
 							, movie_nm
 							, poster_url
 							, comment
-							, created_at)
+							, created_at
+							)
 		values(#{rating},#{username},#{movie_nm},#{poster_url},#{comment},#{created_at})
-	</select>
+	</insert>
 	
 	<select id="selectReviewCnt" resultType="Integer">
 		SELECT count(*)

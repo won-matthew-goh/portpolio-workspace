@@ -27,7 +27,7 @@ public class BoxofficeServiceImpl implements BoxofficeService {
     public List<BoxofficeVO> getWeeklyBoxOffice() {
         try {
             
-            String response = restTemplate.getForObject(apiUrl + DateCalc.getLastWeek(), String.class);
+            String response = restTemplate.getForObject(apiUrl + DateCalc.getLastDay(), String.class);
             
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(response);

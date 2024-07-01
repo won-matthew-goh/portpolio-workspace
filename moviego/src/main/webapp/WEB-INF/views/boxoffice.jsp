@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/boxoffice.css" />
     <div class="content-wrapper w100">
       <div class="rank-wrap">
-      <h1>금주의 관객별 박스오피스 순위</h1>
+      <h1>한 주간 관객별 박스오피스 순위</h1>
         <table class="rank-table">
           <thead>
             <tr>

@@ -25,9 +25,10 @@ public class MovieListServiceImpl implements MovieListService {
   private String apiUrl;
   
   public List<MovieListVO> getMovieList() {
+    int pageCnt = 1;
     
     try {
-      String response = restTemplate.getForObject(apiUrl, String.class);
+      String response = restTemplate.getForObject(apiUrl + pageCnt, String.class);
       
       ObjectMapper objectMapper = new ObjectMapper();
       JsonNode rootNode = objectMapper.readTree(response);
@@ -35,7 +36,6 @@ public class MovieListServiceImpl implements MovieListService {
       JsonNode moviesNode = rootNode.path("results");
       
       List<MovieListVO> movies = new ArrayList<>();
-//      for (JsonNode pageNode : pagesNode) {
         for (JsonNode movieNode : moviesNode) {
             MovieListVO movie = new MovieListVO();
             movie.setId(movieNode.path("id").asInt());
@@ -49,10 +49,11 @@ public class MovieListServiceImpl implements MovieListService {
             movie.setAdult(movieNode.path("adult").asBoolean());
             movie.setVoteAverage(movieNode.path("vote_average").asInt());
             movie.setVoteCount(movieNode.path("vote_count").asInt());
+            movie.setPage(pagesNode.path("page").asInt());
             
             movies.add(movie);
         }
-//      }
+        pageCnt++;
       return movies;
       
       

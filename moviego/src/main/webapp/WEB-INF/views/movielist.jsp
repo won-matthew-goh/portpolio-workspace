@@ -15,6 +15,7 @@
               src="https://image.tmdb.org/t/p/w200${movie.posterPath}"
               width="225" height="337.5"
             />
+            <div class="movie-id">${movie.id}</div>
             <div class="movie-name">${movie.title}</div>
             <div class="release-date">${movie.releaseDate}</div>
             <div class="nation">
@@ -87,10 +88,14 @@
       <div class="modal-box">
         <p class="content">내용입니다.</p>
         <div class="btn">
+          <button class="btn btn-light">리뷰쓰러가기</button>
           <button class="close-btn">닫기</button>
         </div>
       </div>
     </div>
   </body>
-  <script src="../js/movie_list.js"></script>
+  <script>
+  const apiKey = "${apikey}";
+  </script>
+  <script src="/js/movie_list.js"></script>
 </html>
