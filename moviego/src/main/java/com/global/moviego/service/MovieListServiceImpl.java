@@ -26,7 +26,7 @@ public class MovieListServiceImpl implements MovieListService {
   private String apiUrl;
   
   public List<MovieListVO> getMovieList(Map<String, Object> paramMap) {
-    if(paramMap.get("pageCnt") == null || paramMap.get("pageCnt") == "") paramMap.put("pageCnt", "1");
+    if(paramMap.get("pageCnt") == null || paramMap.get("pageCnt").equals("")) paramMap.put("pageCnt", "1");
     
     int pageCnt = Integer.parseInt((String) paramMap.get("pageCnt"));
     
