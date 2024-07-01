@@ -12,4 +12,5 @@ import com.global.moviego.domain.ReviewBoardVO;
 public interface ReviewBoardMapper {
 	public List<ReviewBoardVO> saveResult();
 	
+	public List<ReviewBoardVO> selectReview();
 }

@@ -7,6 +7,7 @@ import com.global.moviego.domain.ReviewBoardVO;
 
 public interface ReviewBoardService {
 
-  List<ReviewBoardVO> rewviewBoardVO();
+  public List<ReviewBoardVO> reviewBoardVO();
+  public List<ReviewBoardVO> selectReview();
   
 }

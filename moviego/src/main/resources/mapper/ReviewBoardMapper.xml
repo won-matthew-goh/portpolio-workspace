@@ -5,13 +5,12 @@
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
 
 	<select id="selectReview" resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT user_id
-			 , username 
-		  FROM tb_users 
-	  ORDER BY user_id asc
+		SELECT user_id 
+		FROM tb_reviews 
+	  	ORDER BY user_id asc
 	</select>
-	
-	<insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
+
+<!-- 	<insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
 		insert into tb_reiview(
 							  rating
 							, username
@@ -26,6 +25,6 @@
 	<select id="selectReviewCnt" resultType="Integer">
 		SELECT count(*)
 		  FROM tb_users
-	</select>
+	</select> -->
 	
 </mapper>

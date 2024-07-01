@@ -1,11 +1,18 @@
 package com.global.moviego.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.global.moviego.domain.ReviewBoardVO;
 import com.global.moviego.service.ReviewBoardService;
+import com.global.moviego.service.ReviewBoardServiceImpl;
+
+import ch.qos.logback.core.model.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,10 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class ReviewBoardController {
 	@Autowired
-	private ReviewBoardService reviewBoardService;
+	private ReviewBoardServiceImpl reviewBoardService;
 	
 	@GetMapping("/")//DB에 저장된 게시글 리스트를 출력
-	public String boardList() {
+	public String boardList(Model model) {
+		List<ReviewBoardVO> list = new ArrayList<ReviewBoardVO>();
+		list = reviewBoardService.selectReview();
 		return "board";
 	}
 	
