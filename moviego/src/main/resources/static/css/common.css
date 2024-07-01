@@ -27,12 +27,13 @@ html, body {
 }
 
 /****** header-wrapper ******/
-.header-wrapper {height: 164px; display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: stretch; padding: 0 2em; top: 0; left: 0; position: fixed; background-color: white; border-bottom: 0.1px solid #777; z-index: 9999;}
+.header-wrapper {height: 130px; display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: stretch; padding: 0 2em; top: 0; left: 0; position: fixed; background-color: white; border-bottom: 0.1px solid #777; z-index: 9999;}
 .header-wrapper .logo-wrap {align-content: center; width: 50%;}
 .header-wrapper .logo-wrap .logo {font-size: 48px; font-weight: bold; letter-spacing: 3px;}
 
-.header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around; flex-wrap: wrap;}
+.header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around;}
 .header-wrapper .navi-wrap .nav-bt:hover {background-color: #777; color: white; border-radius: 8%;}
+.header-wrapper .navi-wrap h1 {color: #444; align-content: center;}
 
 .header-wrapper .navi-wrap .lang-wp {align-content: center; position: relative; width: 2.5em; justify-content: center;}
 .header-wrapper .navi-wrap .lang-wp .globeicon:hover {background-color: white; color: black;}
