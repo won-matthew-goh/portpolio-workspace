@@ -7,18 +7,7 @@ const movie = document.querySelectorAll('.movie');
 const modalBg = document.querySelector('.modal-bg');
 
 function openModal(movieElement) {
-//	console.log(movieElement);
-  const movieData = movieElement.getAttribute('data-movie').split(',');
-//  console.log(movieData);
-    const movie = {};
-	const genreIds = {};
-    for (let i = 0; i < movieData.length; i += 2) {
-      movie[movieData[i]] = movieData[i + 1];
-    }
-    for (let i = 0; i < movieData.length; i += 2) {
-      genreIds[movieData[i]] = movieData[i + 1];
-    }
-//  console.log(movie);
+  const movie = JSON.parse(movieElement.getAttribute('data-movie'));
   modalwrap.style.display = 'block';
   modalBg.style.display = 'block';
   modalwrap.innerHTML = `
@@ -41,7 +30,7 @@ function openModal(movieElement) {
 					         </div>
 					         <div id="genre">
 					           <div class="title">장르</div>
-					           <div class="content">${genreIds.genreIdsArray}</div>
+					           <div class="content">${genreIds.genreIds}</div>
 					         </div>
 					         <div id="grade">
 					           <div class="title">평점</div>
@@ -64,12 +53,6 @@ function openModal(movieElement) {
 }
 
 /********** modal 닫기 **********/
-// const btn = document.querySelector('.btn');
-// const closebtn = document.querySelector('.close-btn');
-
-modalBg.addEventListener('click', function () {
-  close();
-});
 
 function close() {
   modalwrap.style.display = 'none';
@@ -77,27 +60,21 @@ function close() {
 //  modalwrap.innerHTML = '';
 }
 
+modalBg.addEventListener('click', function () {
+  close();
+});
+
 /****** movielist 스크롤 이벤트로 불러오기 ******/
-let genreArray = [];
+let movieArray = [];
 let currentPage = 1;
 
 const fetchMovies = async (page) => {
   try {
     const response = await fetch(`/movieList/ajax?pageCnt=${page}`);
     const data = await response.json();
-    genreArray = genreArray.concat(data.genreIds);
+    movieArray = genreArray.concat(data.genreIds);
+	console.log(movieArray);
     return data.movies;
-  } catch (error) {
-    console.error('Error fetching movies:', error);
-  }
-};
-
-const fetchGenres = async (page) => {
-  try {
-    const response = await fetch(`/movieList/ajax?pageCnt=${page}`);
-    const data = await response.json();
-    genreArray = genreArray.concat(data.genreIds);
-    return data.genreIds;
   } catch (error) {
     console.error('Error fetching movies:', error);
   }
@@ -120,30 +97,19 @@ const translateNation = (nationCode) => {
   }
 };
 
-function validationIds(movie, genre) {
-	if(genre.id == movie.id) {return data.genreIds.id}
-}
-
-const loadMoreMovies = (movies, genreIds) => {
+const loadMoreMovies = (movies) => {
   const moviebox = document.querySelector('.content-wrap .box');
-  const movieboxchild = document.querySelector('.box .movie');
 
   movies.forEach((movie) => {
     const movieHTML = `
-        <div class="movie" data-aos="flip-up" data-movie="${Object.entries(movie)}" onclick="openModal(this)">
-          <img src="https://image.tmdb.org/t/p/w200${movie.posterPath}" width="225" height="337.5"/>
-          <div class="movie-name">${movie.title}</div>
-          <div class="release-date">${movie.releaseDate}</div>
-          <div class="nation">${translateNation(movie.originalLanguage)}</div>
-        </div>
-      `;
+      <div class="movie" data-aos="flip-up" data-movie='${JSON.stringify(movie)}' onclick="openModal(this)">
+        <img src="https://image.tmdb.org/t/p/w200${movie.posterPath}" width="225" height="337.5"/>
+        <div class="movie-name">${movie.title}</div>
+        <div class="release-date">${movie.releaseDate}</div>
+        <div class="nation">${translateNation(movie.originalLanguage)}</div>
+      </div>
+    `;
     moviebox.innerHTML += movieHTML;
-  });
-  
-  console.log(genreIds);
-  
-  genreIds.forEach((genre) => {
-	movieboxchild.innerHTML += `<div class="movie" style="display: none" data-genre="${genre}">`
   });
 };
 
@@ -151,14 +117,12 @@ document.addEventListener('scroll', async () => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
     currentPage++;
     const newMovies = await fetchMovies(currentPage);
-    const newGenres = await fetchGenres(currentPage);
-    loadMoreMovies(newMovies, newGenres);
+    loadMoreMovies(newMovies);
   }
 });
 
 // 초기 로딩
 (async () => {
   const initialMovies = await fetchMovies(currentPage);
-  const initialGenres = await fetchGenres(currentPage);
-  loadMoreMovies(initialMovies, initialGenres);
+  loadMoreMovies(initialMovies);
 })();
