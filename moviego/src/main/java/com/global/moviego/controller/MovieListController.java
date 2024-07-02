@@ -22,12 +22,6 @@ public class MovieListController {
 
   @GetMapping("/movieList")
   public String movieList(Model model) {
-//    for (int i = 0; i < movies.size(); i++) {
-//      System.out.println(movies.get(i).getTitle());
-//      System.out.println(movies.get(i).getOverview());
-//      System.out.println(movies.get(i).getOriginalLanguage());
-//      System.out.println(movies.get(i).getPage());
-//    }
 
     return "/movielist";
   }
@@ -36,8 +30,15 @@ public class MovieListController {
   public @ResponseBody Map<String, Object> movieListAjax(@RequestParam Map<String, Object> paramMap) {
     Map<String, Object> requestMap = new HashMap<String, Object>();
     List<MovieListVO> movies = movieListService.getMovieList(paramMap);
+    Map<String, List<String>> genreIds = movieListService.getMoiveGenre(paramMap);
 
     requestMap.put("movies", movies);
+    for(int i = 0; i < movies.size(); i++) {
+      System.out.println(movies.get(i));
+    }
+    requestMap.put("genreIds", genreIds);      
+    
+    System.out.println(genreIds);
 
     return requestMap;
   }

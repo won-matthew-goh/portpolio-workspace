@@ -12,6 +12,7 @@
 .content-wrapper .rank-wrap .rank-table th:nth-child(4) {width: 13%;}
 .content-wrapper .rank-wrap .rank-table th:nth-child(5) {width: 13%;}
 .content-wrapper .rank-wrap .rank-table tbody tr {height: 2.5em;}
+.content-wrapper .rank-wrap .rank-table tbody tr:hover {background-color: #ddd;}
 .content-wrapper .rank-wrap .rank-table tbody tr td {text-align: center; border-left: 0.1px solid #777;}
 .content-wrapper .rank-wrap .rank-table tbody tr td:nth-child(1) {border-left: 0px solid #777;}
 .content-wrapper .rank-wrap .rank-table tbody tr td:nth-child(2) {text-align:justify; padding-left: 5%;}

@@ -2,11 +2,12 @@
 
 .content-wrapper {
   margin-top: 130px;
+  background-color: #000;
 }
 
 .content-wrapper .content-wrap {
   width: 1247px;
-  margin: 180px auto;
+  margin: 0 auto 180px auto;
   display: flex;
   flex-direction: column;
 }
@@ -19,7 +20,8 @@
   width: 100%;
   display: flex;
   justify-content: right;
-  margin-bottom: 1em;
+  padding-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .content-wrapper .content-wrap .search i {
@@ -46,7 +48,7 @@
   width: 18%;
   text-align: center;
   display: block;
-  color: #000000;
+  color: #fff;
   text-decoration: none;
   cursor: zoom-in;
   display: flex;
@@ -91,7 +93,7 @@
 
 .modal-wrap {
   position: fixed;
-  top: 60%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 700px;

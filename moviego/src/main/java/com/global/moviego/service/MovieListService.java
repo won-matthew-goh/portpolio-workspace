@@ -9,4 +9,6 @@ public interface MovieListService {
 
   List<MovieListVO> getMovieList(Map<String, Object> paramMap);
   
+  Map<String, List<String>> getMoiveGenre(Map<String, Object> paramMap);
+  
 }

@@ -37,6 +37,7 @@
     </div>
   </body>
   <script>
+  /****** JSTL + EL로 빈 배열에 영화 정보 push ******/
   	let movieArray = [];
   	
   	<c:forEach var="movie" items="${movies}">

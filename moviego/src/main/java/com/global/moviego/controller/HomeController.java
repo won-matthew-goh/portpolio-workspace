@@ -10,21 +10,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.global.moviego.domain.MovieListVO;
+import com.global.moviego.domain.MovieUpcommingVO;
+import com.global.moviego.service.HomeServiceImpl;
 import com.global.moviego.service.MovieListServiceImpl;
 
 @Controller
 public class HomeController {
 
   @Autowired
-  MovieListServiceImpl movieListService;
+  HomeServiceImpl homeService;
 
   @GetMapping("/")
   public String home(Model model) {
 
-    List<MovieListVO> movies = new ArrayList<MovieListVO>();
+    List<MovieUpcommingVO> movies = new ArrayList<MovieUpcommingVO>();
+    movies = homeService.movieUpcommingList();
+//    
+//    for(int i = 0; i < movies.size(); i++) {
+//      System.out.println(movies.get(i).getBackdropPath());
+//    }
+//    
     model.addAttribute("movies", movies);
-    
     return "/index";
   }
+  
+  
 
 }

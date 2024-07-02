@@ -1,5 +1,7 @@
 package com.global.moviego.domain;
 
+import java.util.List;
+
 public class MovieListVO {
   
   private int id;
@@ -112,6 +114,7 @@ public class MovieListVO {
 
   public void setVoteCount(int voteCount) {
     this.voteCount = voteCount;
-  }  
+  }
+
   
 }
