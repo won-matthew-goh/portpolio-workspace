@@ -13,4 +13,5 @@ public interface ReviewBoardMapper {
 	public List<ReviewBoardVO> saveResult();
 	
 	public List<ReviewBoardVO> selectReview();
+	public int selectReviewCnt();
 }

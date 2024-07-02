@@ -6,25 +6,25 @@
 
 	<select id="selectReview" resultType="com.global.moviego.domain.ReviewBoardVO">
 		SELECT user_id 
-		FROM tb_reviews 
-	  	ORDER BY user_id asc
+		  FROM tb_reviews
 	</select>
 
-<!-- 	<insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
+
+
+<!-- <insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
 		insert into tb_reiview(
 							  rating
-							, username
 							, movie_nm
 							, poster_url
 							, comment
 							, created_at
 							)
-		values(#{rating},#{username},#{movie_nm},#{poster_url},#{comment},#{created_at})
-	</insert>
+		values(#{rating},#{movie_nm},#{poster_url},#{comment},#{created_at})
+	</insert> -->
 	
 	<select id="selectReviewCnt" resultType="Integer">
 		SELECT count(*)
-		  FROM tb_users
-	</select> -->
+		  FROM tb_reviews
+	</select>
 	
 </mapper>

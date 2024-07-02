@@ -26,12 +26,22 @@ public class ReviewBoardController {
 	@Autowired
 	private ReviewBoardServiceImpl reviewBoardService;
 	
-	@GetMapping("/")//DB에 저장된 게시글 리스트를 출력
+	@GetMapping("")//DB에 저장된 게시글 리스트를 출력
 	public String boardList(Model model) {
 		List<ReviewBoardVO> list = new ArrayList<ReviewBoardVO>();
 		list = reviewBoardService.selectReview();
+//		for(int i=0; i < list.size();i++) {
+//			System.out.println(list.get(i).getUser_id());
+//		}
+		System.out.println("리스트:-------------" + list);
+		System.out.println("리스트길이:------------" + list.size());
+		int cnt = 0;
+		cnt = reviewBoardService.selectReviewCnt();
+		System.out.println(cnt);
 		return "board";
+	
 	}
+	
 	
 	
 	@GetMapping("/new")//게시글 작성 폼 노출 후 입력 값을 DB로 저장, 저장 후 게시글 목록으로 이동

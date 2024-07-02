@@ -29,6 +29,11 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		select = reviewBoardMapper.selectReview();
 		return select;
 	}
+	@Override
+	public int selectReviewCnt() {
+		int cnt = reviewBoardMapper.selectReviewCnt();
+		return cnt;
+	}
 
   
 }
