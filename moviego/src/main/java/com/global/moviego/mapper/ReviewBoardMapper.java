@@ -10,8 +10,10 @@ import com.global.moviego.domain.ReviewBoardVO;
 @Repository
 @Mapper
 public interface ReviewBoardMapper {
-	public List<ReviewBoardVO> saveResult();
 	
 	public List<ReviewBoardVO> selectReview();
-	public int selectReviewCnt();
+	
+//	public List<ReviewBoardVO> saveResult();
+//	
+//	public int selectReviewCnt();
 }

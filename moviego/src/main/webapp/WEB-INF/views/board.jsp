@@ -15,11 +15,11 @@
         <div class="board_list_wrap">
           <div class="board_list">
             <div class="top">
-              <div class="pnum">NO.</div>
-              <div class="name">영화명</div>
-              <div class="title">글제목</div>
-              <div class="writer">작성자</div>
-              <div class="date">작성일자</div>
+              <div class="pnum">${userId}</div>
+              <div class="name">${movieNm}</div>
+              <div class="title">${title}</div>
+              <div class="writer">${username}</div>
+              <div class="date">${now()}</div>
             </div>
             <div class="inside" onclick="/html/board-write.html">
               <div class="pnum">1</div>
