@@ -6,12 +6,20 @@ const modalwrap = document.querySelector('.modal-wrap');
 const movie = document.querySelectorAll('.movie');
 const modalBg = document.querySelector('.modal-bg');
 
-movie.forEach(function (a) {
-  a.addEventListener('click', function () {
-    modalwrap.style.display = 'block';
-    modalBg.style.display = 'block';
-  });
-});
+// movie.forEach(function (a) {
+//   a.addEventListener('click', function () {
+//     modalwrap.style.display = 'block';
+//     modalBg.style.display = 'block';
+//   });
+// });
+
+function openModal() {
+  const modalwrap = document.querySelector('.modal-wrap');
+  const modalBg = document.querySelector('.modal-bg');
+  modalwrap.style.display = 'block';
+  modalBg.style.display = 'block';
+  console.log(`movies: ${movies}`);
+}
 
 /********** modal 닫기 **********/
 const btn = document.querySelector('.btn');
@@ -86,64 +94,64 @@ document.addEventListener('scroll', () => {
 })();
 */
 
-  let movieArray = [];
-  let currentPage = 1;
-	
-  const fetchMovies = async (page) => {
-    try {
-	  const response = await fetch(`/movieList/ajax?pageCnt=${page}`);
-      const data = await response.json();
-      movieArray = movieArray.concat(data.movies);
-      return data.movies;
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
-  };
+let movieArray = [];
+let currentPage = 1;
 
-  const translateNation = (nationCode) => {
-    switch (nationCode) {
-      case "en":
-        return "미국";
-      case "ko":
-        return "한국";
-      case "bn":
-        return "브루나이";
-      case "pl":
-        return "폴란드";
-      case "th":
-        return "태국";
-      default:
-        return "미상";
-    }
-  };
+const fetchMovies = async (page) => {
+  try {
+    const response = await fetch(`/movieList/ajax?pageCnt=${page}`);
+    const data = await response.json();
+    movieArray = movieArray.concat(data.movies);
+    return data.movies;
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+  }
+};
 
-  const loadMoreMovies = (movies) => {
-    const moviebox = document.querySelector('.content-wrap .box');
+const translateNation = (nationCode) => {
+  switch (nationCode) {
+    case 'en':
+      return '미국';
+    case 'ko':
+      return '한국';
+    case 'bn':
+      return '브루나이';
+    case 'pl':
+      return '폴란드';
+    case 'th':
+      return '태국';
+    default:
+      return '미상';
+  }
+};
 
-    movies.forEach(movie => {
-      const movieHTML = `
-        <div class="movie" data-aos="flip-up">
-          <img src="https://image.tmdb.org/t/p/w200${movie.posterPath}" width="225" height="337.5"/>
+const loadMoreMovies = (movies) => {
+  const moviebox = document.querySelector('.content-wrap .box');
+
+  movies.forEach((movie) => {
+    const movieHTML = `
+        <div class="movie" data-aos="flip-up" onclick="openModal()">
+          <img src="https://image.tmdb.org/t/p/w285${movie.posterPath}" width="225" height="337.5"/>
           <div class="movie-id">${movie.id}</div>
           <div class="movie-name">${movie.title}</div>
           <div class="release-date">${movie.releaseDate}</div>
           <div class="nation">${translateNation(movie.originalLanguage)}</div>
         </div>
       `;
-      moviebox.innerHTML += movieHTML;
-    });
-  };
-
-  document.addEventListener('scroll', async () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      currentPage++;
-      const newMovies = await fetchMovies(currentPage);
-      loadMoreMovies(newMovies);
-    }
+    moviebox.innerHTML += movieHTML;
   });
+};
 
-  // 초기 로딩
-  (async () => {
-    const initialMovies = await fetchMovies(currentPage);
-    loadMoreMovies(initialMovies);
-  })();
+document.addEventListener('scroll', async () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    currentPage++;
+    const newMovies = await fetchMovies(currentPage);
+    loadMoreMovies(newMovies);
+  }
+});
+
+// 초기 로딩
+(async () => {
+  const initialMovies = await fetchMovies(currentPage);
+  loadMoreMovies(initialMovies);
+})();
