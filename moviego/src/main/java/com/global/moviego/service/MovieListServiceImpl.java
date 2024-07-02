@@ -60,6 +60,8 @@ public class MovieListServiceImpl implements MovieListService {
       movie.setBackdropPath(movieNode.path("backdrop_path").asText());
       movie.setOriginalLanguage(movieNode.path("original_language").asText());
       movie.setReleaseDate(movieNode.path("release_date").asText());
+      movie.setVoteAverage(movieNode.path("vote_average").asInt());
+      movie.setVoteCount(movieNode.path("vote_count").asInt());
       movie.setGenreIds(objectMapper.convertValue(movieNode.path("genre_ids"), new TypeReference<List<Integer>>() {
       }));
       movies.add(movie);
