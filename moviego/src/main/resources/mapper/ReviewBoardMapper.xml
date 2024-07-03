@@ -8,6 +8,7 @@
 		SELECT review_id
 				,user_id
 				,rating
+				,title
 				,movie_id
 				,movie_nm
 				,poster_url
@@ -19,16 +20,19 @@
 
 
 
-<!-- <insert id="saveResult" parameterType="com.global.moviego.domain.ReviewBoardVO">
-		insert into tb_reiview(
-							  rating
-							, movie_nm
-							, poster_url
-							, comment
-							, created_at
-							)
-		values(#{rating},#{movie_nm},#{poster_url},#{comment},#{created_at})
-	</insert> -->
+	<insert id="insert">
+		insert into tb_reviews (
+			title
+			,rating
+			,comment
+			,created_at
+		) values(
+			#{title}
+			,#{rating}
+			,#{comment}
+			,now()
+		)
+	</insert>
 	
 <!-- 	<select id="selectReviewCnt" resultType="Integer">
 		SELECT count(*)

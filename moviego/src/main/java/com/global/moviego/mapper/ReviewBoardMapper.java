@@ -13,7 +13,7 @@ public interface ReviewBoardMapper {
 	
 	public List<ReviewBoardVO> selectReview();
 	
-//	public List<ReviewBoardVO> saveResult();
-//	
+	public void insert(ReviewBoardVO vo);
+	
 //	public int selectReviewCnt();
 }

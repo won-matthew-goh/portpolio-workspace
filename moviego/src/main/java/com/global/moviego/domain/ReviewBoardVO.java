@@ -17,15 +17,24 @@ public class ReviewBoardVO {
 	
 	private String posterUrl;
 	
-	private String CreatedAt;
+	private String createdAt;
 	
+	private String comment;
 	
-	public String getCreatedAt() {
-		return CreatedAt;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setCreatedAt(String createdAt) {
-		CreatedAt = createdAt;
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setcreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public int getReviewId() {
