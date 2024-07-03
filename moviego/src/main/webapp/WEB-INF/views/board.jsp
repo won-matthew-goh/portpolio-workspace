@@ -15,82 +15,22 @@
         <div class="board_list_wrap">
           <div class="board_list">
             <div class="top">
-              <div class="pnum">NO.</div>
+              <div class="pnum">NO</div>
               <div class="name">영화명</div>
-              <div class="title">글제목</div>
-              <div class="writer">작성자</div>
+              <div class="title">내용</div>
+              <div class="writer">사용자</div>
               <div class="date">작성일자</div>
             </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
+            <c:forEach var="lists" items="${list}">
+            <div class="inside" href="/html/board-write.html">
+              <div class="pnum">${lists.reviewId}</div>
+              <div class="name"><a>${lists.movieNm}</a></div>
+              <div class="title">${lists.title}</div>
+              <div class="writer">${lists.userId}</div>
+              <div class="date">${lists.createdAt}</div>
             </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
-            <div class="inside" onclick="/html/board-write.html">
-              <div class="pnum">1</div>
-              <div class="name"><a>인사이드아웃2</a></div>
-              <div class="title">추천합니다</div>
-              <div class="writer">김씨</div>
-              <div class="date">2024-06-16</div>
-            </div>
+            </c:forEach>
+          	
           </div>
           <div class="board_page">
             <a href="#" class="btn first"><<</a>
