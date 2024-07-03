@@ -3,18 +3,71 @@ package com.global.moviego.domain;
 import java.time.LocalDateTime;
 
 public class ReviewBoardVO {
+	private int reviewId;
+	
 	private int userId;
 	
-	private int rating;
+	private float rating;
 	
-	private String username;
-	
-	private String movieId;
+	private int movieId;
 	
 	private String movieNm;
 	
 	private String title;
 	
+	private String posterUrl;
+	
+	private String CreatedAt;
+	
+	
+	public String getCreatedAt() {
+		return CreatedAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		CreatedAt = createdAt;
+	}
+
+	public int getReviewId() {
+		return reviewId;
+	}
+
+	public void setReviewId(int reviewId) {
+		this.reviewId = reviewId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public float getRating() {
+		return rating;
+	}
+
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
+
+	public int getMovieId() {
+		return movieId;
+	}
+
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+
+	public String getMovieNm() {
+		return movieNm;
+	}
+
+	public void setMovieNm(String movieNm) {
+		this.movieNm = movieNm;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -23,75 +76,14 @@ public class ReviewBoardVO {
 		this.title = title;
 	}
 
-	private String posterUrl;
-	
-	private String comment;
-		
-	private LocalDateTime createdAt;
+	public String getPosterUrl() {
+		return posterUrl;
+	}
 
-  public int getUserId() {
-    return userId;
-  }
+	public void setPosterUrl(String posterUrl) {
+		this.posterUrl = posterUrl;
+	}
 
-  public void setUserId(int userId) {
-    this.userId = userId;
-  }
 
-  public int getRating() {
-    return rating;
-  }
-
-  public void setRating(int rating) {
-    this.rating = rating;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getMovieId() {
-    return movieId;
-  }
-
-  public void setMovieId(String movieId) {
-    this.movieId = movieId;
-  }
-
-  public String getMovieNm() {
-    return movieNm;
-  }
-
-  public void setMovieNm(String movieNm) {
-    this.movieNm = movieNm;
-  }
-
-  public String getPosterUrl() {
-    return posterUrl;
-  }
-
-  public void setPosterUrl(String posterUrl) {
-    this.posterUrl = posterUrl;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-	
 
 }

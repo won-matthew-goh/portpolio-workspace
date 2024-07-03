@@ -5,14 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.global.moviego.domain.ReviewBoardVO;
 import com.global.moviego.service.ReviewBoardService;
 import com.global.moviego.service.ReviewBoardServiceImpl;
-
-import ch.qos.logback.core.model.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,9 +30,10 @@ public class ReviewBoardController {
 		List<ReviewBoardVO> list = new ArrayList<ReviewBoardVO>();
 		list = reviewBoardService.selectReviewService();
 		System.out.println("리스트 사이즈:" + list.size());
-		System.out.println("리스트 0번:" +list.get(0));
-		System.out.println("리스트 1번:" +list.get(1));
+		System.out.println("리스트 0번:" +list.get(0).getUserId());
+		System.out.println("리스트 1번:" +list.get(1).getRating());
 		System.out.println("리스트 2번:" +list.get(1));
+		model.addAttribute("list", list);
 		return "board";
 	
 	}

@@ -158,10 +158,6 @@
   line-height: 100%;
 }
 
-.board_page a:first-child {
-  margin-left: auto;
-}
-
 .board_page a.btn {
   padding-top: 10px;
   font-size: 1.2rem;
@@ -229,9 +225,6 @@
 .board_view .info dl dd {
   display: inline-block;
   font-size: 1.4rem;
-}
-
-.board_view .info dl dt {
 }
 
 .board_view .info dl dd {
