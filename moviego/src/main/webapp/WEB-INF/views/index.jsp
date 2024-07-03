@@ -5,12 +5,12 @@
  <div class="banner-wrapper">
       <div class="banner-wrap">
         <div class="banner-slide">
-          <div class="slide-item"><div class="releasedt">${movies[0].title} / ${movies[0].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[0].backdropPath}" alt="banner1" /></div>
-          <div class="slide-item"><div class="releasedt">${movies[1].title} / ${movies[1].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[1].backdropPath}" alt="banner2" /></div>
-          <div class="slide-item"><div class="releasedt">${movies[2].title} / ${movies[2].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[2].backdropPath}" alt="banner3" /></div>
-          <div class="slide-item"><div class="releasedt">${movies[3].title} / ${movies[3].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[3].backdropPath}" alt="banner4" /></div>
-          <div class="slide-item"><div class="releasedt">${movies[4].title} / ${movies[4].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[4].backdropPath}" alt="banner5" /></div>
-          <div class="slide-item"><div class="releasedt">${movies[0].title} / ${movies[0].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[0].backdropPath}" alt="banner1" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[0].title} / ${movies[0].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[0].backdropPath}" alt="banner1" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[1].title} / ${movies[1].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[1].backdropPath}" alt="banner2" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[2].title} / ${movies[2].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[2].backdropPath}" alt="banner3" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[3].title} / ${movies[3].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[3].backdropPath}" alt="banner4" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[4].title} / ${movies[4].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[4].backdropPath}" alt="banner5" /></div>
+          <div class="slide-item"><div class="releasedt">🎬 ${movies[0].title} / ${movies[0].releaseDate}</div><img src="https://image.tmdb.org/t/p/original${movies[0].backdropPath}" alt="banner1" /></div>
         </div>
       </div>
       <div class="pager-wrap">

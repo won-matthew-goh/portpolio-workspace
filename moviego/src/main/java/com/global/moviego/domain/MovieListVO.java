@@ -1,6 +1,7 @@
 package com.global.moviego.domain;
 
 import java.util.List;
+import java.util.Map;
 
 public class MovieListVO {
   
@@ -16,7 +17,7 @@ public class MovieListVO {
   
   private String releaseDate;
   
-  private int genreIds;
+  private List<Integer> genreIds;
   
   private String originalLanguage;
 
@@ -76,14 +77,6 @@ public class MovieListVO {
     this.releaseDate = releaseDate;
   }
 
-  public int getGenreIds() {
-    return genreIds;
-  }
-
-  public void setGenreIds(int genreIds) {
-    this.genreIds = genreIds;
-  }
-
   public String getOriginalLanguage() {
     return originalLanguage;
   }
@@ -115,6 +108,16 @@ public class MovieListVO {
   public void setVoteCount(int voteCount) {
     this.voteCount = voteCount;
   }
+
+  public List<Integer> getGenreIds() {
+    return genreIds;
+  }
+
+  public void setGenreIds(List<Integer> genreIds) {
+    this.genreIds = genreIds;
+  }
+
+
 
   
 }

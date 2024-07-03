@@ -23,7 +23,7 @@ public class BoxofficeController {
   public String boxoffice(Model model) {
     List<BoxofficeVO> movies = boxofficeService.getWeeklyBoxOffice();
     model.addAttribute("movies", movies);
-    return "/boxoffice";
+    return "boxoffice";
   }
 
 }

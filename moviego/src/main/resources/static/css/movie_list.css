@@ -102,6 +102,12 @@
   border-radius: 5px;
   z-index: 1100;
   display: none;
+  animation:setMotion 0.8s;
+}
+
+@keyframes setMotion{
+  0%{opacity: 0;}
+  100%{opacity: 0.97;}
 }
 
 .modal-wrap .btn {display: flex; justify-content: right;}
