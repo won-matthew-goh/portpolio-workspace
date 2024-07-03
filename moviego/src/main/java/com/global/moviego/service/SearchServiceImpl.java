@@ -16,12 +16,12 @@ public class SearchServiceImpl implements SearchService {
 	  @Autowired
 	  private RestTemplate restTemplate;
 
-	  @Value("${movielist.tmdb.url}")
+	  @Value("${search.tmdb.url}")
 	  private String apiUrl;
 
 	@Override
 	public Map<String, Object> getSearch(Map<String, Object> paramMap) {
-		String query = paramMap.toString();
+		String paramQuery = (String) paramMap.get("query");
 		
 		
 		
