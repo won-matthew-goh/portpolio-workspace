@@ -4,10 +4,10 @@
     <link rel="stylesheet" href="/css/movie_list.css" />
 	  <div class="content-wrapper">
       <div class="content-wrap" id="content-wrap">
-        <div class="search">
-          <input type="text" placeholder="영화 입력 " />
+        <form class="search" id="search" method="get">
+          <input type="text" placeholder="영화 입력 " id="keyword" />
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-        </div>
+        </form>
         <div class="box">
 <%--         <c:forEach var="movie" items="${movies}">
           <div class="movie" data-aos="flip-up">
@@ -53,4 +53,5 @@
   <script src="/js/util/location.js"></script>
   <script src="/js/util/genre.js"></script>
   <script src="/js/movie_list.js"></script>
+  <script src="/js/search.js"></script>
 </html>
