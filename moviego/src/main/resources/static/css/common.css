@@ -7,10 +7,11 @@ html, body {
 }
 
 .nav-bt {
-  height: auto;
+  height: fit-content;
   font-size: 20px;
   align-content: center;
   padding: 2%;
+  min-width: fit-content;
 }
 
 .bt-black {
@@ -31,9 +32,9 @@ html, body {
 .header-wrapper .logo-wrap {align-content: center; width: 50%;}
 .header-wrapper .logo-wrap .logo {font-size: 48px; font-weight: bold; letter-spacing: 3px;}
 
-.header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around;}
+.header-wrapper .navi-wrap {display: flex; align-content: center; width: 50%; justify-content: space-around; align-items:center;}
 .header-wrapper .navi-wrap .nav-bt:hover {background-color: #777; color: white; border-radius: 8%;}
-.header-wrapper .navi-wrap h1 {color: #444; align-content: center;}
+.header-wrapper .navi-wrap h1.nav-h1 {color: #444; align-content: center; align-items:center; margin: 0;}
 
 .header-wrapper .navi-wrap .lang-wp {align-content: center; position: relative; width: 2.5em; justify-content: center;}
 .header-wrapper .navi-wrap .lang-wp .globeicon:hover {background-color: white; color: black;}

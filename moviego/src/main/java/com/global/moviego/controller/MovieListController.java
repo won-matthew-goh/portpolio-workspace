@@ -23,7 +23,7 @@ public class MovieListController {
   @GetMapping("/movieList")
   public String movieList(Model model) {
 
-    return "/movielist";
+    return "movielist";
   }
   
   @GetMapping("/movieList/ajax")
