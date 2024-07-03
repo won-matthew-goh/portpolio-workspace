@@ -29,9 +29,6 @@ public class MovieListServiceImpl implements MovieListService {
   @Value("${movielist.tmdb.url}")
   private String apiUrl;
 
-  @Value("${genre.tmdb.url}")
-  private String genreUrl;
-
   @Override
   public Map<String, List<MovieListVO>> getMovieList(Map<String, Object> paramMap) {
     String pageCnt = (String) paramMap.getOrDefault("pageCnt", "1");

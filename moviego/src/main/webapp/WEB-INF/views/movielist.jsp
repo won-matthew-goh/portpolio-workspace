@@ -50,5 +50,7 @@
     <div class="modal-wrap">
     </div>
   </body>
+  <script src="/js/util/location.js"></script>
+  <script src="/js/util/genre.js"></script>
   <script src="/js/movie_list.js"></script>
 </html>
