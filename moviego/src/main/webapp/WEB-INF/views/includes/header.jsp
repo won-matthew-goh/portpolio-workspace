@@ -34,12 +34,12 @@
       </div>
       <div class="navi-wrap">
         <a href="/movieList" class="nav-bt">리뷰 영화 찾기</a>
-        <h1>|</h1>
+        <h1 class="nav-h1">|</h1>
         <a href="/review" class="nav-bt">모든 리뷰 목록</a>
-        <h1>|</h1>
+        <h1 class="nav-h1">|</h1>
         <a href="/boxoffice" class="nav-bt">박스오피스</a>
-        <a href="./login.html" class="nav-bt bt-black">로그인</a>
-        <a href="./member_join.html" class="nav-bt bt-black">회원가입</a>
+        <a href="/member/login" class="nav-bt bt-black">로그인</a>
+        <a href="/member/join" class="nav-bt bt-black">회원가입</a>
         <div class="lang-wp">
           <a href="#" class="nav-bt globeicon"><i class="fa-solid fa-earth-americas"></i></a>
           <div class="langs">
