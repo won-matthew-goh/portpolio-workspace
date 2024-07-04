@@ -1,7 +1,5 @@
 package com.global.moviego.domain;
 
-import java.time.LocalDateTime;
-
 public class ReviewBoardVO {
 	private int reviewId;
 	
@@ -11,6 +9,20 @@ public class ReviewBoardVO {
 	
 	private int movieId;
 	
+	private int readCnt;
+	
+	public int getReadCnt() {
+		return readCnt;
+	}
+
+	public void setReadCnt(int readCnt) {
+		this.readCnt = readCnt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	private String movieNm;
 	
 	private String title;

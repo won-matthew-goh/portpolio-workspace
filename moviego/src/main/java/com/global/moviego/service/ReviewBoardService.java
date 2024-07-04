@@ -2,15 +2,21 @@ package com.global.moviego.service;
 
 import java.util.List;
 
+import com.global.moviego.domain.PageVO;
 import com.global.moviego.domain.ReviewBoardVO;
 
 public interface ReviewBoardService {
 
   //글 조회 메소드
   public List<ReviewBoardVO> selectReviewService();
+  public List<ReviewBoardVO> getFreeBoard();
   
   //글 저장 메소드
   public void register(ReviewBoardVO vo);
+  
+  //페이징 메소드
+  public int getTotal(PageVO vo);
+
   
 //  //글 조회수 메소드
 //  public int selectReviewCnt();
