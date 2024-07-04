@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/login.css" />
     <div class="content-wrapper w100">
       <div class="content-wrap">
-        <form class="login-form" method="post">
+        <form class="login-form" method="post" action="/">
           <h1>Movie Go</h1>
           <h2>로그인</h2>
           <input class="id-input" type="text" name="login" placeholder="유저명" />
