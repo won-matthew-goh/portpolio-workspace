@@ -68,6 +68,7 @@ modalBg.addEventListener('click', function () {
 
 /****** movielist 스크롤 이벤트로 불러오기 ******/
 let currentPage = 1;
+let isLoading = false;
 
 const fetchMovies = async (page) => {
   try {
@@ -76,6 +77,16 @@ const fetchMovies = async (page) => {
     return data.movies;
   } catch (error) {
     console.error('Error fetching movies:', error);
+  }
+};
+
+const handleScroll = async () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight && !isLoading) {
+    isLoading = true;
+    currentPage++;
+    const newMovies = await fetchMovies(currentPage);
+    loadMoreMovies(newMovies);
+    isLoading = false;
   }
 };
 
@@ -101,13 +112,7 @@ const loadMoreMovies = (movies) => {
   });
 };
 
-document.addEventListener('scroll', async () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    currentPage++;
-    const newMovies = await fetchMovies(currentPage);
-    loadMoreMovies(newMovies);
-  }
-});
+document.addEventListener('scroll', handleScroll);
 
 // 초기 로딩
 (async () => {

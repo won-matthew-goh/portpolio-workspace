@@ -4,10 +4,14 @@
     <link rel="stylesheet" href="/css/movie_list.css" />
 	  <div class="content-wrapper">
       <div class="content-wrap" id="content-wrap">
-        <form class="search" id="search" method="get">
-          <input type="text" placeholder="영화 입력 " id="keyword" />
+      <div class="search">
+     <!-- <form class="search" id="search" method="get" action="/movieList/search"> -->
+          <input id="searchInput" type="text" placeholder="영화 입력 " name="query" />
+          <button id="searchButton" type="submit">
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-        </form>
+          </button>
+<!--         </form> -->
+      </div>
         <div class="box">
 <%--         <c:forEach var="movie" items="${movies}">
           <div class="movie" data-aos="flip-up">
