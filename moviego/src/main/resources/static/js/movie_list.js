@@ -58,11 +58,17 @@ function openModal(movieElement) {
 }
 
 function closeModal() {
-  modalwrap.style.display = 'none';
-  modalBg.style.display = 'none';
+  modalwrap.classList.add('hide');
+  modalBg.classList.add('hide');
+  setTimeout(() => {
+    modalwrap.style.display = 'none';
+    modalBg.style.display = 'none';
+    modalwrap.classList.remove('hide');
+    modalBg.classList.remove('hide');
+  }, 400);
 }
 
-modalBg.addEventListener('click', function () {
+modalBg.addEventListener('click', function() {
   closeModal();
 });
 

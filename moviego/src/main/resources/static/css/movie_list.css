@@ -116,6 +116,11 @@
   z-index: 1100;
   display: none;
   animation:setMotion 0.8s;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal-wrap.hide, .modal-bg.hide {
+  opacity: 0;
 }
 
 @keyframes setMotion{
