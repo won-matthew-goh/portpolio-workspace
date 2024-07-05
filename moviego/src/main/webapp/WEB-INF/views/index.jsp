@@ -31,6 +31,10 @@
           <div class="desc-item" data-aos="fade-right">
             <h1>${movies[0].title}</h1>
             <p>
+              <c:set var="name" value="${movies[0].overview}" />
+              <c:if test="${movies[0].overview eq ''}">
+                <c:out value="해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다." />
+              </c:if>
               ${movies[0].overview}
             </p>
             <a href="/movieList" class="nav-bt bt-black">More</a>
@@ -46,6 +50,10 @@
           <div class="desc-item">
             <h1>${movies[1].title}</h1>
             <p>
+              <c:set var="name" value="${movies[1].overview}" />
+              <c:if test="${movies[1].overview eq ''}">
+                <c:out value="해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다." />
+              </c:if>
               ${movies[1].overview}
             </p>
             <a href="/movieList" class="nav-bt bt-black">More</a>
@@ -55,6 +63,10 @@
           <div class="desc-item" data-aos="fade-right">
             <h1>${movies[2].title}</h1>
             <p>
+              <c:set var="name" value="${movies[2].overview}" />
+              <c:if test="${movies[2].overview eq ''}">
+                <c:out value="해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다." />
+              </c:if>
               ${movies[2].overview}
             </p>
             <a href="/movieList" class="nav-bt bt-black">More</a>
@@ -70,6 +82,10 @@
           <div class="desc-item" data-aos="fade-left">
             <h1>${movies[3].title}</h1>
             <p>
+              <c:set var="name" value="${movies[3].overview}" />
+              <c:if test="${movies[3].overview eq ''}">
+                <c:out value="해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다." />
+              </c:if>
               ${movies[3].overview}
             </p>
             <a href="/movieList" class="nav-bt bt-black">More</a>
@@ -79,6 +95,10 @@
           <div class="desc-item" data-aos="fade-right">
             <h1>${movies[4].title}</h1>
             <p>
+              <c:set var="name" value="${movies[4].overview}" />
+              <c:if test="${movies[4].overview eq ''}">
+                <c:out value="해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다." />
+              </c:if>
               ${movies[4].overview}
             </p>
             <a href="/movieList" class="nav-bt bt-black">More</a>

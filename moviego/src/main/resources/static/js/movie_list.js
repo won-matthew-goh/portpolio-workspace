@@ -45,7 +45,7 @@ function openModal(movieElement) {
         </div>
       </div>
       <div class="modal-box">
-        <p class="content">${movieData.overview}</p>
+        <p class="content">${checkOverview(movieData.overview)}</p>
         <div class="btn">
           <button class="btn btn-light" href="/review/new">리뷰 등록</button>
           <button class="close-btn" onclick="closeModal()">닫기</button>
@@ -100,6 +100,15 @@ const handleScroll = async () => {
 /****** JSON안의 " 문자로 인한 오류 치환으로 해결하는 funtion ******/
 function escapeQuotes(str) {
   return str.replace(/"/g, '\\"').replace(/'/g, "\\'");
+}
+
+/***** overview안의 내용이 비어있는지 확인하고 비어있을때 특정 문구로 대체하는 function ******/
+function checkOverview(overview) {
+  if (overview == '' || overview == null) {
+    return '<< 해당 영화는 영화사로부터 줄거리가 제공되지 않았습니다. >>';
+  } else {
+    return overview;
+  }
 }
 
 const loadMoreMovies = (movies) => {
