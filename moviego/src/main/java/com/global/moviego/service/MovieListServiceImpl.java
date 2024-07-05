@@ -28,6 +28,9 @@ public class MovieListServiceImpl implements MovieListService {
 
   @Value("${movielist.tmdb.url}")
   private String apiUrl;
+  
+  @Value("${search.tmdb.url}")
+  private String searchApiUrl;
 
   @Override
   public Map<String, List<MovieListVO>> getMovieList(Map<String, Object> paramMap) {

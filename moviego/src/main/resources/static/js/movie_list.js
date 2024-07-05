@@ -47,6 +47,7 @@ function openModal(movieElement) {
       <div class="modal-box">
         <p class="content">${movieData.overview}</p>
         <div class="btn">
+          <button class="btn btn-light" href="/review/new">리뷰 등록</button>
           <button class="close-btn" onclick="closeModal()">닫기</button>
         </div>
       </div>
@@ -58,16 +59,23 @@ function openModal(movieElement) {
 }
 
 function closeModal() {
-  modalwrap.style.display = 'none';
-  modalBg.style.display = 'none';
+  modalwrap.classList.add('hide');
+  modalBg.classList.add('hide');
+  setTimeout(() => {
+    modalwrap.style.display = 'none';
+    modalBg.style.display = 'none';
+    modalwrap.classList.remove('hide');
+    modalBg.classList.remove('hide');
+  }, 400);
 }
 
-modalBg.addEventListener('click', function () {
+modalBg.addEventListener('click', function() {
   closeModal();
 });
 
 /****** movielist 스크롤 이벤트로 불러오기 ******/
 let currentPage = 1;
+let isLoading = false;
 
 const fetchMovies = async (page) => {
   try {
@@ -76,6 +84,16 @@ const fetchMovies = async (page) => {
     return data.movies;
   } catch (error) {
     console.error('Error fetching movies:', error);
+  }
+};
+
+const handleScroll = async () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight && !isLoading) {
+    isLoading = true;
+    currentPage++;
+    const newMovies = await fetchMovies(currentPage);
+    loadMoreMovies(newMovies);
+    isLoading = false;
   }
 };
 
@@ -101,13 +119,7 @@ const loadMoreMovies = (movies) => {
   });
 };
 
-document.addEventListener('scroll', async () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    currentPage++;
-    const newMovies = await fetchMovies(currentPage);
-    loadMoreMovies(newMovies);
-  }
-});
+document.addEventListener('scroll', handleScroll);
 
 // 초기 로딩
 (async () => {
