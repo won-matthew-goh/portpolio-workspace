@@ -3,6 +3,7 @@ package com.global.moviego.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global.moviego.domain.UserVO;
 import com.global.moviego.exception.DuplicateException;
@@ -17,23 +18,21 @@ public class JoinServiceImpl implements JoinService {
   @Autowired
   private BCryptPasswordEncoder bCryptPasswordEncoder;
   
+  @Transactional
   public void joinProcess(UserVO user) {
-      // username 중복 체크
-      int count = userMapper.checkUsernameExists(user.getUsername());
-      if (count > 0) {
-          throw new DuplicateException("이미 사용 중인 username입니다: " + user.getUsername());
-      }
-      
-      // Email 중복 체크
-      if (userMapper.checkEmailExists(user.getEmail()) > 0) {
-          throw new DuplicateException("이미 사용한 적이 있는 email 주소입니다.");
-      }
+    // Username 중복 체크
+    if (userMapper.checkUsernameExists(user.getUsername()) > 0) {
+      throw new DuplicateException("이미 사용 중인 username입니다: " + user.getUsername());
+    }
 
-      // 비밀번호 암호화
-      user.setPasswd(bCryptPasswordEncoder.encode(user.getPasswd()));
+    // Email 중복 체크
+    if (userMapper.checkEmailExists(user.getEmail()) > 0) {
+      throw new DuplicateException("이미 사용한 적이 있는 email 주소입니다.");
+    }
 
-      // 회원 가입
-      userMapper.insertMemberJoin(user);
+    // 비밀번호 암호화 및 사용자 추가
+    user.setPasswd(bCryptPasswordEncoder.encode(user.getPasswd()));
+    userMapper.insertMemberJoin(user);
   }
-
 }
+

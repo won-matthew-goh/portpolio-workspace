@@ -24,12 +24,12 @@ public class UserController {
   private JoinService joinService;
 
   @GetMapping("/login")
-  public String fowardLogin() {
+  public String forwardLogin() {
     return "user/login";
   }
 
   @GetMapping("/join")
-  public String fowardJoin(Model model) {
+  public String forwardJoin(Model model) {
     model.addAttribute("userVO", new UserVO());
     return "user/join";
   }
@@ -37,19 +37,17 @@ public class UserController {
   @PostMapping("/joinProc")
   public String joinProc(@ModelAttribute @Valid UserVO userVO, BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
-      model.addAttribute("validationErrors", bindingResult.getAllErrors());
+      System.out.println(bindingResult.getFieldError());
+      model.addAttribute("errors", bindingResult.getAllErrors());
       return "user/join";
     }
-    
+
     try {
       joinService.joinProcess(userVO);
       return "user/joinSuccess";
     } catch (DuplicateException e) {
-      if (e.getMessage().contains("Username")) {
-        model.addAttribute("usernameError", e.getMessage());
-      } else if (e.getMessage().contains("Email")) {
-        model.addAttribute("emailError", e.getMessage());
-      }
+      System.out.println(e.getMessage());
+      model.addAttribute("error", e.getMessage());
       return "user/join";
     }
   }
