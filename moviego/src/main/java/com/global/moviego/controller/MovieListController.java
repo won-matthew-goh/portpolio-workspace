@@ -38,8 +38,8 @@ public class MovieListController {
 
 	@GetMapping("/movieList/search")
 	public @ResponseBody Map<String, Object> searchAjax(@RequestParam Map<String, Object> paramMap) {
-		System.out.println(searchService.getSearch(paramMap));
-		return searchService.getSearch(paramMap);
+		System.out.println(searchService.getMovieSearch(paramMap));
+		return searchService.getMovieSearch(paramMap);
 
 	}
 
