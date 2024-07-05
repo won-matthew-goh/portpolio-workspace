@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/css/board.css" />
  <div class="board-wrapper">
@@ -7,10 +7,16 @@
         <div class="board_title">
           <h2>관객 리뷰</h2>
           <div class="search">
-            <input type="text" placeholder="영화 입력 " />
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-          </div>
+			<select class="search-option" name="searchOption" onchange="select()">
+				<option value="0">선택</option>
+				<option value="title">제목</option>
+				<option value="userId">사용자</option>
+			</select> 
+			<input id="searchInput" type="text" placeholder="제목 입력 " />
+			<button id="searchButton" type="submit">
+				<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+			</button>
+		</div>
         </div>
         <div class="board_list_wrap">
           <div class="board_list">
@@ -49,5 +55,3 @@
         </div>
       </div>
     </div>
-</body>
-</html>
