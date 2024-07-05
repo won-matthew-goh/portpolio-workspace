@@ -130,6 +130,8 @@
 
 .modal-wrap .btn {display: flex; justify-content: right;}
 
+.modal-wrap .btn i:hover {opacity: 0.5;}
+
 .modal-wrap .movie-name {
   text-align: center;
   font-size: large;
@@ -143,12 +145,6 @@
   width: 80%;
   padding: 0.5em;
   margin: 0 auto;
-}
-
-.modal-wrap .modal-wp .btn {
-  width: 30px;
-  height: 10%;
-  margin-right: auto;
 }
 
 .modal-wrap .btn i {
@@ -222,7 +218,7 @@
 
 .modal-wrap .modal-box .btn .close-btn {
   text-align: center;
-  width: 100px;
+  width: 8em;
   height: 40px;
   text-align: center;
   align-content: center;
@@ -233,8 +229,13 @@
   cursor: pointer;
 }
 
+.modal-wrap .modal-box .btn .close-btn:hover {
+  opacity: 0.8;
+}
+
 .modal-wrap .modal-box .btn .btn-light {
   border: 0.1px solid #555;
   height: 40px;
+  width: 8em;
   cursor: pointer;
 }

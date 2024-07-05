@@ -47,6 +47,7 @@ function openModal(movieElement) {
       <div class="modal-box">
         <p class="content">${movieData.overview}</p>
         <div class="btn">
+          <button class="btn btn-light" href="/review/new">리뷰 등록</button>
           <button class="close-btn" onclick="close()">닫기</button>
         </div>
       </div>

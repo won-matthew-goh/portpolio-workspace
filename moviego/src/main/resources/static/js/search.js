@@ -42,6 +42,7 @@ const SearchMovies = (movies) => {
 		contentwrap.style.padding = '0 0 180px 0';
 	}
 }
+
 document.addEventListener('DOMContentLoaded', () => {
 	const searchButton = document.getElementById('searchButton');
 	const searchInput = document.getElementById('searchInput');
