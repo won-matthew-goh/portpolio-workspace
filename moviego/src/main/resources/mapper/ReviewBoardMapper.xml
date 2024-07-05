@@ -41,7 +41,7 @@
 	</select>
 	
 	<!-- 게시판 페이징 -->
-	<select id="getTotal" resultType="int">
+	<select id="getTotal" resultType="Integer">
 		SELECT COUNT(*)
 		FROM tb_reviews
 	</select>

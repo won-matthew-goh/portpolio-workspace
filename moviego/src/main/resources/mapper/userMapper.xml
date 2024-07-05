@@ -19,6 +19,5 @@
                         , #{grade}
     )
   </insert>
-	</insert>
 	
 </mapper>
