@@ -2,15 +2,16 @@ package com.global.moviego.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.moviego.domain.UserVO;
+import com.global.moviego.exception.DuplicateUsernameException;
 import com.global.moviego.service.JoinService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/user")
@@ -26,19 +27,20 @@ public class UserController {
   }
 
   @GetMapping("/join")
-  public String fowardJoin() {
-
-    return "user/join";
+  public String fowardJoin(Model model) {
+      model.addAttribute("userVO", new UserVO());
+      return "user/join";
   }
 
   @PostMapping("/joinProc")
-  public String joinProc(@ModelAttribute UserVO userVO) {
-
-    System.out.println(userVO.getUsername());
-
-    joinService.joinProcess(userVO);
-
-    return "redirct: /user/login";
+  public String joinProc(@ModelAttribute("userVO") UserVO userVO, Model model) {
+      try {
+          joinService.joinProcess(userVO);
+          return "user/joinSuccess";
+      } catch (DuplicateUsernameException e) {
+          model.addAttribute("error", e.getMessage());
+          return "user/join";
+      }
   }
 
 }
