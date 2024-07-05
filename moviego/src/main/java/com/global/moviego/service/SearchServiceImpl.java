@@ -20,6 +20,14 @@ import com.global.moviego.domain.MovieListVO;
 
 @Service
 public class SearchServiceImpl implements SearchService {
+	// ReviewBoard 검색창
+	@Override
+	public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
+		ㄴㄴㄴㄴㄴㄴ
+		return null;
+	}
+	
+	// MovieList 검색창
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -28,7 +36,7 @@ public class SearchServiceImpl implements SearchService {
 	private String searchApiUrl;
 
 	@Override
-	public Map<String, Object> getSearch(Map<String, Object> paramMap) {
+	public Map<String, Object> getMovieSearch(Map<String, Object> paramMap) {
 		String paramQuery = (String) paramMap.get("query");
 
 		try {
@@ -66,5 +74,6 @@ public class SearchServiceImpl implements SearchService {
 		    movieMap.put("movies", movies);
 		    return movieMap;
 		  }
+
 
 }

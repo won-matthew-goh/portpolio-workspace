@@ -11,12 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.global.moviego.domain.PageCreate;
 import com.global.moviego.domain.PageVO;
 import com.global.moviego.domain.ReviewBoardVO;
 import com.global.moviego.service.ReviewBoardServiceImpl;
+import com.global.moviego.service.SearchServiceImpl;
 
 @Controller
 @RequestMapping("/review")
@@ -24,6 +27,16 @@ import com.global.moviego.service.ReviewBoardServiceImpl;
 public class ReviewBoardController {
 	@Autowired
 	private ReviewBoardServiceImpl reviewBoardService;
+	
+	@Autowired
+	SearchServiceImpl searchService;
+	
+	// ReviewBoard 검색창
+	@GetMapping("/search")
+	public @ResponseBody Map<String, Object> searchAjax(@RequestParam Map<String, Object> paramMap) {
+		return searchService.getReviewSearch(paramMap);
+
+	}
 
 	// DB에 저장된 게시글 리스트 출력
 //	@GetMapping("")
