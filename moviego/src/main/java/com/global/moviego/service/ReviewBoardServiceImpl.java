@@ -22,8 +22,8 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	
 	//게시글 조회 메소드(Read)
 	@Override
-	public List<ReviewBoardVO> getFreeBoard() {
-		return reviewBoardMapper.getFreeBoard();
+	public List<ReviewBoardVO> getBoard(PageVO vo) {
+		return reviewBoardMapper.getBoard(vo);
 	}
 	
 	

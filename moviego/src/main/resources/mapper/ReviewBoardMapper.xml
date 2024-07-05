@@ -11,34 +11,31 @@
 		,rating
 		,comment
 		,created_at
-		) values(
+		)
+		values(
 		#{title}
 		,#{rating}
 		,#{comment}
-		,#{read_cnt}
 		,now()
 		)
 	</insert>
 
 	<!-- 게시글 pageCnt 만큼(10) 조회 -->
-	<select id="getFreeBoard"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		select review_id
-		,user_id
-		,rating
-		,title
-		,movie_id
-		,movie_nm
-		,poster_url
-		,comment
-		,read_cnt
-		,created_at
-		
-		from tb_reviews
-		order by review_id desc
-		limit 1,10
-		<!-- #{pageCnt} -->
-	</select>
+    <select id="getBoard" resultType="com.global.moviego.domain.ReviewBoardVO">
+        select review_id
+        ,user_id
+        ,rating
+        ,title
+        ,movie_id
+        ,movie_nm
+        ,poster_url
+        ,comment
+        ,read_cnt
+        ,created_at
+        from tb_reviews
+        order by review_id desc
+        limit #{offset}, #{countPerPage}
+    </select>
 	
 	<!-- 게시판 페이징 -->
 	<select id="getTotal" resultType="Integer">

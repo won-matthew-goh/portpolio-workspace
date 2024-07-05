@@ -29,31 +29,31 @@
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-full" for="star2">
-                <input type="radio" id="star2" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star2" class="rating-input" name="rating" value="2.0" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-half" for="star2half">
-                <input type="radio" id="star2half" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star2half" class="rating-input" name="rating" value="2.5" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-full" for="star3">
-                <input type="radio" id="star3" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star3" class="rating-input" name="rating" value="3.0" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-half" for="star3half">
-                <input type="radio" id="star3half" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star3half" class="rating-input" name="rating" value="3.5" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-full" for="star4">
-                <input type="radio" id="star4" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star4" class="rating-input" name="rating" value="4.0" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-half" for="star4half">
-                <input type="radio" id="star4half" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star4half" class="rating-input" name="rating" value="4.5" />
                 <span class="star-icon"></span>
               </label>
               <label class="rating-label rating-full" for="star5">
-                <input type="radio" id="star5" class="rating-input" name="rating" value="" />
+                <input type="radio" id="star5" class="rating-input" name="rating" value="5.0" />
                 <span class="star-icon"></span>
               </label>
             </div>
@@ -63,7 +63,7 @@
             <textarea name="comment" placeholder="관객평을 입력해주세요"></textarea>
           </div>
           <div class="bottom-btn">
-            <button class="nav-bt bt-black" value="등록"></button>
+            <button class="nav-bt bt-black" value="등록">등록</button>
             <a href="#" class="nav-bt bt-gray">취소</a>
           </div>
           </form>

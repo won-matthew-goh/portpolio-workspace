@@ -1,87 +1,86 @@
 package com.global.moviego.domain;
 
 public class PageCreate {
+    private int beginPage;
+    private int endPage;
+    private boolean prev, next;
+    private int total;
+    private PageVO vo;
+    private final int buttonNum = 10; // 버튼은 10개 노출로 고정
 
-	private PageVO paging;
-	private int articleTotalCount;
-	private int endPage;
-	private int beginPage;
-	private boolean prev;
-	private boolean next;
-	
-	private final int buttonNum = 10; //버튼은 10개 노출로 고정
-	
-	
-	private void calcDataOfPage() {
-		//화면에서 보여지는 제일 끝번호(소수점으로 만들어서 올림처리, 10, 20, 30...)
-		endPage = (int) (Math.ceil(paging.getPageNum() / (double)buttonNum ) * buttonNum);
-		//화면에서 보여지는 제일 첫번째 번호
-		beginPage = (endPage - buttonNum) + 1;
-		//시작페이지 1이면 그 전번호 없음 false
-		prev = (beginPage == 1) ? false : true;
-		//DB 저장된 데이터 수 <= 끝페이지*페이당 글 수(우리는 10) 같으면 false 반환해서 next 동작 X
-		next = articleTotalCount <= (endPage * paging.getCountPerPage()) ? false : true;
-		//만약 next가 true 이면 endPage를 새로 계산 해주어야 함. 102/10 = 10.2 -> 11 이 endpage
-		if(!next) {
-			endPage = (int) Math.ceil(articleTotalCount / (double) paging.getCountPerPage()); 
-		}
-		
-	}
-	//DB에 저장된 전체 게시글 수 받아 넣고, 데이터들 계산하는 메소드 실행
-	public void setArticleTotalCount(int articleTotalCount) {
-		this.articleTotalCount = articleTotalCount;
-		calcDataOfPage();
-	}
+    public PageCreate(int total, PageVO vo) {
+        this.total = total;
+        this.vo = vo;
+        calcDataOfPage();
+    }
 
-	
-	//게터, 세터
-	public int getEndPage() {
-		return endPage;
-	}
+    private void calcDataOfPage() {
+        // 화면에서 보여지는 제일 끝 번호 (10, 20, 30...)
+        this.endPage = (int) (Math.ceil(vo.getPageNum() / (double) buttonNum) * buttonNum);
+        // 화면에서 보여지는 제일 첫 번째 번호
+        this.beginPage = this.endPage - buttonNum + 1;
+        // 시작 페이지가 1이면 이전 번호 없음
+        this.prev = this.beginPage > 1;
+        // 총 페이지 수 계산
+        int realEnd = (int) (Math.ceil(total * 1.0 / vo.getCountPerPage()));
+        // 마지막 페이지가 총 페이지 수보다 크면 수정
+        if (this.endPage > realEnd) {
+            this.endPage = realEnd;
+        }
+        // 다음 페이지 여부
+        this.next = this.endPage < realEnd;
+    }
 
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
+    // getter 및 setter
+    public int getBeginPage() {
+        return beginPage;
+    }
 
-	public int getBeginPage() {
-		return beginPage;
-	}
+    public void setBeginPage(int beginPage) {
+        this.beginPage = beginPage;
+    }
 
-	public void setBeginPage(int beginPage) {
-		this.beginPage = beginPage;
-	}
+    public int getEndPage() {
+        return endPage;
+    }
 
-	public boolean isPrev() {
-		return prev;
-	}
+    public void setEndPage(int endPage) {
+        this.endPage = endPage;
+    }
 
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
+    public boolean isPrev() {
+        return prev;
+    }
 
-	public boolean isNext() {
-		return next;
-	}
+    public void setPrev(boolean prev) {
+        this.prev = prev;
+    }
 
-	public void setNext(boolean next) {
-		this.next = next;
-	}
+    public boolean isNext() {
+        return next;
+    }
 
-	public int getArticleTotalCount() {
-		return articleTotalCount;
-	}
+    public void setNext(boolean next) {
+        this.next = next;
+    }
 
-	public int getButtonNum() {
-		return buttonNum;
-	}
+    public int getTotal() {
+        return total;
+    }
 
-	public PageVO getPaging() {
-		return paging;
-	}
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
-	public void setPaging(PageVO paging) {
-		this.paging = paging;
-	}
-	
-	
+    public PageVO getVo() {
+        return vo;
+    }
+
+    public void setVo(PageVO vo) {
+        this.vo = vo;
+    }
+
+    public int getButtonNum() {
+        return buttonNum;
+    }
 }
