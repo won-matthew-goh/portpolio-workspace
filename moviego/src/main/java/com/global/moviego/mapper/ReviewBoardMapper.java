@@ -1,8 +1,10 @@
 package com.global.moviego.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.global.moviego.domain.PageVO;
@@ -19,4 +21,8 @@ public interface ReviewBoardMapper {
 	public int getTotal(PageVO vo);
 
 //	public List<ReviewBoardVO> selectReview();
+	
+	
+	Map<String, Object> getReviewSearch(@Param("keyword") String keyword, @Param("searchOption") String searchOption);
+	
 }

@@ -4,6 +4,34 @@
 
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
 
+	<!-- 게시글 검색 -->
+   <select id="getReviewSearch" resultType="com.global.moviego.domain.ReviewBoardVO">
+        select review_id
+        ,user_id
+        ,rating 
+        ,title
+        ,movie_id 
+        ,movie_nm
+        ,poster_url 
+        ,comment 
+        ,read_cnt
+        ,created_at
+        from tb_reviews
+        where 
+            <choose>
+                <when test="searchOption == 'title'">
+                    title like CONCAT('%', #{keyword}, '%')
+                </when>
+                <when test="searchOption == 'userId'">
+                    user_id like CONCAT('%', #{keyword}, '%')
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        order by created_at desc
+    </select>
+
 	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into tb_reviews (
@@ -15,7 +43,6 @@
 		#{title}
 		,#{rating}
 		,#{comment}
-		,#{read_cnt}
 		,now()
 		)
 	</insert>

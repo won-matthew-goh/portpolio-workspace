@@ -17,16 +17,29 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.global.moviego.domain.MovieListVO;
+import com.global.moviego.domain.ReviewBoardVO;
+import com.global.moviego.mapper.ReviewBoardMapper;
 
 @Service
 public class SearchServiceImpl implements SearchService {
 	// ReviewBoard 검색창
-	@Override
-	public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
-		ㄴㄴㄴㄴㄴㄴ
-		return null;
-	}
+
+	@Autowired
+    private ReviewBoardMapper reviewBoardMapper;
+
+    @Override
+    public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
+        String paramKeyword = (String) paramMap.get("keyword");
+        String searchOption = (String) paramMap.get("searchOption");
+
+        // Ensure search option and keyword are provided
+        if (paramKeyword == null || paramKeyword.isEmpty() || searchOption == null || searchOption.equals("0")) {
+            return new HashMap<>();
+        }
+        return reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
+    }
 	
+
 	// MovieList 검색창
 
 	@Autowired
@@ -74,6 +87,7 @@ public class SearchServiceImpl implements SearchService {
 		    movieMap.put("movies", movies);
 		    return movieMap;
 		  }
+
 
 
 }
