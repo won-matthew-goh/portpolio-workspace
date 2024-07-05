@@ -34,15 +34,18 @@
             </c:forEach>
           	
           </div>
+          <!-- action에 설정한 컨트롤러 경로로 데이터 전송 -->
+          <form action= "/review" method="get">
           <div class="board_page">
-            <a href="#" class="btn first"><<</a>
-            <a href="#" class="btn prev"><</a>
-          	<c:forEach var="page" items="${pages}" varStatus="status">
-        	<a href="#" class="pnum click">${page}</a>
+            <button name= "beginPage" href="#" class="btn first" value = ""><<<</button>
+            <button name= "prev" href="#" class="btn prev" value = ""><<</button>
+          	<c:forEach var="num" begin= "${pageMaker.beginPage}" end= "${pageMaker.endPage}">
+        	<a name= "pageNum" href="#" class="pnum click">${num}</a>
 		    </c:forEach>
-            <a href="#" class="btn next">></a>
-            <a href="#" class="btn last">>></a>
+            <button name= "next" href="#" class="btn next" value="">></button>
+            <button name= "endPage" href="#" class="btn last" value="">>></button>
           </div>
+          </form>
         </div>
       </div>
     </div>

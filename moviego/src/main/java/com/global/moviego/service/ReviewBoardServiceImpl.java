@@ -1,6 +1,5 @@
 package com.global.moviego.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +14,18 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	//@Autowired 리뷰 입력 폼으로 받은 데이터들 가져오는 용도, 오버라이드 해서 사용
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
-	
-	//게시글 조회 메소드(Read)
-	@Override
-	public List<ReviewBoardVO> selectReviewService(){
-		List<ReviewBoardVO> select = new ArrayList<ReviewBoardVO>();
-		select = reviewBoardMapper.selectReview();
-		return select;
-	}
-	
-	//글저장 메소드(Create)
+	//글삽입 메소드(Create)
 	@Override
 	public void register(ReviewBoardVO vo) {
 		reviewBoardMapper.insert(vo);
 	}
 	
+	//게시글 조회 메소드(Read)
 	@Override
 	public List<ReviewBoardVO> getFreeBoard() {
 		return reviewBoardMapper.getFreeBoard();
 	}
+	
 	
 	//페이징 메소드(Paging)
 	@Override
@@ -52,4 +44,10 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	//게시글 수정 메소드(Update)
 	//게시글 삭제 메소드(Delete)
   
+//	@Override
+//	public List<ReviewBoardVO> selectReviewService(){
+//		List<ReviewBoardVO> select = new ArrayList<ReviewBoardVO>();
+//		select = reviewBoardMapper.selectReview();
+//		return select;
+//	}
 }

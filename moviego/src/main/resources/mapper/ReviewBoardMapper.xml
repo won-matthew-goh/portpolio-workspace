@@ -4,24 +4,6 @@
 
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
 
-	<!-- 게시글 조회 -->
-	<select id="selectReview"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT review_id
-		,user_id
-		,rating
-		,title
-		,movie_id
-		,movie_nm
-		,poster_url
-		,comment
-		,read_cnt
-		,created_at
-		FROM tb_reviews
-		ORDER BY review_id DESC
-	</select>
-
-
 	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into tb_reviews (
@@ -38,20 +20,7 @@
 		)
 	</insert>
 
-
-	<!-- 게시물 수 카운팅 -->
-	<select id="reviewCnt">
-		select count(*)
-		from tb_reviews
-	</select>
-
-	<!-- 게시판 페이징 -->
-	<select id="getTotal" resultType="int">
-		SELECT COUNT(*)
-		FROM tb_reviews
-<!-- 		<include refid="search" /> -->
-	</select>
-
+	<!-- 게시글 pageCnt 만큼(10) 조회 -->
 	<select id="getFreeBoard"
 		resultType="com.global.moviego.domain.ReviewBoardVO">
 		select review_id
@@ -66,11 +35,17 @@
 		,created_at
 		
 		from tb_reviews
-<!-- 		<include refid="search" /> -->
 		order by review_id desc
-		limit 10
-		<!-- #{pageCnt} , --> 
+		limit 1,10
+		<!-- #{pageCnt} -->
 	</select>
+	
+	<!-- 게시판 페이징 -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM tb_reviews
+	</select>
+	
 
 
 
@@ -86,5 +61,22 @@
 
 	<!-- <select id="selectReviewCnt" resultType="Integer"> SELECT count(*) 
 		FROM tb_reviews </select> -->
+
+	<!-- 게시글 조회 -->
+<!-- 	<select id="selectReview"
+		resultType="com.global.moviego.domain.ReviewBoardVO">
+		SELECT review_id
+		,user_id
+		,rating
+		,title
+		,movie_id
+		,movie_nm
+		,poster_url
+		,comment
+		,read_cnt
+		,created_at
+		FROM tb_reviews
+		ORDER BY review_id DESC
+	</select> -->
 
 </mapper>
