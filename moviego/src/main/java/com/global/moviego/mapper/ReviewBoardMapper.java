@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.global.moviego.domain.PageCreate;
+import com.global.moviego.domain.PageVO;
 import com.global.moviego.domain.ReviewBoardVO;
 
 @Repository
@@ -15,5 +17,8 @@ public interface ReviewBoardMapper {
 	
 	public void insert(ReviewBoardVO vo);
 	
-//	public int selectReviewCnt();
+	public List<ReviewBoardVO> getFreeBoard();
+	
+	public int getTotal(PageVO vo);
+
 }

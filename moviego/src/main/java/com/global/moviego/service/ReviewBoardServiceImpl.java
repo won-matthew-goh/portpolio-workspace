@@ -3,10 +3,10 @@ package com.global.moviego.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global.moviego.domain.PageVO;
 import com.global.moviego.domain.ReviewBoardVO;
 import com.global.moviego.mapper.ReviewBoardMapper;
 
@@ -28,8 +28,19 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	@Override
 	public void register(ReviewBoardVO vo) {
 		reviewBoardMapper.insert(vo);
-		
 	}
+	
+	@Override
+	public List<ReviewBoardVO> getFreeBoard() {
+		return reviewBoardMapper.getFreeBoard();
+	}
+	
+	//페이징 메소드(Paging)
+	@Override
+	public int getTotal(PageVO vo) {
+		return reviewBoardMapper.getTotal(vo);
+	}
+	
 //	}
 //	//조회수 카운트 메소드
 //	@Override

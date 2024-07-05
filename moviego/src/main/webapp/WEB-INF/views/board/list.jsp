@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%@include file="./includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/css/board.css" />
  <div class="board-wrapper">
       <div class="board_wrap">
@@ -17,8 +17,9 @@
             <div class="top">
               <div class="pnum">NO</div>
               <div class="name">영화명</div>
-              <div class="title">내용</div>
+              <div class="title">글제목</div>
               <div class="writer">사용자</div>
+              <div class="readCnt">조회수</div>
               <div class="date">작성일자</div>
             </div>
             <c:forEach var="lists" items="${list}">
@@ -27,6 +28,7 @@
               <div class="name"><a>${lists.movieNm}</a></div>
               <div class="title">${lists.title}</div>
               <div class="writer">${lists.userId}</div>
+              <div class="readCnt">${lists.readCnt}</div>
               <div class="date">${lists.createdAt}</div>
             </div>
             </c:forEach>
@@ -35,14 +37,11 @@
           <div class="board_page">
             <a href="#" class="btn first"><<</a>
             <a href="#" class="btn prev"><</a>
-            <a href="#" class="pnum click">1</a>
-            <a href="#" class="pnum">2</a>
-            <a href="#" class="pnum">3</a>
-            <a href="#" class="pnum">4</a>
-            <a href="#" class="pnum">5</a>
+          	<c:forEach var="page" items="${pages}" varStatus="status">
+        	<a href="#" class="pnum click">${page}</a>
+		    </c:forEach>
             <a href="#" class="btn next">></a>
             <a href="#" class="btn last">>></a>
-
           </div>
         </div>
       </div>
