@@ -14,7 +14,7 @@ function openModal(movieElement) {
 
   const modalContent = `
       <div class="btn">
-        <i class="fa-solid fa-xmark" onclick="close()"></i>
+        <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
       </div>
       <div class="movie-name">${movieData.title}</div>
       <div class="modal-wp">
@@ -47,7 +47,7 @@ function openModal(movieElement) {
       <div class="modal-box">
         <p class="content">${movieData.overview}</p>
         <div class="btn">
-          <button class="close-btn" onclick="close()">닫기</button>
+          <button class="close-btn" onclick="closeModal()">닫기</button>
         </div>
       </div>
     `;
