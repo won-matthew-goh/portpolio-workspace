@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.moviego.domain.UserVO;
-import com.global.moviego.exception.DuplicateUsernameException;
+import com.global.moviego.exception.DuplicateException;
 import com.global.moviego.service.JoinService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,19 +28,20 @@ public class UserController {
 
   @GetMapping("/join")
   public String fowardJoin(Model model) {
-      model.addAttribute("userVO", new UserVO());
-      return "user/join";
+    model.addAttribute("userVO", new UserVO());
+    return "user/join";
   }
 
   @PostMapping("/joinProc")
   public String joinProc(@ModelAttribute("userVO") UserVO userVO, Model model) {
-      try {
-          joinService.joinProcess(userVO);
-          return "user/joinSuccess";
-      } catch (DuplicateUsernameException e) {
-          model.addAttribute("error", e.getMessage());
-          return "user/join";
-      }
+    try {
+      joinService.joinProcess(userVO);
+      return "user/joinSuccess";
+    } catch (DuplicateException e) {
+      System.out.println(e.getMessage());
+      model.addAttribute("error", e.getMessage());
+      return "user/join";
+    }
   }
 
 }

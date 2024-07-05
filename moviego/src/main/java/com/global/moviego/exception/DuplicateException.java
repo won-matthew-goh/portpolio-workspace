@@ -1,8 +1,8 @@
 package com.global.moviego.exception;
 
-public class DuplicateUsernameException extends RuntimeException {
+public class DuplicateException extends RuntimeException {
 
-    public DuplicateUsernameException(String message) {
+    public DuplicateException(String message) {
         super(message);
     }
 }

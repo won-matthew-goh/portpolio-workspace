@@ -12,6 +12,8 @@ public interface UserMapper {
   
   int checkUsernameExists(@Param("username") String username);
   
+  int checkEmailExists(@Param("email") String email);
+  
   void insertMemberJoin(UserVO user);
   
 }

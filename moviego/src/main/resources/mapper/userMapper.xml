@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.global.moviego.mapper.UserMapper">
-  <!-- 중복 체크 이전 insert문
-  <insert id="insertMemberJoin" parameterType="com.global.moviego.domain.UserVO">
-    insert into tb_users (
-                          username
-                        , passwd
-                        , email
-                        , created_at
-                 ) values(
-                          #{username}
-                        , #{passwd}
-                        , #{email}
-                        , now()
-    )
-  </insert>
-  -->
   
   <!-- 회원 가입 시 username 중복 체크 -->
   <select id="checkUsernameExists" parameterType="String" resultType="int">
     SELECT COUNT(*) FROM tb_users WHERE username = #{username}
   </select>
   
+  <!-- email 중복 체크 -->
+  <select id="checkEmailExists" parameterType="String" resultType="int">
+    SELECT COUNT(*) FROM tb_users WHERE email = #{email}
+  </select>
+  
   <!-- 회원 가입 -->
   <insert id="insertMemberJoin" parameterType="com.global.moviego.domain.UserVO">
   
-    <!-- username 중복 체크 -->
-    <selectKey keyProperty="id" resultType="int" order="AFTER">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    
-    <!-- 중복 없을 경우 회원 추가 -->
     INSERT INTO tb_users (
                        username
                      , passwd
