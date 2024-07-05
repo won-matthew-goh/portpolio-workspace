@@ -8,13 +8,11 @@
                         , passwd
                         , email
                         , created_at
-                        , grade
                  ) values(
                           #{username}
                         , #{passwd}
                         , #{email}
                         , now()
-                        , #{grade.value}   <!-- 수정된 부분 -->
     )
   </insert>
 

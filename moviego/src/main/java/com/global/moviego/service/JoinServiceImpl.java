@@ -19,7 +19,7 @@ public class JoinServiceImpl implements JoinService {
   
   public void joinProcess(UserVO user) {
     user.setPasswd(bCryptPasswordEncoder.encode(user.getPasswd()));
-    user.setGrade(UserGrade.REGULAR); // 기본값으로 일반 회원 설정
+//    user.setGrade(UserGrade.REGULAR); // 기본값으로 일반 회원 설정
     userMapper.insertMemberJoin(user);
   }
 
