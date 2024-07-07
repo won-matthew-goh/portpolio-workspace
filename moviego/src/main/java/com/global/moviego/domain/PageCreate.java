@@ -13,6 +13,10 @@ public class PageCreate {
         this.vo = vo;
         calcDataOfPage();
     }
+    
+    public PageCreate() {
+    	
+    }
 
     private void calcDataOfPage() {
         // 화면에서 보여지는 제일 끝 번호 (10, 20, 30...)

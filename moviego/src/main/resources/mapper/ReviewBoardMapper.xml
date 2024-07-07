@@ -3,17 +3,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
+	<!-- 게시글 검색 -->
+	<select id="getReviewSearch"
+		resultType="com.global.moviego.domain.ReviewBoardVO">
+		SELECT review_id,
+		user_id,
+		rating,
+		title,
+		movie_id,
+		movie_nm,
+		poster_url,
+		comment,
+		read_cnt,
+		created_at
+		FROM tb_reviews
+		WHERE
+		<choose>
+			<when test="searchOption == 'title'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchOption == 'movie_nm'">
+				movie_nm LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+		ORDER BY created_at DESC
+		LIMIT #{offset}, #{countPerPage}
+	</select>
+
+	<!-- 검색 결과의 총 개수 -->
+	<select id="getReviewSearchTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM tb_reviews
+		WHERE
+		<choose>
+			<when test="searchOption == 'title'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchOption == 'movie_nm'">
+				movie_nm LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</select>
+
 
 	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into tb_reviews (
-		title
+		user_id
+		,movie_id
+		,movie_nm
+		,title
 		,rating
 		,comment
 		,created_at
 		)
 		values(
-		#{title}
+		#{userId}
+		,#{movieId}
+		,#{movieNm}
+		,#{title}
 		,#{rating}
 		,#{comment}
 		,now()
@@ -21,57 +69,63 @@
 	</insert>
 
 	<!-- 게시글 pageCnt 만큼(10) 조회 -->
-    <select id="getBoard" resultType="com.global.moviego.domain.ReviewBoardVO">
-        select review_id
-        ,user_id
-        ,rating
-        ,title
-        ,movie_id
-        ,movie_nm
-        ,poster_url
-        ,comment
-        ,read_cnt
-        ,created_at
-        from tb_reviews
-        order by review_id desc
-        limit #{offset}, #{countPerPage}
-    </select>
-	
+	<select id="getBoard"
+		resultType="com.global.moviego.domain.ReviewBoardVO">
+		select review_id
+		,user_id
+		,rating
+		,title
+		,movie_id
+		,movie_nm
+		,poster_url
+		,comment
+		,read_cnt
+		,created_at
+		from tb_reviews
+		order by
+		review_id desc
+		limit #{offset}, #{countPerPage}
+	</select>
+
 	<!-- 게시판 페이징 -->
 	<select id="getTotal" resultType="Integer">
 		SELECT COUNT(*)
 		FROM tb_reviews
 	</select>
-	
-	<!-- 특정 게시글 조회 -->
-    <select id="getBoardById" parameterType="int" resultType="com.global.moviego.domain.ReviewBoardVO">
-        select review_id
-        ,user_id
-        ,rating
-        ,title
-        ,movie_id
-        ,movie_nm
-        ,poster_url
-        ,comment
-        ,read_cnt
-        ,created_at
-        from tb_reviews
-        where review_id = #{reviewId}
-    </select>
 
-    <!-- 게시글 수정 -->
-    <update id="updateBoard">
-        update tb_reviews
-        set title = #{title}
-        ,rating = #{rating}
-        ,comment = #{comment}
-        ,updated_at = now()
-        where review_id = #{reviewId}
-    </update>
+	<!-- 특정 게시글 조회 -->
+	<select id="getBoardById" parameterType="int"
+		resultType="com.global.moviego.domain.ReviewBoardVO">
+		select review_id
+		,user_id
+		,rating
+		,title
+		,movie_id
+		,movie_nm
+		,poster_url
+		,comment
+		,read_cnt
+		,created_at
+		from tb_reviews
+		where review_id
+		= #{reviewId}
+	</select>
+
+	<!-- 게시글 수정 -->
+	<update id="updateBoard">
+		update tb_reviews
+		set title = #{title}
+		,rating =
+		#{rating}
+		,comment = #{comment}
+		,updated_at = now()
+		where review_id =
+		#{reviewId}
+	</update>
 
 	<!-- 게시글 삭제 -->
-    <delete id="deleteBoard" parameterType="int">
-        delete from tb_reviews
-        where review_id = #{reviewId}
-    </delete>
+	<delete id="deleteBoard" parameterType="int">
+		delete from tb_reviews
+		where review_id = #{reviewId}
+	</delete>
 </mapper>

@@ -6,6 +6,9 @@ public class PageVO {
 	private int countPerPage = 10;
 	private int total;
 	private int offset;
+	private int searchTotal;
+
+
 
 	// getter 및 setter
 	public int getPageNum() {
@@ -38,5 +41,12 @@ public class PageVO {
 
 	public void setOffset(int offset) {
 		this.offset = offset;
+	}
+	public int getSearchTotal() {
+		return searchTotal;
+	}
+
+	public void setSearchTotal(int searchTotal) {
+		this.searchTotal = searchTotal;
 	}
 }

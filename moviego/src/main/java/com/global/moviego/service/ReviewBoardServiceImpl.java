@@ -14,7 +14,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	// @Autowired 리뷰 입력 폼으로 받은 데이터들 가져오는 용도, 오버라이드 해서 사용
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
-
+	
 	// 글삽입 메소드(Create)
 	@Override
 	public void register(ReviewBoardVO vo) {
