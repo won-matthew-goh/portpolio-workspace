@@ -31,10 +31,14 @@ public class ReviewBoardController {
 	@Autowired
 	SearchServiceImpl searchService;
 
-	// ReviewBoard 검색창
+
+    // 검색 요청 처리
     @GetMapping("/search")
-    public @ResponseBody Map<String, Object> searchAjax(@RequestParam Map<String, Object> paramMap) {
-        return searchService.getReviewSearch(paramMap);
+    public String search(@RequestParam Map<String, Object> paramMap, Model model) {
+        Map<String, Object> searchResult = searchService.getReviewSearch(paramMap);
+        model.addAttribute("list", searchResult.get("results"));
+        model.addAttribute("pageMaker", new PageCreate());
+        return "board/list";
     }
 	
 	// 게시글 리스트 출력 및 10개씩 페이징

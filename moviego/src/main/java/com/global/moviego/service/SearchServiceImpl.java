@@ -22,9 +22,11 @@ import com.global.moviego.mapper.ReviewBoardMapper;
 
 @Service
 public class SearchServiceImpl implements SearchService {
+	
 	// ReviewBoard 검색창
 
-	@Autowired
+
+    @Autowired
     private ReviewBoardMapper reviewBoardMapper;
 
     @Override
@@ -32,11 +34,15 @@ public class SearchServiceImpl implements SearchService {
         String paramKeyword = (String) paramMap.get("keyword");
         String searchOption = (String) paramMap.get("searchOption");
 
-        // Ensure search option and keyword are provided
         if (paramKeyword == null || paramKeyword.isEmpty() || searchOption == null || searchOption.equals("0")) {
             return new HashMap<>();
         }
-        return reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
+
+        List<ReviewBoardVO> results = reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("results", results);
+
+        return resultMap;
     }
 	
 

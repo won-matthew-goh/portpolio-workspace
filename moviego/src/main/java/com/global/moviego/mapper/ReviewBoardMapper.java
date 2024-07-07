@@ -22,7 +22,5 @@ public interface ReviewBoardMapper {
 
 //	public List<ReviewBoardVO> selectReview();
 	
-	
-	Map<String, Object> getReviewSearch(@Param("keyword") String keyword, @Param("searchOption") String searchOption);
-	
-}
+	  List<ReviewBoardVO> getReviewSearch(@Param("keyword") String keyword, @Param("searchOption") String searchOption);
+	}

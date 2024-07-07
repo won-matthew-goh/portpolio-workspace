@@ -5,31 +5,28 @@
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
 
 	<!-- 게시글 검색 -->
-   <select id="getReviewSearch" resultType="com.global.moviego.domain.ReviewBoardVO">
-        select review_id
-        ,user_id
-        ,rating 
-        ,title
-        ,movie_id 
-        ,movie_nm
-        ,poster_url 
-        ,comment 
-        ,read_cnt
-        ,created_at
-        from tb_reviews
-        where 
+  <select id="getReviewSearch" resultType="com.global.moviego.domain.ReviewBoardVO">
+        SELECT review_id,
+               user_id,
+               rating,
+               title,
+               movie_id,
+               movie_nm,
+               poster_url,
+               comment,
+               read_cnt,
+               created_at
+        FROM tb_reviews
+        WHERE 
             <choose>
                 <when test="searchOption == 'title'">
-                    title like CONCAT('%', #{keyword}, '%')
+                    title LIKE CONCAT('%', #{keyword}, '%')
                 </when>
-                <when test="searchOption == 'userId'">
-                    user_id like CONCAT('%', #{keyword}, '%')
+                <when test="searchOption == 'movie_nm'">
+                    movie_nm LIKE CONCAT('%', #{keyword}, '%')
                 </when>
-                <otherwise>
-                    1=1
-                </otherwise>
             </choose>
-        order by created_at desc
+        ORDER BY created_at DESC
     </select>
 
 	<!-- 게시글 등록 -->

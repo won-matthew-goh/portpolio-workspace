@@ -6,12 +6,12 @@
 	<div class="board_wrap">
 		<div class="board_title">
 			<h2>관객 리뷰</h2>
-			<form name="searchForm" method="get" action="/search">
+			<form name="searchForm" method="get" action="/review/search">
 			<div class="search">
 				<select class="search-option" name="searchOption" onchange="updatePlaceholder()">
 					<option value="0" > 선택</option>
 					<option value="title" >글제목</option>
-					<option value="userId" >사용자</option>
+					<option value="movie_nm" >영화명</option>
 				</select> 
 				<input id="searchInput" name="keyword" type="text" placeholder="내용 입력" />
 				<button id="searchButton" type="submit">
