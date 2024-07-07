@@ -11,28 +11,44 @@ import com.global.moviego.mapper.ReviewBoardMapper;
 
 @Service
 public class ReviewBoardServiceImpl implements ReviewBoardService {
-	//@Autowired 리뷰 입력 폼으로 받은 데이터들 가져오는 용도, 오버라이드 해서 사용
+	// @Autowired 리뷰 입력 폼으로 받은 데이터들 가져오는 용도, 오버라이드 해서 사용
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
-	//글삽입 메소드(Create)
+
+	// 글삽입 메소드(Create)
 	@Override
 	public void register(ReviewBoardVO vo) {
 		reviewBoardMapper.insert(vo);
 	}
-	
-	//게시글 조회 메소드(Read)
+
+	// 게시글 조회 메소드(Read)
 	@Override
 	public List<ReviewBoardVO> getBoard(PageVO vo) {
 		return reviewBoardMapper.getBoard(vo);
 	}
-	
-	
-	//페이징 메소드(Paging)
+
+	// 페이징 메소드(Paging)
 	@Override
 	public int getTotal(PageVO vo) {
 		return reviewBoardMapper.getTotal(vo);
 	}
-	
+
+	@Override
+	public ReviewBoardVO getBoardById(int reviewId) {
+		return reviewBoardMapper.getBoardById(reviewId);
+	}
+
+	@Override
+	    public void updateBoard(ReviewBoardVO vo) {
+		reviewBoardMapper.updateBoard(vo);
+	}
+	@Override
+	public void deleteBoard(int reviewId) {
+		reviewBoardMapper.deleteBoard(reviewId);
+
+	}
+}
+
 //	}
 //	//조회수 카운트 메소드
 //	@Override
@@ -41,13 +57,12 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 //		return cnt;
 //	}
 //	
-	//게시글 수정 메소드(Update)
-	//게시글 삭제 메소드(Delete)
-  
+// 게시글 수정 메소드(Update)
+// 게시글 삭제 메소드(Delete)
+
 //	@Override
 //	public List<ReviewBoardVO> selectReviewService(){
 //		List<ReviewBoardVO> select = new ArrayList<ReviewBoardVO>();
 //		select = reviewBoardMapper.selectReview();
 //		return select;
 //	}
-}

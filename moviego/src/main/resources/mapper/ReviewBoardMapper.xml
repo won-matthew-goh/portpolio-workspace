@@ -43,37 +43,35 @@
 		FROM tb_reviews
 	</select>
 	
+	<!-- 특정 게시글 조회 -->
+    <select id="getBoardById" parameterType="int" resultType="com.global.moviego.domain.ReviewBoardVO">
+        select review_id
+        ,user_id
+        ,rating
+        ,title
+        ,movie_id
+        ,movie_nm
+        ,poster_url
+        ,comment
+        ,read_cnt
+        ,created_at
+        from tb_reviews
+        where review_id = #{reviewId}
+    </select>
 
+    <!-- 게시글 수정 -->
+    <update id="updateBoard">
+        update tb_reviews
+        set title = #{title}
+        ,rating = #{rating}
+        ,comment = #{comment}
+        ,updated_at = now()
+        where review_id = #{reviewId}
+    </update>
 
-
-
-	<!-- 삭제 요청 <delete id="delete"> delete tb_reviews where review_id = #{reviewId} 
-		</delete> -->
-
-	<!-- 수정 <update id="update"> update tb_reviews set title= #{title}, content=#{content}, 
-		writer = #{writer}, updateDate = now() where review_id = #{reviewId} </update> -->
-
-
-
-
-	<!-- <select id="selectReviewCnt" resultType="Integer"> SELECT count(*) 
-		FROM tb_reviews </select> -->
-
-	<!-- 게시글 조회 -->
-<!-- 	<select id="selectReview"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT review_id
-		,user_id
-		,rating
-		,title
-		,movie_id
-		,movie_nm
-		,poster_url
-		,comment
-		,read_cnt
-		,created_at
-		FROM tb_reviews
-		ORDER BY review_id DESC
-	</select> -->
-
+	<!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="int">
+        delete from tb_reviews
+        where review_id = #{reviewId}
+    </delete>
 </mapper>

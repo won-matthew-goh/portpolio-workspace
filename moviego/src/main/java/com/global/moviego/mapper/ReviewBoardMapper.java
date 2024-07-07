@@ -11,10 +11,16 @@ import com.global.moviego.domain.ReviewBoardVO;
 @Repository
 @Mapper
 public interface ReviewBoardMapper {
-	//mapper.xml에서 id=insert 실행
-    void insert(ReviewBoardVO vo);
+	// mapper.xml에서 id=insert 실행
+	void insert(ReviewBoardVO vo);
 
-    List<ReviewBoardVO> getBoard(PageVO vo);
+	List<ReviewBoardVO> getBoard(PageVO vo);
 
-    int getTotal(PageVO vo);
+	int getTotal(PageVO vo);
+
+	ReviewBoardVO getBoardById(int reviewId);
+
+	void updateBoard(ReviewBoardVO vo);
+	
+	void deleteBoard(int reviewId);
 }

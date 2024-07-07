@@ -12,5 +12,10 @@ public interface ReviewBoardService {
     List<ReviewBoardVO> getBoard(PageVO vo);
 
     int getTotal(PageVO vo);
+    
+    ReviewBoardVO getBoardById(int reviewId);
+
+    void updateBoard(ReviewBoardVO vo);
   
+    void deleteBoard(int reviewId);
 }

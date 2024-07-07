@@ -74,15 +74,31 @@ public class ReviewBoardController {
 	}
 
 	// 게시글 읽기 페이지
-	@GetMapping("/read")
-	public String readBoard() {
-		return "board/read";
-	}
-	
-	//게시글 수정
-	@GetMapping("/read/edit")
-	public String editBoard() {
-		return "redirect:/review/new";
-	}
-	
+    @GetMapping("/read")
+    public String readBoard(@RequestParam("reviewId") int reviewId, Model model) {
+        ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+        model.addAttribute("board", board);
+        return "board/read";
+    }
+ // 게시글 수정 페이지로 이동
+    @GetMapping("/edit")
+    public String editBoard(@RequestParam("reviewId") int reviewId, Model model) {
+        ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+        model.addAttribute("board", board);
+        return "board/new"; // 기존의 글쓰기 화면을 활용
+    }
+
+    // 게시글 수정
+    @PostMapping("/edit")
+    public String updateBoard(ReviewBoardVO vo, RedirectAttributes rttr) {
+        reviewBoardService.updateBoard(vo);
+        return "redirect:/review/read?reviewId=" + vo.getReviewId();
+    }
+
+    // 게시글 삭제
+    @PostMapping("/delete")
+    public String deleteBoard(@RequestParam("reviewId") int reviewId, RedirectAttributes rttr) {
+        reviewBoardService.deleteBoard(reviewId);
+        return "redirect:/review";
+    }
 }
