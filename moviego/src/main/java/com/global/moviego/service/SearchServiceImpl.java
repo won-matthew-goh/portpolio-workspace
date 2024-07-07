@@ -1,7 +1,6 @@
 package com.global.moviego.service;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,32 +21,27 @@ import com.global.moviego.mapper.ReviewBoardMapper;
 
 @Service
 public class SearchServiceImpl implements SearchService {
-	
+
 	// ReviewBoard 검색창
+	@Autowired
+	private ReviewBoardMapper reviewBoardMapper;
 
+	@Override
+	public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
+		String paramKeyword = (String) paramMap.get("keyword");
+		String searchOption = (String) paramMap.get("searchOption");
 
-    @Autowired
-    private ReviewBoardMapper reviewBoardMapper;
+		if (paramKeyword == null || paramKeyword.isEmpty() || searchOption == null || searchOption.equals("0")) {
+			return new HashMap<>();
+		}
+		List<ReviewBoardVO> results = reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("results", results);
 
-    @Override
-    public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
-        String paramKeyword = (String) paramMap.get("keyword");
-        String searchOption = (String) paramMap.get("searchOption");
-
-        if (paramKeyword == null || paramKeyword.isEmpty() || searchOption == null || searchOption.equals("0")) {
-            return new HashMap<>();
-        }
-
-        List<ReviewBoardVO> results = reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("results", results);
-
-        return resultMap;
-    }
-	
+		return resultMap;
+	}
 
 	// MovieList 검색창
-
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -66,34 +60,32 @@ public class SearchServiceImpl implements SearchService {
 			return Collections.emptyMap();
 		}
 	}
-	
-	  private Map<String, Object> parseSearch(String response) throws IOException {
-		    ObjectMapper objectMapper = new ObjectMapper();
-		    JsonNode rootNode = objectMapper.readTree(response);
-		    JsonNode moviesNode = rootNode.path("results");
 
-		    List<MovieListVO> movies = new ArrayList<>();
-		    for (JsonNode movieNode : moviesNode) {
-		      MovieListVO movie = new MovieListVO();
-		      movie.setId(movieNode.path("id").asInt());
-		      movie.setTitle(movieNode.path("title").asText());
-		      movie.setOverview(movieNode.path("overview").asText());
-		      movie.setPosterPath(movieNode.path("poster_path").asText());
-		      movie.setBackdropPath(movieNode.path("backdrop_path").asText());
-		      movie.setOriginalLanguage(movieNode.path("original_language").asText());
-		      movie.setReleaseDate(movieNode.path("release_date").asText());
-		      movie.setVoteAverage(movieNode.path("vote_average").asInt());
-		      movie.setVoteCount(movieNode.path("vote_count").asInt());
-		      movie.setGenreIds(objectMapper.convertValue(movieNode.path("genre_ids"), new TypeReference<List<Integer>>() {
-		      }));
-		      movies.add(movie);
-		    }
+	private Map<String, Object> parseSearch(String response) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode rootNode = objectMapper.readTree(response);
+		JsonNode moviesNode = rootNode.path("results");
 
-		    Map<String, Object> movieMap = new HashMap<>();
-		    movieMap.put("movies", movies);
-		    return movieMap;
-		  }
+		List<MovieListVO> movies = new ArrayList<>();
+		for (JsonNode movieNode : moviesNode) {
+			MovieListVO movie = new MovieListVO();
+			movie.setId(movieNode.path("id").asInt());
+			movie.setTitle(movieNode.path("title").asText());
+			movie.setOverview(movieNode.path("overview").asText());
+			movie.setPosterPath(movieNode.path("poster_path").asText());
+			movie.setBackdropPath(movieNode.path("backdrop_path").asText());
+			movie.setOriginalLanguage(movieNode.path("original_language").asText());
+			movie.setReleaseDate(movieNode.path("release_date").asText());
+			movie.setVoteAverage(movieNode.path("vote_average").asInt());
+			movie.setVoteCount(movieNode.path("vote_count").asInt());
+			movie.setGenreIds(
+					objectMapper.convertValue(movieNode.path("genre_ids"), new TypeReference<List<Integer>>() {
+					}));
+			movies.add(movie);
+		}
 
-
-
+		Map<String, Object> movieMap = new HashMap<>();
+		movieMap.put("movies", movies);
+		return movieMap;
+	}
 }

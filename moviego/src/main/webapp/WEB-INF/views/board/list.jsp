@@ -10,10 +10,10 @@
 			<div class="search">
 				<select class="search-option" name="searchOption" onchange="updatePlaceholder()">
 					<option value="0" > 선택</option>
-					<option value="title" >글제목</option>
 					<option value="movie_nm" >영화명</option>
+					<option value="title" >글제목</option>
 				</select> 
-				<input id="searchInput" name="keyword" type="text" placeholder="내용 입력" />
+				<input id="searchInput" name="keyword" type="text" placeholder="검색 옵션을 선택해주세요" />
 				<button id="searchButton" type="submit">
 					<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
 				</button>

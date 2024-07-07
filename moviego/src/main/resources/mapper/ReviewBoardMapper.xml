@@ -5,29 +5,30 @@
 <mapper namespace="com.global.moviego.mapper.ReviewBoardMapper">
 
 	<!-- 게시글 검색 -->
-  <select id="getReviewSearch" resultType="com.global.moviego.domain.ReviewBoardVO">
-        SELECT review_id,
-               user_id,
-               rating,
-               title,
-               movie_id,
-               movie_nm,
-               poster_url,
-               comment,
-               read_cnt,
-               created_at
-        FROM tb_reviews
-        WHERE 
-            <choose>
-                <when test="searchOption == 'title'">
-                    title LIKE CONCAT('%', #{keyword}, '%')
-                </when>
-                <when test="searchOption == 'movie_nm'">
-                    movie_nm LIKE CONCAT('%', #{keyword}, '%')
-                </when>
-            </choose>
-        ORDER BY created_at DESC
-    </select>
+	<select id="getReviewSearch"
+		resultType="com.global.moviego.domain.ReviewBoardVO">
+		SELECT review_id,
+		user_id,
+		rating,
+		title,
+		movie_id,
+		movie_nm,
+		poster_url,
+		comment,
+		read_cnt,
+		created_at
+		FROM tb_reviews
+		WHERE
+		<choose>
+			<when test="searchOption == 'title'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchOption == 'movie_nm'">
+				movie_nm LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+		ORDER BY created_at DESC
+	</select>
 
 	<!-- 게시글 등록 -->
 	<insert id="insert">
@@ -57,19 +58,19 @@
 		,comment
 		,read_cnt
 		,created_at
-		
+
 		from tb_reviews
 		order by review_id desc
 		limit 1,10
 		<!-- #{pageCnt} -->
 	</select>
-	
+
 	<!-- 게시판 페이징 -->
 	<select id="getTotal" resultType="Integer">
 		SELECT COUNT(*)
 		FROM tb_reviews
 	</select>
-	
+
 
 
 
@@ -87,20 +88,8 @@
 		FROM tb_reviews </select> -->
 
 	<!-- 게시글 조회 -->
-<!-- 	<select id="selectReview"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT review_id
-		,user_id
-		,rating
-		,title
-		,movie_id
-		,movie_nm
-		,poster_url
-		,comment
-		,read_cnt
-		,created_at
-		FROM tb_reviews
-		ORDER BY review_id DESC
-	</select> -->
+	<!-- <select id="selectReview" resultType="com.global.moviego.domain.ReviewBoardVO"> 
+		SELECT review_id ,user_id ,rating ,title ,movie_id ,movie_nm ,poster_url 
+		,comment ,read_cnt ,created_at FROM tb_reviews ORDER BY review_id DESC </select> -->
 
 </mapper>

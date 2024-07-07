@@ -1,6 +1,5 @@
 package com.global.moviego.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.global.moviego.domain.PageCreate;
@@ -27,29 +24,29 @@ import com.global.moviego.service.SearchServiceImpl;
 public class ReviewBoardController {
 	@Autowired
 	ReviewBoardServiceImpl reviewBoardService;
-	
+
 	@Autowired
 	SearchServiceImpl searchService;
 
+	// 검색 요청 처리
+	@GetMapping("/search")
+	public String search(@RequestParam Map<String, Object> paramMap, Model model) {
+		Map<String, Object> searchResult = searchService.getReviewSearch(paramMap);
+		model.addAttribute("list", searchResult.get("results"));
+		model.addAttribute("pageMaker", new PageCreate());
+		return "board/list";
+	}
 
-    // 검색 요청 처리
-    @GetMapping("/search")
-    public String search(@RequestParam Map<String, Object> paramMap, Model model) {
-        Map<String, Object> searchResult = searchService.getReviewSearch(paramMap);
-        model.addAttribute("list", searchResult.get("results"));
-        model.addAttribute("pageMaker", new PageCreate());
-        return "board/list";
-    }
-	
 	// 게시글 리스트 출력 및 10개씩 페이징
 	@GetMapping("")
 	public String reviewList(Model model, PageVO vo) {
 		// 페이지 수 만큼 10개씩 노출
 		List<ReviewBoardVO> pageList = reviewBoardService.getFreeBoard();
 		model.addAttribute("list", pageList);
-		//jsp에 pageCreate PageVo, articleTotalCount, endPage, beginPage, prev, next 정보 전송
+		// jsp에 pageCreate PageVo, articleTotalCount, endPage, beginPage, prev, next 정보
+		// 전송
 		model.addAttribute("pageMaker", new PageCreate());
-		
+
 		return "board/list";
 	}
 
@@ -71,14 +68,6 @@ public class ReviewBoardController {
 		return "board/read";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 //페이징 기존 작성 코드(보류)	
 //	@GetMapping("")
 //	public String reviewList(Model model, PageVO vo) {
@@ -110,5 +99,5 @@ public class ReviewBoardController {
 //		}
 //
 //		getPageLength.put("pages", pageNumbers);
-	
+
 }
