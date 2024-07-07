@@ -28,5 +28,10 @@
                 )
 
   </insert>
+  
+  <!-- 로그인 -->
+  <select id="findByUsername" resultType="com.global.moviego.domain.UserVO">
+        SELECT * FROM tb_users WHERE username = #{username}
+  </select>
 
 </mapper>

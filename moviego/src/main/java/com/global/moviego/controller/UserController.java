@@ -23,11 +23,6 @@ public class UserController {
   @Autowired
   private JoinService joinService;
 
-  @GetMapping("/login")
-  public String forwardLogin() {
-    return "user/login";
-  }
-
   @GetMapping("/join")
   public String forwardJoin(Model model) {
     model.addAttribute("userVO", new UserVO());

@@ -10,10 +10,12 @@ import com.global.moviego.domain.UserVO;
 @Mapper
 public interface UserMapper {
   
-  int checkUsernameExists( String username);
+  int checkUsernameExists(String username);
   
   int checkEmailExists(String email);
   
   void insertMemberJoin(UserVO user);
+  
+  UserVO findByUsername(String username);
   
 }
