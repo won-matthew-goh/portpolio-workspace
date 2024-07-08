@@ -54,7 +54,7 @@ public class SecurityConfig {
                 // ADMIN 역할을 가진 사용자만 접근 가능한 경로 설정
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 // ADMIN 또는 USER 역할을 가진 사용자만 접근 가능한 경로 설정
-                .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")
+                .requestMatchers("/mypage").hasAnyRole("ADMIN", "USER")
                 // 그 외 모든 요청은 인증된 사용자만 접근 가능
                 .anyRequest().authenticated()
             );
@@ -74,9 +74,10 @@ public class SecurityConfig {
           )
           // 로그아웃 설정
           .logout(logout -> logout
-                // 로그아웃 성공 시 리다이렉트 경로
-                .logoutSuccessUrl("/login?logout")
-                .permitAll()
+              .logoutUrl("/logout")
+              .logoutSuccessUrl("/")
+              .invalidateHttpSession(true)
+              .deleteCookies("JSESSIONID")
           )
           .userDetailsService(userDetailsService);
     

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -38,8 +40,20 @@
         <a href="/review" class="nav-bt">모든 리뷰 목록</a>
         <h1 class="nav-h1">|</h1>
         <a href="/boxoffice" class="nav-bt">박스오피스</a>
-        <a href="/login" class="nav-bt bt-black">로그인</a>
-        <a href="/user/join" class="nav-bt bt-black">회원가입</a>
+        
+        <sec:authorize access="isAuthenticated()">
+            <a href="/mypage" class="nav-bt bt-black">마이페이지</a>
+            <form action="/logout" method="post" style="display: inline;">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <button type="submit" class="nav-bt bt-black">로그아웃</button>
+            </form>
+        </sec:authorize>
+        
+        <sec:authorize access="!isAuthenticated()">
+            <a href="/login" class="nav-bt bt-black">로그인</a>
+            <a href="/user/join" class="nav-bt bt-black">회원가입</a>
+        </sec:authorize>
+        
         <div class="lang-wp">
           <a href="#" class="nav-bt globeicon"><i class="fa-solid fa-earth-americas"></i></a>
           <div class="langs">
