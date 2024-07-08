@@ -9,6 +9,6 @@
 </body>
 <script>
   alert('회원 가입을 환영합니다!');
-  setTimeout(function() {location.href='/';}, 5000);
+  setTimeout(function() {location.href='/login';}, 5000);
 </script>
 </html>
