@@ -26,11 +26,13 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/logout", "/user/**", "/movieList/**", "/boxoffice/**", "/review", "/css/**", "/js/**", "/images/**", "/WEB-INF/views/**", "/webfonts/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/mypage").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
-                .loginProcessingUrl("/login")  // 이 줄을 추가
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/", true)
                 .permitAll()
             )
@@ -38,7 +40,8 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
                 .permitAll()
             )
-            .userDetailsService(userDetailsService);
+            .userDetailsService(userDetailsService)
+            .csrf((auth) -> auth.disable());
 
         return http.build();
     }

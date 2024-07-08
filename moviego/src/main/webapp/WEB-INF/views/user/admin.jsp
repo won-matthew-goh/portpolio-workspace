@@ -22,7 +22,7 @@
 <body>
 <div class="container">
     <h2 class="mt-4 mb-4">Admin Dashboard</h2>
-    
+    <a href="/" class="btn btn-dark btn-sm mb-2" style="display=inline;">Main Home</a>
     <!-- 회원 등록 폼 -->
     <div class="card mb-4">
         <h5 class="card-header">회원 등록</h5>

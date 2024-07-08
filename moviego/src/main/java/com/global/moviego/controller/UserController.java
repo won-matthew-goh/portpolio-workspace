@@ -25,7 +25,7 @@ public class UserController {
 
   @Autowired
   private JoinService joinService;
-  
+
   @Autowired
   private MessageSource messageSource;
 
@@ -35,21 +35,37 @@ public class UserController {
     return "user/join";
   }
 
+//  @PostMapping("/joinProc")
+//  public String joinProc(@ModelAttribute @Valid UserVO userVO, BindingResult bindingResult, Model model, Locale locale) {
+//      if (bindingResult.hasErrors()) {
+//          System.out.println(bindingResult.getFieldError());
+//          model.addAttribute("errors", bindingResult.getAllErrors());
+//          return "user/join";
+//      }
+//      try {
+//          joinService.joinProcess(userVO);
+//          return "user/joinSuccess";
+//      } catch (DuplicateException e) {
+//          System.out.println(e.getMessage());
+//          model.addAttribute("error", messageSource.getMessage(e.getMessage(), null, locale));
+//          return "user/join";
+//      }
+//  }
+
   @PostMapping("/joinProc")
   public String joinProc(@ModelAttribute @Valid UserVO userVO, BindingResult bindingResult, Model model, Locale locale) {
-      if (bindingResult.hasErrors()) {
-          System.out.println(bindingResult.getFieldError());
-          model.addAttribute("errors", bindingResult.getAllErrors());
-          return "user/join";
-      }
-      try {
-          joinService.joinProcess(userVO);
-          return "user/joinSuccess";
-      } catch (DuplicateException e) {
-          System.out.println(e.getMessage());
-          model.addAttribute("error", messageSource.getMessage(e.getMessage(), null, locale));
-          return "user/join";
-      }
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("errors", bindingResult.getAllErrors());
+      return "user/join";
+    }
+
+    try {
+      joinService.joinProcess(userVO);
+      return "user/joinSuccess";
+    } catch (DuplicateException e) {
+      model.addAttribute("error", messageSource.getMessage(e.getMessage(), null, locale));
+      return "user/join";
+    }
   }
-  
+
 }
