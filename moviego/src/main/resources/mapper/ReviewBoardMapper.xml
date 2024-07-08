@@ -45,33 +45,6 @@
 		</choose>
 	</select>
 
-
-	<!-- 게시글 검색 -->
-	<select id="getReviewSearch"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT review_id,
-		user_id,
-		rating,
-		title,
-		movie_id,
-		movie_nm,
-		poster_url,
-		comment,
-		read_cnt,
-		created_at
-		FROM tb_reviews
-		WHERE
-		<choose>
-			<when test="searchOption == 'title'">
-				title LIKE CONCAT('%', #{keyword}, '%')
-			</when>
-			<when test="searchOption == 'movie_nm'">
-				movie_nm LIKE CONCAT('%', #{keyword}, '%')
-			</when>
-		</choose>
-		ORDER BY created_at DESC
-	</select>
-
 	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into tb_reviews (

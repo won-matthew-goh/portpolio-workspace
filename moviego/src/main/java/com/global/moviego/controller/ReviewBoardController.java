@@ -124,3 +124,4 @@ public class ReviewBoardController {
 		reviewBoardService.deleteBoard(reviewId);
 		return "redirect:/review";
 	}
+}

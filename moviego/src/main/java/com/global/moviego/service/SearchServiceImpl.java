@@ -99,8 +99,4 @@ public class SearchServiceImpl implements SearchService {
 		return movieMap;
 	}
 
-		Map<String, Object> movieMap = new HashMap<>();
-		movieMap.put("movies", movies);
-		return movieMap;
-	}
 }
