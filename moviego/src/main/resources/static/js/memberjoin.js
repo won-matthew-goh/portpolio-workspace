@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const errorMsg = '${error}';
     const noticeUsername = document.querySelector('.alert-duplicate-username');
     const noticeEmail = document.querySelector('.alert-duplicate-email');
     const noticePassword = document.querySelector('.alert-psswd-txt');
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pwValiInput = document.querySelector('.pw-vali-input');
     const btSubmit = document.querySelector('.bt-submit');
 
-    if (errorMsg && errorMsg !== '') {
+    if (errorMsg.length > 1) {
         if (errorMsg.includes('username')) {
             noticeUsername.style.display = 'inline-block';
         }

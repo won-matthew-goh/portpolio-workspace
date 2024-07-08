@@ -17,10 +17,7 @@ public class UserVO {
 
   @NotBlank(message = "비밀번호는 필수 입력 사항입니다.")
   @Size(min = 8, max = 12, message = "비밀번호는 8자 이상 12자 이하로 입력해주세요.")
-  @Pattern(
-      regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&+=/]).{8,12}$",
-      message = "비밀번호는 영문 대소문자, 숫자, 특수문자(!@#$%^&+=/)를 포함해야 하며 8자 이상 12자 이하로 입력해주세요."
-  )
+  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&+=/]).{8,12}$", message = "비밀번호는 영문 대소문자, 숫자, 특수문자(!@#$%^&+=/)를 포함해야 하며 8자 이상 12자 이하로 입력해주세요.")
   private String passwd;
 
   @NotBlank(message = "이메일은 필수 입력 사항입니다.")
@@ -117,6 +114,10 @@ public class UserVO {
 
   public int getGradeValue() {
     return grade != null ? grade.getValue() : UserGrade.REGULAR.getValue();
+  }
+
+  public void setGradeValue(int value) {
+    this.grade = UserGrade.fromValue(value);
   }
 
 }

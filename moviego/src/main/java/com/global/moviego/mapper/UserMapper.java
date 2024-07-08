@@ -2,6 +2,7 @@ package com.global.moviego.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.stereotype.Repository;
 
 import com.global.moviego.domain.UserVO;

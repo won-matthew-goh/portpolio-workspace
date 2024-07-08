@@ -12,8 +12,11 @@
                 <p class="notice-txt" style="color: red;">* ${error.defaultMessage}</p>
             </c:forEach>
             <p class="notice-txt alert-invaild-username" style="display: none;">유저명은 영문 소문자와 숫자만 사용하실 수 있습니다.</p>
+            <p class="notice-txt alert-duplicate-username" style="display: none;">* ${error}</p>
+            <p class="notice">* 4자 이상 8자 이하의 영소문자, 숫자로만 입력해주세요.</p>
             <input class="usernm-input" type="text" name="username" placeholder="유저명" />
             <p class="notice-txt alert-psswd-txt" style="display: none;">* 비밀번호가 일치하지 않습니다.</p>
+            <p class="notice">* 8자 이상 12자 이하로 영소문자, 대문자, 숫자, 특수기호(!@#$%^&+=/)를 전부 1자 이상 포함해야 합니다.</p>
             <input class="pw-input" type="password" name="passwd" placeholder="비밀번호" />
             <input class="pw-vali-input" type="password" name="password_vali" placeholder="비밀번호 확인" />
             <p class="notice-txt alert-duplicate-email" style="display: none;">* ${error}</p>

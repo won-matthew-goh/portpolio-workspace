@@ -20,6 +20,6 @@ public enum UserGrade {
                 return grade;
             }
         }
-        throw new IllegalArgumentException("Unknown value: " + value);
+        throw new IllegalArgumentException("Unknown UserGrade value: " + value);
     }
 }

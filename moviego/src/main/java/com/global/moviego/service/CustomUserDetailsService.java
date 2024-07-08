@@ -28,8 +28,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserVO user = userMapper.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("Username이 존재하지 않습니다. :  " + username);
+            throw new UsernameNotFoundException("Username이 존재하지 않습니다. : " + username);
         }
+        System.out.println("Loaded user: " + user.getUsername() + ", Password: " + user.getPasswd());
         return new CustomUserDetails(user);
     }
 }
