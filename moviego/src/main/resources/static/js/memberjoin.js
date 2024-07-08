@@ -1,4 +1,4 @@
-/*
+
 document.addEventListener('DOMContentLoaded', () => {
     const noticeUsername = document.querySelector('.alert-duplicate-username');
     const noticeEmail = document.querySelector('.alert-duplicate-email');
@@ -29,9 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pwInput.addEventListener('input', validatePasswords);
     pwValiInput.addEventListener('input', validatePasswords);
 });
- */
 
-
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const noticeUsername = document.querySelector('.alert-duplicate-username');
     const noticeEmail = document.querySelector('.alert-duplicate-email');
@@ -67,3 +66,4 @@ document.addEventListener('DOMContentLoaded', () => {
     pwInput.addEventListener('input', validatePasswords);
     pwValiInput.addEventListener('input', validatePasswords);
 });
+*/

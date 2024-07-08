@@ -65,8 +65,16 @@ public class UserController {
       return "user/joinSuccess";
     } catch (DuplicateException e) {
       // 예외 메시지 코드를 가져와서 메시지 소스에서 가져오기
-      String errorMessage = messageSource.getMessage("error.duplicate.username", new Object[] { userVO.getUsername() },
-          locale);
+      System.out.println(e.getMessage());
+      String errorMessage = "";
+      if(e.getMessage().contains("username") || e.getMessage().contains("ユーザー名")) {
+        errorMessage = messageSource.getMessage("error.duplicate.username", new Object[] { userVO.getUsername() },
+            locale);
+      }
+      if(e.getMessage().contains("email") || e.getMessage().contains("メール")) {
+        errorMessage = messageSource.getMessage("error.duplicate.email", new Object[] { userVO.getUsername() },
+            locale);
+      }
       model.addAttribute("error", errorMessage);
       return "user/join";
     }
