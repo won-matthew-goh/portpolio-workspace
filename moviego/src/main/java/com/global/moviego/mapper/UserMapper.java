@@ -13,17 +13,29 @@ import com.global.moviego.domain.UserVO;
 @Mapper
 public interface UserMapper {
   
+  // 회원 가입 시 username 중복 체크
   int checkUsernameExists(String username);
   
+  // email 중복 체크
   int checkEmailExists(String email);
   
+  // 회원 가입
   void insertMemberJoin(UserVO user);
   
+  // 사용자 조회
   UserVO findByUsername(String username);
-
-  //@Select("SELECT * FROM users")
+  
+  // 관리자 페이지에서 모든 사용자 조회
   List<UserVO> getAllUsers();
-
- // @Delete("DELETE FROM users WHERE userId = #{userId}")
+  
+//  void updateUser(UserVO user);
+  
+  // 사용자 삭제
   void deleteUser(Long userId);
+  
+  // email 수정
+  void updateEmail(@Param("userId") Long userId, @Param("email") String email);
+  
+  // 비밀번호 초기화 및 재발급
+  void updatePassword(@Param("userId") Long userId, @Param("password") String password);
 }

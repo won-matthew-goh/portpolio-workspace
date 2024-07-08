@@ -30,4 +30,10 @@ public interface ReviewBoardService {
     //조회수 추가
 //    void incrementReadCount(int reviewId);
 //    
+    
+    // ---- 관리자페이지 관련 추상화 ----
+    List<ReviewBoardVO> getReportedReviews();
+    
+    void deleteReview(int reviewId);
+    
 }

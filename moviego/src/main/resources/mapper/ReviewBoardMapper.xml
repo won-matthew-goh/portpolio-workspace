@@ -151,13 +151,26 @@
 	</update> -->
 	
 	<!-- 관리자 페이지 -->
-	 <select id="getAllReviews" resultType="com.global.moviego.domain.ReviewBoardVO">
-        SELECT *
-        FROM tb_reviews
+	 <!-- 신고 받은 리뷰 조회 -->
+    <select id="getReportedReviews" resultType="com.global.moviego.domain.ReviewBoardVO">
+        SELECT r.review_id, r.user_id, r.title, r.rating, r.comment, r.read_cnt, r.report_cnt, r.movie_id, 
+               r.movie_nm, r.created_at, u.username
+        FROM tb_reviews r
+        JOIN tb_users u ON r.user_id = u.user_id
+        WHERE r.report_cnt > 0
     </select>
 
+    <!-- 리뷰의 신고 횟수 증가 
+    <update id="increaseReportCount">
+        UPDATE tb_reviews
+        SET report_cnt = report_cnt + 1
+        WHERE review_id = #{reviewId}
+    </update>
+    -->
+
+    <!-- 리뷰 삭제 -->
     <delete id="deleteReview">
         DELETE FROM tb_reviews
-        WHERE reviewId = #{reviewId}
+        WHERE review_id = #{reviewId}
     </delete>
 </mapper>
