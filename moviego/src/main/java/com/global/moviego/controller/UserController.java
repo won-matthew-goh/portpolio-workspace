@@ -53,7 +53,8 @@ public class UserController {
 //  }
 
   @PostMapping("/joinProc")
-  public String joinProc(@ModelAttribute @Valid UserVO userVO, BindingResult bindingResult, Model model, Locale locale) {
+  public String joinProc(@ModelAttribute @Valid UserVO userVO, BindingResult bindingResult, Model model,
+      Locale locale) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("errors", bindingResult.getAllErrors());
       return "user/join";
@@ -63,7 +64,10 @@ public class UserController {
       joinService.joinProcess(userVO);
       return "user/joinSuccess";
     } catch (DuplicateException e) {
-      model.addAttribute("error", messageSource.getMessage(e.getMessage(), null, locale));
+      // 예외 메시지 코드를 가져와서 메시지 소스에서 가져오기
+      String errorMessage = messageSource.getMessage("error.duplicate.username", new Object[] { userVO.getUsername() },
+          locale);
+      model.addAttribute("error", errorMessage);
       return "user/join";
     }
   }
