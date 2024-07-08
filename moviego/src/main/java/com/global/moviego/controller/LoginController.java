@@ -1,6 +1,7 @@
 package com.global.moviego.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class LoginController {
    * @return 로그인 페이지의 뷰 이름
    */
   @GetMapping("/login")
-  public String loginForm(Model model) {
+  public String loginForm(Model model, Locale locale) {
     model.addAttribute("loginVO", new LoginVO());
     return "user/login";
   }

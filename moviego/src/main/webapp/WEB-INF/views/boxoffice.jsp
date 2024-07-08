@@ -8,11 +8,11 @@
         <table class="rank-table">
           <thead>
             <tr>
-              <th scope="col">순위</th>
-              <th scope="col">영화명</th>
-              <th scope="col">개봉일</th>
-              <th scope="col">주간 관객수</th>
-              <th scope="col">누적 관객수</th>
+              <th scope="col"><spring:message code="boxoffice.col.rank"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.movieNm"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.release"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.audiWeek"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.audiAll"/></th>
             </tr>
           </thead>
           <tbody>

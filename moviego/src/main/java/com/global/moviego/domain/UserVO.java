@@ -2,26 +2,29 @@ package com.global.moviego.domain;
 
 import java.time.LocalDateTime;
 
+import org.springframework.context.annotation.PropertySource;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@PropertySource("classpath:messages")
 public class UserVO {
   private Long userId;
-  @NotBlank(message = "유저명은 필수 입력 사항입니다.")
-  @Size(min = 4, max = 10, message = "유저명은 4자 이상 10자 이하로 입력해주세요.")
-  @Pattern(regexp = "^[a-z0-9]*$", message = "유저명은 영문 소문자와 숫자만 사용할 수 있습니다.")
+  @NotBlank(message = "{username.notblank}")
+  @Size(min = 4, max = 10, message = "{username.size}")
+  @Pattern(regexp = "^[a-z0-9]*$", message = "{username.pattern}")
   private String username;
 
-  @NotBlank(message = "비밀번호는 필수 입력 사항입니다.")
-  @Size(min = 8, max = 12, message = "비밀번호는 8자 이상 12자 이하로 입력해주세요.")
-  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&+=/]).{8,12}$", message = "비밀번호는 영문 대소문자, 숫자, 특수문자(!@#$%^&+=/)를 포함해야 하며 8자 이상 12자 이하로 입력해주세요.")
+  @NotBlank(message = "{password.notblank}")
+  @Size(min = 8, max = 12, message = "{password.size}")
+  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&+=/]).{8,12}$", message = "{password.pattern}")
   private String passwd;
 
-  @NotBlank(message = "이메일은 필수 입력 사항입니다.")
-  @Email(message = "유효한 이메일 주소를 입력해주세요.")
+  @NotBlank(message = "{email.notblank}")
+  @Email(message = "{email.valid}")
   private String email;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
