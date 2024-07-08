@@ -45,9 +45,14 @@ public class MovieListController {
 
 	@GetMapping("/movieList/search")
 	public @ResponseBody Map<String, Object> searchAjax(@RequestParam Map<String, Object> paramMap, HttpServletRequest request) {
-		System.out.println(searchService.getMovieSearch(paramMap, request));
-		return searchService.getMovieSearch(paramMap, request);
-
+	    try {
+	        return searchService.getMovieSearch(paramMap, request);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        Map<String, Object> errorResponse = new HashMap<>();
+	        errorResponse.put("error", "An error occurred during the search");
+	        return errorResponse;
+	    }
 	}
 	
 	@GetMapping("/movieList/messages")
