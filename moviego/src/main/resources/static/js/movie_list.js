@@ -4,6 +4,22 @@ AOS.init({ duration: 1200 });
 const modalwrap = document.querySelector('.modal-wrap');
 const modalBg = document.querySelector('.modal-bg');
 
+let messages = {};
+let genres = {};
+let countries = {};
+
+// 페이지 로드 시 필요한 데이터 가져오기
+Promise.all([
+    fetch('/movieList/messages').then(response => response.json()),
+    fetch('/movieList/genres').then(response => response.json()),
+    fetch('/movieList/countries').then(response => response.json())
+])
+.then(([messagesData, genresData, countriesData]) => {
+    messages = messagesData;
+    genres = genresData;
+    countries = countriesData;
+});
+
 function openModal(movieElement) {
   // data-movie 속성에서 JSON 문자열을 가져와서 객체로 변환
   const movieDataString = decodeURIComponent(movieElement.getAttribute('data-movie'));
@@ -13,49 +29,57 @@ function openModal(movieElement) {
   const genreText = genreKr(movieData.genreIds).join(', ');
 
   const modalContent = `
+    <div class="btn">
+      <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
+    </div>
+    <div class="movie-name">${movieData.title}</div>
+    <div class="modal-wp">
+      <div class="modal-poster">
+        <img src="https://image.tmdb.org/t/p/w200${movieData.posterPath}" />
+      </div>
+      <div class="modal-info">
+        <div id="release-date">
+          <div class="title">${messages.releaseDate}</div>
+          <div class="content">${movieData.releaseDate}</div>
+        </div>
+        <div id="nation">
+          <div class="title">${messages.country}</div>
+          <div class="content">${translateNation(movieData.originalLanguage)}</div>
+        </div>
+        <div id="genre">
+          <div class="title">${messages.genre}</div>
+          <div class="content">${genreText}</div>
+        </div>
+        <div id="grade">
+          <div class="title">${messages.rating}</div>
+          <div class="content">${movieData.voteAverage}</div>
+        </div>
+        <div id="Evaluation">
+          <div class="title">${messages.voteCount}</div>
+          <div class="content">${movieData.voteCount}</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-box">
+      <p class="content">${checkOverview(movieData.overview)}</p>
       <div class="btn">
-        <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
+        <button class="btn btn-light" onclick="writeReview('${movieData.title}', '${movieData.id}', '${movieData.posterPath}')">${messages.reviewRegister}</button>
+        <button class="close-btn" onclick="closeModal()">${messages.modalClose}</button>
       </div>
-      <div class="movie-name">${movieData.title}</div>
-      <div class="modal-wp">
-        <div class="modal-poster">
-          <img src="https://image.tmdb.org/t/p/w200${movieData.posterPath}" />
-        </div>
-        <div class="modal-info">
-          <div id="release-date">
-            <div class="title">개봉연도</div>
-            <div class="content">${movieData.releaseDate}</div>
-          </div>
-          <div id="nation">
-            <div class="title">국가</div>
-            <div class="content">${translateNation(movieData.originalLanguage)}</div>
-          </div>
-          <div id="genre">
-            <div class="title">장르</div>
-            <div class="content">${genreText}</div>
-          </div>
-          <div id="grade">
-            <div class="title">평점</div>
-            <div class="content">${movieData.voteAverage}</div>
-          </div>
-          <div id="Evaluation">
-            <div class="title">총 투표수</div>
-            <div class="content">${movieData.voteCount}</div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-box">
-        <p class="content">${checkOverview(movieData.overview)}</p>
-        <div class="btn">
-          <button class="btn btn-light" onclick="writeReview('${movieData.title}', '${movieData.id}', '${movieData.posterPath}')">리뷰 등록</button>
-          <button class="close-btn" onclick="closeModal()">닫기</button>
-        </div>
-      </div>
-    `;
+    </div>
+  `;
 
   modalwrap.innerHTML = modalContent;
   modalwrap.style.display = 'block';
   modalBg.style.display = 'block';
+}
+
+function checkOverview(overview) {
+  if (overview == '' || overview == null) {
+    return messages.overviewNotProvided;
+  } else {
+    return overview;
+  }
 }
 
 function writeReview(title, id, posterPath) {

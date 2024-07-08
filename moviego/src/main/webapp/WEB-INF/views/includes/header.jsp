@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:formatDate value="${date}" type="date" dateStyle="full"/>
+<fmt:formatNumber value="${number}" type="currency"/>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -35,31 +39,31 @@
         <a class="logo" href="/">Movie Go</a>
       </div>
       <div class="navi-wrap">
-        <a href="/movieList" class="nav-bt">리뷰 영화 찾기</a>
+        <a href="/movieList" class="nav-bt"><spring:message code="nav.findMovie"/></a>
         <h1 class="nav-h1">|</h1>
-        <a href="/review" class="nav-bt">모든 리뷰 목록</a>
+        <a href="/review" class="nav-bt"><spring:message code="nav.allReviews"/></a>
         <h1 class="nav-h1">|</h1>
-        <a href="/boxoffice" class="nav-bt">박스오피스</a>
+        <a href="/boxoffice" class="nav-bt"><spring:message code="nav.boxOffice"/></a>
         
         <sec:authorize access="isAuthenticated()">
-            <a href="/mypage" class="nav-bt bt-black">마이페이지</a>
+            <a href="/mypage" class="nav-bt bt-black"><spring:message code="nav.myPage"/></a>
             <form action="/logout" method="post" style="display: inline;">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <button type="submit" class="nav-bt bt-black">로그아웃</button>
+                <button type="submit" class="nav-bt bt-black"><spring:message code="nav.logout"/></button>
             </form>
         </sec:authorize>
         
         <sec:authorize access="!isAuthenticated()">
-            <a href="/login" class="nav-bt bt-black">로그인</a>
-            <a href="/user/join" class="nav-bt bt-black">회원가입</a>
+            <a href="/login" class="nav-bt bt-black"><spring:message code="nav.login"/></a>
+            <a href="/user/join" class="nav-bt bt-black"><spring:message code="nav.signup"/></a>
         </sec:authorize>
         
         <div class="lang-wp">
           <a href="#" class="nav-bt globeicon"><i class="fa-solid fa-earth-americas"></i></a>
           <div class="langs">
-            <a href="#">한국어</a>
-            <a href="#">English</a>
-            <a href="#">日本語</a>
+            <a href="?lang=ko">한국어</a>
+            <a href="?lang=en">English</a>
+            <a href="?lang=ja">日本語</a>
           </div>
         </div>
       </div>

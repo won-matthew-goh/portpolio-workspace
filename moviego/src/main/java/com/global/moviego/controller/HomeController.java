@@ -14,6 +14,8 @@ import com.global.moviego.domain.MovieUpcommingVO;
 import com.global.moviego.service.HomeServiceImpl;
 import com.global.moviego.service.MovieListServiceImpl;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class HomeController {
 
@@ -21,15 +23,9 @@ public class HomeController {
   HomeServiceImpl homeService;
 
   @GetMapping("/")
-  public String home(Model model) {
-
-    List<MovieUpcommingVO> movies = new ArrayList<MovieUpcommingVO>();
-    movies = homeService.movieUpcommingList();
-//    
-//    for(int i = 0; i < movies.size(); i++) {
-//      System.out.println(movies.get(i).getBackdropPath());
-//    }
-//    
+  public String home(Model model, HttpServletRequest request) {
+    
+    List<MovieUpcommingVO> movies = homeService.movieUpcommingList(request);
     model.addAttribute("movies", movies);
     return "index";
   }

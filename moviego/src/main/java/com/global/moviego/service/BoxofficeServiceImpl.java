@@ -3,28 +3,37 @@ package com.global.moviego.service;
 import com.global.moviego.domain.BoxofficeVO;
 import com.global.moviego.util.DateCalc;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.LocaleResolver;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class BoxofficeServiceImpl implements BoxofficeService {
 
     @Autowired
     private RestTemplate restTemplate;
+    
+    @Autowired
+    private LocaleResolver localeResolver;
 
     @Value("${api.boxoffice.url}")
     private String apiUrl;
 
     @Override
-    public List<BoxofficeVO> getWeeklyBoxOffice() {
+    public List<BoxofficeVO> getWeeklyBoxOffice(HttpServletRequest request) {
+      Locale locale = localeResolver.resolveLocale(request);
         try {
             
             String response = restTemplate.getForObject(apiUrl + DateCalc.getLastWeek(), String.class);

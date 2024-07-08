@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.global.moviego.domain.BoxofficeVO;
 import com.global.moviego.service.BoxofficeServiceImpl;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 //@RequestMapping("/boxoffice")
 public class BoxofficeController {
@@ -20,8 +22,8 @@ public class BoxofficeController {
   BoxofficeServiceImpl boxofficeService;
 
   @GetMapping("/boxoffice")
-  public String boxoffice(Model model) {
-    List<BoxofficeVO> movies = boxofficeService.getWeeklyBoxOffice();
+  public String boxoffice(Model model, HttpServletRequest request) {
+    List<BoxofficeVO> movies = boxofficeService.getWeeklyBoxOffice(request);
     model.addAttribute("movies", movies);
     return "boxoffice";
   }
