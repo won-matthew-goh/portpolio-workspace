@@ -42,16 +42,20 @@
 
 .content-wrapper .content-wrap .content .txt {
   margin: 1.5% 0;
+  display: flex;
+  gap: 1%;
+}
+
+.content-wrapper .content-wrap .content .listcolumn {
+  width: 14%
 }
 
 .content-wrapper .content-wrap .content .txtspan {
-  margin-left: 20px;
 }
 
 .content-wrapper .content-wrap .content .movienm-input, .title-input {
   width: 50%;
   line-height: 200%;
-  margin-left: 40px;
   padding-left: 0.3em;
 }
 
@@ -63,7 +67,7 @@
 .content-wrapper .content-wrap .content textarea {
   width: 80%;
   height: 300px;
-  margin: 0 0 1% 40px;
+  margin: 0 0 1% 0;
   resize: none;
   padding: 1em 0.3em;
 }
@@ -81,7 +85,6 @@
 .content-wrapper .content-wrap .content .rating {
   width: 200px;
   display: flex;
-  margin-left: 50px;
 }
 
 .content-wrapper .content-wrap .content .rating-input {
