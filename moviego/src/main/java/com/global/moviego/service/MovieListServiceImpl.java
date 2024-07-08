@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -14,17 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.LocaleResolver;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.global.moviego.domain.MovieListVO;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class MovieListServiceImpl implements MovieListService {
 
   @Autowired
   private RestTemplate restTemplate;
+  
+  @Autowired
+  private LocaleResolver localeResolver;
 
   @Value("${movielist.tmdb.url}")
   private String apiUrl;
@@ -33,11 +40,14 @@ public class MovieListServiceImpl implements MovieListService {
   private String searchApiUrl;
 
   @Override
-  public Map<String, List<MovieListVO>> getMovieList(Map<String, Object> paramMap) {
+  public Map<String, List<MovieListVO>> getMovieList(Map<String, Object> paramMap, HttpServletRequest request) {
     String pageCnt = (String) paramMap.getOrDefault("pageCnt", "1");
+    Locale locale = localeResolver.resolveLocale(request);
+    String languageCode = locale.getLanguage();
+    String url = apiUrl + pageCnt + "&language=" + languageCode;
 
     try {
-      String response = restTemplate.getForObject(apiUrl + pageCnt, String.class);
+      String response = restTemplate.getForObject(url, String.class);
       return parseMovieList(response);
     } catch (Exception e) {
       e.printStackTrace();

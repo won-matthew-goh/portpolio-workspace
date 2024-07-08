@@ -5,47 +5,12 @@
 	  <div class="content-wrapper">
       <div class="content-wrap" id="content-wrap">
       <div class="search">
-     <!-- <form class="search" id="search" method="get" action="/movieList/search"> -->
-          <input id="searchInput" type="text" placeholder="영화 입력 " name="query" />
+          <input id="searchInput" type="text" placeholder="<spring:message code='movie.search.placeholder'/>" name="query" />
           <button id="searchButton" type="submit">
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
           </button>
-<!--         </form> -->
       </div>
         <div class="box">
-<%--         <c:forEach var="movie" items="${movies}">
-          <div class="movie" data-aos="flip-up">
-            <img
-              src="https://image.tmdb.org/t/p/w200${movie.posterPath}"
-              width="225" height="337.5"
-            />
-            <div class="movie-id">${movie.id}</div>
-            <div class="movie-name">${movie.title}</div>
-            <div class="release-date">${movie.releaseDate}</div>
-            <div class="nation">
-            <c:choose>
-               <c:when test="${movie.originalLanguage eq 'en'}">
-                미국
-               </c:when>
-               <c:when test="${movie.originalLanguage eq 'ko'}">
-                한국
-               </c:when>
-               <c:when test="${movie.originalLanguage eq 'fr'}">
-               프랑스
-               </c:when>
-               <c:when test="${movie.originalLanguage eq 'bn'}">
-               브루나이
-               </c:when>
-               <c:when test="${movie.originalLanguage eq 'pl'}">
-               폴란드
-               </c:when>
-               <c:otherwise>
-                미상
-               </c:otherwise>
-            </c:choose>
-            </div>
-          </div>
-        </c:forEach> --%>
         </div>
       </div>
     </div>

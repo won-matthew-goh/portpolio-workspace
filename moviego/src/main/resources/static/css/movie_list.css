@@ -183,7 +183,10 @@
 }
 
 .modal-wrap .modal-wp .modal-info > div .title {
-  width: 35%;
+  width: 30%;
+}
+.modal-wrap .modal-wp .modal-info > div .content {
+  width: 70%;
 }
 
 .modal-wrap .modal-box {
