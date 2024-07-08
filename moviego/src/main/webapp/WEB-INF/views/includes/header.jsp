@@ -50,7 +50,7 @@
                 <a href="/admin" class="nav-bt bt-black"><spring:message code="nav.adminPage"/></a>
             </sec:authorize>
             <sec:authorize access="!hasRole('ADMIN')">
-                <a href="/mypage" class="nav-bt bt-black"><spring:message code="nav.myPage"/></a>
+                <a href="/user/mypage" class="nav-bt bt-black"><spring:message code="nav.myPage"/></a>
             </sec:authorize>
             <form action="/logout" method="post" style="display: inline;">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

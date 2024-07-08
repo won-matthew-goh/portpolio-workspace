@@ -12,4 +12,6 @@ public interface UserService {
     void deleteUser(Long userId);
     void updateEmail(Long userId, String email);
     void resetPassword(Long userId);
+//    void changePassword(Long userId, String currentPassword, String newPassword);
+//    void changeEmail(Long userId, String newEmail);
 }

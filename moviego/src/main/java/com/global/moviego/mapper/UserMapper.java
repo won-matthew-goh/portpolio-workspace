@@ -38,4 +38,8 @@ public interface UserMapper {
   
   // 비밀번호 초기화 및 재발급
   void updatePassword(@Param("userId") Long userId, @Param("password") String password);
+  
+  UserVO getUserById(Long userId);
+
+  String getPassword(Long userId);
 }

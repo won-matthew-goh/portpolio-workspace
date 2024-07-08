@@ -1,0 +1,76 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Content wrapper styles */
+.content-wrapper {
+    margin-top: 130px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px; /* Adjust padding as needed */
+}
+
+.content-wrap {
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px; /* Example max-width */
+}
+
+/* Form styles */
+form {
+    margin-bottom: 20px; /* Adjust margin between forms */
+}
+
+.change-password-form,
+.change-email-form {
+    margin-bottom: 20px; /* Adjust margin between forms */
+}
+
+h1 {
+    font-size: 2em; /* Example font size */
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+h2 {
+    font-size: 1.5em; /* Example font size */
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px; /* Adjust margin as needed */
+    border: 1px solid #ccc; /* Example border */
+    border-radius: 5px; /* Example border radius */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example button color */
+    color: #fff; /* Example button text color */
+    border: none;
+    border-radius: 5px; /* Example border radius */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Example button hover color */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content-wrap {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .content-wrap {
+        width: 95%; /* Adjust width for mobile screens */
+    }
+}
