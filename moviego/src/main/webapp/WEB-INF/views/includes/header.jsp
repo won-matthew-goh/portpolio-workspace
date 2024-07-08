@@ -46,10 +46,15 @@
         <a href="/boxoffice" class="nav-bt"><spring:message code="nav.boxOffice"/></a>
         
         <sec:authorize access="isAuthenticated()">
-            <a href="/mypage" class="nav-bt bt-black"><spring:message code="nav.myPage"/></a>
+            <sec:authorize access="hasRole('ADMIN')">
+                <a href="/admin" class="nav-bt bt-black"><spring:message code="nav.adminPage"/></a>
+            </sec:authorize>
+            <sec:authorize access="!hasRole('ADMIN')">
+                <a href="/mypage" class="nav-bt bt-black"><spring:message code="nav.myPage"/></a>
+            </sec:authorize>
             <form action="/logout" method="post" style="display: inline;">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <button type="submit" class="nav-bt bt-black"><spring:message code="nav.logout"/></button>
+                <button type="submit" class="nav-bt bt-black logout-btn"><spring:message code="nav.logout"/></button>
             </form>
         </sec:authorize>
         

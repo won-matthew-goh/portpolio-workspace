@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="/css/login.css" />
 <div class="content-wrapper w100">
     <div class="content-wrap">
-        <form class="login-form" method="post" action="<c:url value='/login'/>">
+        <form class="login-form" method="post" action="/login">
             <h1>Movie Go</h1>
             <h2><spring:message code="login.title"/></h2>
-            <c:if test="${param.error != null}">
-                <p class="error-message">
-                    <spring:message code="login.error"/>
-                </p>
+            <c:if test="${not empty error}">
+                <p class="error-message">${error}</p>
+            </c:if>
+            <c:if test="${not empty message}">
+                <p class="message"><spring:message code="logout.success"/></p>
             </c:if>
             <input class="id-input" type="text" name="username" placeholder="<spring:message code='login.username'/>" />
             <input class="pw-input" type="password" name="password" placeholder="<spring:message code='login.password'/>" />

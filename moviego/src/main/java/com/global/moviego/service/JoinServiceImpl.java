@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,7 @@ public class JoinServiceImpl implements JoinService {
   private UserMapper userMapper;
   
   @Autowired
-  private BCryptPasswordEncoder bCryptPasswordEncoder;
+  private PasswordEncoder passwordEncoder;
   
   @Autowired
   private MessageSource messageSource;
@@ -39,7 +40,7 @@ public class JoinServiceImpl implements JoinService {
       }
 
       // 비밀번호 암호화 및 사용자 추가
-      user.setPasswd(bCryptPasswordEncoder.encode(user.getPasswd()));
+      user.setPasswd(passwordEncoder.encode(user.getPasswd()));
       userMapper.insertMemberJoin(user);
   }
 }

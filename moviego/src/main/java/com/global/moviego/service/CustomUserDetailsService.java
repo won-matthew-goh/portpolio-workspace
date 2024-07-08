@@ -1,10 +1,17 @@
 package com.global.moviego.service;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.global.moviego.domain.UserGrade;
 import com.global.moviego.domain.UserVO;
 import com.global.moviego.mapper.UserMapper;
 import com.global.moviego.security.CustomUserDetails;
@@ -18,19 +25,16 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    /**
-     * 주어진 username으로 사용자 정보를 로드합니다.
-     * @param username 사용자 이름
-     * @return UserDetails 객체
-     * @throws UsernameNotFoundException 사용자를 찾을 수 없을 때 발생
-     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserVO user = userMapper.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("Username이 존재하지 않습니다. : " + username);
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        System.out.println("Loaded user: " + user.getUsername() + ", Password: " + user.getPasswd());
-        return new CustomUserDetails(user);
+        return new org.springframework.security.core.userdetails.User(
+            user.getUsername(), 
+            user.getPasswd(),
+            Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getGrade().name()))
+        );
     }
 }
