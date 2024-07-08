@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -96,10 +97,15 @@ public class ReviewBoardController {
 	}
 
 	// 게시글 읽기 페이지
+	
+	@Value("${poster.tmdb.url}")
+	private String imageApiUrl;
 	@GetMapping("/read")
 	public String readBoard(@RequestParam("reviewId") int reviewId, Model model) {
 		ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+		board.setPosterUrl(imageApiUrl + board.getPosterUrl());
 		model.addAttribute("board", board);
+		
 		return "board/read";
 	}
 
@@ -107,6 +113,8 @@ public class ReviewBoardController {
 	@GetMapping("/edit")
 	public String editBoard(@RequestParam("reviewId") int reviewId, Model model) {
 		ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+		board.setMovieNm(board.getMovieNm());
+		System.out.println(board.getMovieNm());
 		model.addAttribute("board", board);
 		return "board/new"; // 기존의 글쓰기 화면을 활용
 	}
@@ -115,7 +123,7 @@ public class ReviewBoardController {
 	@PostMapping("/edit")
 	public String updateBoard(@ModelAttribute ReviewBoardVO vo, RedirectAttributes rttr) {
 		reviewBoardService.updateBoard(vo);
-		return "redirect:/review/read?reviewId=" + vo.getReviewId();
+		return "redirect:/review";
 	}
 
 	// 게시글 삭제

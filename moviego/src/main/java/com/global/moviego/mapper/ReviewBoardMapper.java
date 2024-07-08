@@ -37,5 +37,8 @@ public interface ReviewBoardMapper {
 	void updateBoard(ReviewBoardVO vo);
 
 	void deleteBoard(@Param("reviewId") int reviewId);
-
+	
+	//getPosterUrl 가져오기
+	ReviewBoardVO getPosterUrl(@Param("posterUrl") String posterUrl);
+	
 }

@@ -32,7 +32,7 @@
 					<div class="date">작성일자</div>
 				</div>
 				<c:forEach var="lists" items="${list}">
-					<div class="inside" href="/html/board-write.html">
+					<div class="inside" onclick="location.href='/review/read?reviewId=${lists.reviewId}'">
 						<div class="pnum">${lists.reviewId}</div>
 						<div class="name">
 							<a>${lists.movieNm}</a>
@@ -49,9 +49,9 @@
 				<div class="board_page">
 					<c:if test="${pageMaker.prev}">
 						<button type="submit" name="pageNum"
-							value="${pageMaker.beginPage - 1}" class="btn first">◀◀</button>
-						<button type="submit" name="pageNum"
 							value="${pageMaker.vo.pageNum - 1}" class="btn prev">◀</button>
+						<button type="submit" name="pageNum"
+							value="${pageMaker.beginPage - 1}" class="btn first">◀◀</button>
 					</c:if>
 
 					<c:forEach var="num" begin="${pageMaker.beginPage}"

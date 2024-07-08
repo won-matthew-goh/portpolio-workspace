@@ -88,43 +88,13 @@
   border: 0.1px solid #bbb;
   border-radius: 5%;
 }
-
+/**버튼 관련**/
 .bottom-btn {
   display: flex;
+  gap: 0.8em;
   justify-content: flex-end;
   text-align: center;
   width: 100%;
   margin-top: 3%;
 }
-.bottom-btn .bt-black {
-  background-color: black;
-  width: 3em;
-  height: 1em;
-  text-align: center;
-  margin-right: 1%;
-  color: white;
-  border-radius: 8%;
-  font-size: 14px;
-}
-
-.bt-black:hover {
-  background-color: #777;
-  color: white;
-  border-radius: 8%;
-}
-
-.bottom-btn .bt-gray {
-  background-color: gray;
-  width: 3em;
-  height: 1em;
-  text-align: center;
-  color: white;
-  border-radius: 8%;
-  font-size: 14px;
-}
-
-.bt-gray:hover {
-  background-color: #bbb;
-  color: white;
-  border-radius: 8%;
-}
+.btn-light {border: 0.1px solid #000;}

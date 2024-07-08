@@ -14,7 +14,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	// @Autowired 리뷰 입력 폼으로 받은 데이터들 가져오는 용도, 오버라이드 해서 사용
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
-	
+
 	// 글삽입 메소드(Create)
 	@Override
 	public void register(ReviewBoardVO vo) {
@@ -25,6 +25,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	@Override
 	public List<ReviewBoardVO> getBoard(PageVO vo) {
 		return reviewBoardMapper.getBoard(vo);
+
 	}
 
 	// 페이징 메소드(Paging)
@@ -37,32 +38,18 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	public ReviewBoardVO getBoardById(int reviewId) {
 		return reviewBoardMapper.getBoardById(reviewId);
 	}
-
+	
+	//게시글 수정
 	@Override
-	    public void updateBoard(ReviewBoardVO vo) {
+	public void updateBoard(ReviewBoardVO vo) {
 		reviewBoardMapper.updateBoard(vo);
 	}
+	
+	//게시글 삭제
 	@Override
 	public void deleteBoard(int reviewId) {
 		reviewBoardMapper.deleteBoard(reviewId);
 
 	}
+
 }
-
-//	}
-//	//조회수 카운트 메소드
-//	@Override
-//	public int selectReviewCnt() {
-//		int cnt = reviewBoardMapper.selectReviewCnt();
-//		return cnt;
-//	}
-//	
-// 게시글 수정 메소드(Update)
-// 게시글 삭제 메소드(Delete)
-
-//	@Override
-//	public List<ReviewBoardVO> selectReviewService(){
-//		List<ReviewBoardVO> select = new ArrayList<ReviewBoardVO>();
-//		select = reviewBoardMapper.selectReview();
-//		return select;
-//	}
