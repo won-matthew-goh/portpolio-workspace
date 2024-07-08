@@ -41,4 +41,9 @@ public interface ReviewBoardMapper {
 	//getPosterUrl 가져오기
 	ReviewBoardVO getPosterUrl(@Param("posterUrl") String posterUrl);
 	
+	//게시글 신고 카운트
+    void incrementReportCount(@Param("reviewId") int reviewId);
+
+	//조회수 추가
+//    void incrementReadCount(@Param("reviewId") int reviewId);
 }

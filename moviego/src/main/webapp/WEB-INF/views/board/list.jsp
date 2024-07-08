@@ -38,7 +38,7 @@
 							<a>${lists.movieNm}</a>
 						</div>
 						<div class="title">${lists.title}</div>
-						<div class="writer">${lists.userId}</div>
+						<div class="writer">${lists.username}</div>
 						<div class="readCnt">${lists.readCnt}</div>
 						<div class="date">${lists.createdAt}</div>
 					</div>

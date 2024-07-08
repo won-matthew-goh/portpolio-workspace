@@ -10,6 +10,8 @@ public class ReviewBoardVO {
 	private int movieId;
 	
 	private int readCnt;
+	
+	private int reportCnt;
 
 	private String movieNm;
 	
@@ -20,6 +22,25 @@ public class ReviewBoardVO {
 	private String createdAt;
 	
 	private String comment;
+	
+	private String username;
+	
+	public int getReportCnt() {
+		return reportCnt;
+	}
+	
+	public void setReportCnt(int reportCnt) {
+		this.reportCnt = reportCnt;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	
 	public int getReadCnt() {
 		return readCnt;

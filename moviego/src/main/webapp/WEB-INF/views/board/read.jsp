@@ -12,8 +12,8 @@
 					<p class="main-title">${board.title}</p>
 				</div>
 				<div class="user-id-div content">
-					<p class="user-id">사용자 ID</p>
-					<p class="user-id">${board.userId}</p>
+					<p class="user-id">사용자</p>
+					<p class="user-id">${board.username}</p>
 				</div>
 				<div class="title-div content">
 					<p class="title">영화명</p>
@@ -34,13 +34,19 @@
 			</div>
 		</div>
 		<div class="bottom-btn">
+			<form action="<c:url value='/review/report'/>" method="post"
+				style="display: inline;">
+				<input type="hidden" name="reviewId" value="${board.reviewId}" />
+				<button type="submit" class="btn btn-danger py-2 px-3">신고하기</button>
+			</form>
+
 			<c:if test="${board.userId == 1}">
 				<!-- sessionScope.userId로 바꿔주어야함 -->
 				<button onclick="editReview()" class="btn btn-dark py-2 px-3">수정</button>
 				<form action="<c:url value='/review/delete'/>" method="post"
 					style="display: inline;">
 					<input type="hidden" name="reviewId" value="${board.reviewId}" />
-					<button type= "submit" class="btn btn-light py-2 px-3">삭제</button>
+					<button type="submit" class="btn btn-light py-2 px-3">삭제</button>
 				</form>
 			</c:if>
 		</div>
@@ -48,8 +54,8 @@
 </div>
 </body>
 <script>
-	function editReview(){
-		 document.location.href="<c:url value='/review/edit?reviewId=${board.reviewId}'/>"
-	} 
+	function editReview() {
+		document.location.href = "<c:url value='/review/edit?reviewId=${board.reviewId}'/>"
+	}
 </script>
 </html>

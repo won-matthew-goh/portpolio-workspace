@@ -39,6 +39,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		return reviewBoardMapper.getBoardById(reviewId);
 	}
 	
+	
 	//게시글 수정
 	@Override
 	public void updateBoard(ReviewBoardVO vo) {
@@ -51,5 +52,17 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		reviewBoardMapper.deleteBoard(reviewId);
 
 	}
+	
+	//게시글 신고
+    @Override
+    public void incrementReportCount(int reviewId) {
+        reviewBoardMapper.incrementReportCount(reviewId);
+    }
+    
+    //조회수 추가
+//    @Override
+//    public void incrementReadCount(int reviewId) {
+//    	reviewBoardMapper.incrementReadCount(reviewId);
+//    }
 
 }

@@ -23,44 +23,44 @@ import com.global.moviego.service.SearchServiceImpl;
 @Controller
 @RequestMapping("/review")
 public class ReviewBoardController {
-	
-  @Autowired
-	private ReviewBoardServiceImpl reviewBoardService;
 
+	@Autowired
+	private ReviewBoardServiceImpl reviewBoardService;
 
 	@Autowired
 	SearchServiceImpl searchService;
-	 // 검색 요청 처리
-    @GetMapping("/search")
-    public String search(@RequestParam Map<String, Object> paramMap, Model model, PageVO vo) {
-        if (vo.getPageNum() == 0) {
-            vo.setPageNum(1);
-        }
-        if (vo.getCountPerPage() == 0) {
-            vo.setCountPerPage(10);
-        }
 
-        // 페이지 offset 계산
-        vo.setOffset((vo.getPageNum() - 1) * vo.getCountPerPage());
+	// 검색 요청 처리
+	@GetMapping("/search")
+	public String search(@RequestParam Map<String, Object> paramMap, Model model, PageVO vo) {
+		if (vo.getPageNum() == 0) {
+			vo.setPageNum(1);
+		}
+		if (vo.getCountPerPage() == 0) {
+			vo.setCountPerPage(10);
+		}
 
-        // paramMap에 offset과 countPerPage 추가
-        paramMap.put("offset", vo.getOffset());
-        paramMap.put("countPerPage", vo.getCountPerPage());
+		// 페이지 offset 계산
+		vo.setOffset((vo.getPageNum() - 1) * vo.getCountPerPage());
 
-        Map<String, Object> searchResults = searchService.getReviewSearch(paramMap);
-        model.addAttribute("list", searchResults.get("results"));
+		// paramMap에 offset과 countPerPage 추가
+		paramMap.put("offset", vo.getOffset());
+		paramMap.put("countPerPage", vo.getCountPerPage());
 
-        // 검색 후 페이징 처리
-        int articleTotalCount = searchService.getReviewSearchTotal(paramMap);
-        vo.setTotal(articleTotalCount);
-        PageCreate pageCreate = new PageCreate(articleTotalCount, vo);
-        model.addAttribute("pageMaker", pageCreate);
+		Map<String, Object> searchResults = searchService.getReviewSearch(paramMap);
+		model.addAttribute("list", searchResults.get("results"));
+
+		// 검색 후 페이징 처리
+		int articleTotalCount = searchService.getReviewSearchTotal(paramMap);
+		vo.setTotal(articleTotalCount);
+		PageCreate pageCreate = new PageCreate(articleTotalCount, vo);
+		model.addAttribute("pageMaker", pageCreate);
 		return "board/list";
-	}	
+	}
 
 	// 게시글 리스트 출력 및 10개씩 페이징
 	@GetMapping("")
-	public String reviewList(Model model, @ModelAttribute PageVO vo) {
+	public String reviewList(Model model, @ModelAttribute PageVO vo, ReviewBoardVO reviewboardvo, @RequestParam("reviewId") int reviewId) {
 		if (vo.getPageNum() == 0) {
 			vo.setPageNum(1);
 		}
@@ -91,22 +91,31 @@ public class ReviewBoardController {
 	}
 
 	@PostMapping("/new")
-	public String register(@ModelAttribute ReviewBoardVO vo, RedirectAttributes rttr) {
+	public String register(@RequestParam("username") String username, @ModelAttribute ReviewBoardVO vo,
+			RedirectAttributes rttr, Model model) {
+		username = vo.getUsername();
+		model.addAttribute("username", username);
 		reviewBoardService.register(vo);
 		return "redirect:/review";
 	}
 
 	// 게시글 읽기 페이지
-	
+
 	@Value("${poster.tmdb.url}")
 	private String imageApiUrl;
+
 	@GetMapping("/read")
 	public String readBoard(@RequestParam("reviewId") int reviewId, Model model) {
+		// 조회수 증가
+//		reviewBoardService.incrementReadCount(reviewId);
+
+		// 게시글 정보 조회
 		ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
 		board.setPosterUrl(imageApiUrl + board.getPosterUrl());
 		model.addAttribute("board", board);
-		
+
 		return "board/read";
+
 	}
 
 	// 게시글 수정 페이지로 이동
@@ -132,4 +141,12 @@ public class ReviewBoardController {
 		reviewBoardService.deleteBoard(reviewId);
 		return "redirect:/review";
 	}
+
+	// 게시글 신고하기
+	@PostMapping("/report")
+	public String reportReview(@RequestParam("reviewId") int reviewId, RedirectAttributes rttr) {
+		reviewBoardService.incrementReportCount(reviewId);
+		return "redirect:/review";
+	}
+
 }

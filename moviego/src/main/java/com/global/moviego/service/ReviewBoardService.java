@@ -17,11 +17,17 @@ public interface ReviewBoardService {
     
     //선택된 게시글 조회
     ReviewBoardVO getBoardById(int reviewId);
-    
+
     //게시글 수정
     void updateBoard(ReviewBoardVO vo);
     
     //게시글 삭제
     void deleteBoard(int reviewId);
     
+    //게시글 신고
+    void incrementReportCount(int reviewId);
+    
+    //조회수 추가
+//    void incrementReadCount(int reviewId);
+//    
 }

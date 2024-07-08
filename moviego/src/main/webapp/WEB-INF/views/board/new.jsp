@@ -29,28 +29,30 @@ request.setAttribute("userId", userId);
 				<c:when test="${not empty board}">
 					<form action="<c:url value='/review/edit'/>" method="post">
 						<input type="hidden" name="reviewId" value="${board.reviewId}" />
+						<input type="hidden" name="userId" value="${board.userId}" />
+						<input type="hidden" name="username" value="${board.username}" />
 						<h2>리뷰 수정</h2>
 				</c:when>
 				<c:otherwise>
 					<form action="<c:url value='/review/new'/>" method="post">
-						<input type="hidden" name="movieId" value="${movieId}" /> <input
-							type="hidden" name="movieNm" value="${board.movieNm}" /> <input
-							type="hidden" name="posterUrl" value="${posterPath}" /> <input
-							type="hidden" name="userId" value="${userId}" />
+						<input type="hidden" name="movieId" value="${movieId}" />
+						<input type="hidden" name="movieNm" value="${movieTitle}" />
+						<input type="hidden" name="posterUrl" value="${posterPath}" />
+						<input type="hidden" name="userId" value="${userId}" />
+						<input type="hidden" name="username" value="${username}" />
 						<h2>리뷰 글쓰기</h2>
 				</c:otherwise>
 			</c:choose>
-
 			<div class="txt">
-				<p class="listcolumn">사용자 ID</p>
-				<span class="txtspan">${userId}</span>
+				<p class="listcolumn">사용자명</p>
+				<span class="txtspan">${username}</span>
 			</div>
 			<div class="txt">
 				<p class="listcolumn">영화명</p>
 				<span class="txtspan">
 				<c:choose>
 					<c:when test="${not empty board.movieNm || empty movieTitle}">
-							${board.movieNm}
+					${board.movieNm}
 					</c:when>
 					<c:when test="${empty board.movieNm || not empty movieTitle}">
 					${movieTitle}
