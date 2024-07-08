@@ -30,15 +30,25 @@ public class SearchServiceImpl implements SearchService {
 	public Map<String, Object> getReviewSearch(Map<String, Object> paramMap) {
 		String paramKeyword = (String) paramMap.get("keyword");
 		String searchOption = (String) paramMap.get("searchOption");
+		int offset = (int) paramMap.get("offset");
+		int countPerPage = (int) paramMap.get("countPerPage");
 
 		if (paramKeyword == null || paramKeyword.isEmpty() || searchOption == null || searchOption.equals("0")) {
 			return new HashMap<>();
 		}
-		List<ReviewBoardVO> results = reviewBoardMapper.getReviewSearch(paramKeyword, searchOption);
+		List<ReviewBoardVO> results = reviewBoardMapper.getReviewSearch(paramKeyword, searchOption, offset,
+				countPerPage);
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("results", results);
 
 		return resultMap;
+	}
+
+	@Override
+	public int getReviewSearchTotal(Map<String, Object> paramMap) {
+		String paramKeyword = (String) paramMap.get("keyword");
+		String searchOption = (String) paramMap.get("searchOption");
+		return reviewBoardMapper.getReviewSearchTotal(paramKeyword, searchOption);
 	}
 
 	// MovieList 검색창
@@ -83,6 +93,11 @@ public class SearchServiceImpl implements SearchService {
 					}));
 			movies.add(movie);
 		}
+
+		Map<String, Object> movieMap = new HashMap<>();
+		movieMap.put("movies", movies);
+		return movieMap;
+	}
 
 		Map<String, Object> movieMap = new HashMap<>();
 		movieMap.put("movies", movies);

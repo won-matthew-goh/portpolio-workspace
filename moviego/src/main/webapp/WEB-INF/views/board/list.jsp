@@ -7,17 +7,18 @@
 		<div class="board_title">
 			<h2>관객 리뷰</h2>
 			<form name="searchForm" method="get" action="/review/search">
-			<div class="search">
-				<select class="search-option" name="searchOption" onchange="updatePlaceholder()">
-					<option value="0" > 선택</option>
-					<option value="movie_nm" >영화명</option>
-					<option value="title" >글제목</option>
-				</select> 
-				<input id="searchInput" name="keyword" type="text" placeholder="검색 옵션을 선택해주세요" />
-				<button id="searchButton" type="submit">
-					<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-				</button>
-			</div>
+				<div class="search">
+					<select class="search-option" name="searchOption"
+						onchange="updatePlaceholder()">
+						<option value="0">선택</option>
+						<option value="movie_nm">영화명</option>
+						<option value="title">글제목</option>
+					</select> <input id="searchInput" name="keyword" type="text"
+						placeholder="검색 옵션을 선택해주세요" />
+					<button id="searchButton" type="submit">
+						<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+					</button>
+				</div>
 			</form>
 		</div>
 		<div class="board_list_wrap">
@@ -46,17 +47,31 @@
 			<!-- action에 설정한 컨트롤러 경로로 데이터 전송 -->
 			<form action="/review" method="get">
 				<div class="board_page">
-					<button name="beginPage" href="#" class="btn first" value=""><<<</button>
-					<button name="prev" href="#" class="btn prev" value=""><<</button>
+					<c:if test="${pageMaker.prev}">
+						<button type="submit" name="pageNum"
+							value="${pageMaker.beginPage - 1}" class="btn first">◀◀</button>
+						<button type="submit" name="pageNum"
+							value="${pageMaker.vo.pageNum - 1}" class="btn prev">◀</button>
+					</c:if>
+
 					<c:forEach var="num" begin="${pageMaker.beginPage}"
 						end="${pageMaker.endPage}">
-						<a name="pageNum" href="#" class="pnum click">${num}</a>
+						<button type="submit" name="pageNum" value="${num}"
+							class="pnum click">${num}</button>
 					</c:forEach>
-					<button name="next" href="#" class="btn next" value="">></button>
-					<button name="endPage" href="#" class="btn last" value="">>></button>
+
+					<c:if test="${pageMaker.next}">
+						<button type="submit" name="pageNum"
+							value="${pageMaker.vo.pageNum + 1}" class="btn next">▶</button>
+						<button type="submit" name="pageNum"
+							value="${pageMaker.endPage + 1}" class="btn last">▶▶</button>
+					</c:if>
+
+					<input type="hidden" name="countPerPage"
+						value="${pageMaker.vo.countPerPage}">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
-  <script src="/js/list.js"></script>
+<script src="/js/list.js"></script>

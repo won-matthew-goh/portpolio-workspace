@@ -19,6 +19,7 @@
   justify-content: center;
   line-height: 200%;
   padding: 2% 0;
+  
 }
 
 /******* board-write content 메인 관련*********/
@@ -125,20 +126,21 @@
 }
 .bottom-btn .bt-black {
   background-color: black;
-  width: 3em;
-  height: 1em;
+  width: 6em;
+  height: 3em;
   text-align: center;
   margin-right: 3%;
   color: white;
   border-radius: 8%;
-  font-size: 14px;
+  font-size: 15px;
 }
 .bottom-btn .bt-gray {
   background-color: gray;
-  width: 3em;
-  height: 1em;
+  width: 6em;
+  height: 3em;
   text-align: center;
+  margin-right: 5%;
   color: white;
   border-radius: 8%;
-  font-size: 14px;
+  font-size: 15px;
 }

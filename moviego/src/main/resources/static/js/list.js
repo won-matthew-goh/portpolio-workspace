@@ -1,4 +1,3 @@
-
 // 검색 옵션 선택 후 검색어 입력하기
 function updatePlaceholder() {
 	var searchOption = document.querySelector('.search-option').value;

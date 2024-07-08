@@ -1,10 +1,6 @@
 package com.global.moviego.service;
 
-import java.util.List;
 import java.util.Map;
-
-import com.global.moviego.domain.MovieListVO;
-import com.global.moviego.domain.ReviewBoardVO;
 
 public interface SearchService {
 
@@ -13,4 +9,6 @@ public interface SearchService {
 
 	// MovieList 검색창
 	Map<String, Object> getMovieSearch(Map<String, Object> paramMap);
+
+	int getReviewSearchTotal(Map<String, Object> paramMap);
 }

@@ -12,14 +12,30 @@ import com.global.moviego.domain.ReviewBoardVO;
 @Repository
 @Mapper
 public interface ReviewBoardMapper {
+	//search
+    List<ReviewBoardVO> getReviewSearch(
+            @Param("keyword") String keyword,
+            @Param("searchOption") String searchOption,
+            @Param("offset") int offset,
+            @Param("countPerPage") int countPerPage
+        );
+
+        int getReviewSearchTotal(
+            @Param("keyword") String keyword,
+            @Param("searchOption") String searchOption
+        );
+		
 	// mapper.xml에서 id=insert 실행
-	public void insert(ReviewBoardVO vo);
+	void insert(ReviewBoardVO vo);
 
-	public List<ReviewBoardVO> getFreeBoard();
+	List<ReviewBoardVO> getBoard(PageVO vo);
 
-	public int getTotal(PageVO vo);
+	int getTotal(PageVO vo);
 
-//	public List<ReviewBoardVO> selectReview();
+	ReviewBoardVO getBoardById(@Param("reviewId") int reviewId);
 
-	List<ReviewBoardVO> getReviewSearch(@Param("keyword") String keyword, @Param("searchOption") String searchOption);
+	void updateBoard(ReviewBoardVO vo);
+
+	void deleteBoard(@Param("reviewId") int reviewId);
+
 }
