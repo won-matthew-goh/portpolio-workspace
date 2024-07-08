@@ -47,7 +47,7 @@ function openModal(movieElement) {
       <div class="modal-box">
         <p class="content">${movieData.overview}</p>
         <div class="btn">
-          <button class="btn btn-light" href="/review/new">리뷰 등록</button>
+          <button class="btn btn-light" onclick="writeReview('${movieData.title}', '${movieData.id}', '${movieData.posterPath}')">리뷰 등록</button>
           <button class="close-btn" onclick="closeModal()">닫기</button>
         </div>
       </div>
@@ -56,6 +56,11 @@ function openModal(movieElement) {
   modalwrap.innerHTML = modalContent;
   modalwrap.style.display = 'block';
   modalBg.style.display = 'block';
+}
+
+function writeReview(title, id, posterPath) {
+  const url = `/review/new?movieTitle=${encodeURIComponent(title)}&movieId=${id}&posterPath=${encodeURIComponent(posterPath)}`;
+  window.location.href = url;
 }
 
 function closeModal() {

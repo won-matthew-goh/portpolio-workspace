@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.global.moviego.domain.PageCreate;
@@ -21,30 +21,65 @@ import com.global.moviego.service.SearchServiceImpl;
 
 @Controller
 @RequestMapping("/review")
-
 public class ReviewBoardController {
-	@Autowired
-	private ReviewBoardServiceImpl reviewBoardService;
 	
+  @Autowired
+	private ReviewBoardServiceImpl reviewBoardService;
+
+
 	@Autowired
 	SearchServiceImpl searchService;
-	
-	// ReviewBoard 검색창
-	@GetMapping("/search")
-	public @ResponseBody Map<String, Object> searchAjax(@RequestParam Map<String, Object> paramMap) {
-		return searchService.getReviewSearch(paramMap);
+	 // 검색 요청 처리
+    @GetMapping("/search")
+    public String search(@RequestParam Map<String, Object> paramMap, Model model, PageVO vo) {
+        if (vo.getPageNum() == 0) {
+            vo.setPageNum(1);
+        }
+        if (vo.getCountPerPage() == 0) {
+            vo.setCountPerPage(10);
+        }
 
-	}
+        // 페이지 offset 계산
+        vo.setOffset((vo.getPageNum() - 1) * vo.getCountPerPage());
+
+        // paramMap에 offset과 countPerPage 추가
+        paramMap.put("offset", vo.getOffset());
+        paramMap.put("countPerPage", vo.getCountPerPage());
+
+        Map<String, Object> searchResults = searchService.getReviewSearch(paramMap);
+        model.addAttribute("list", searchResults.get("results"));
+
+        // 검색 후 페이징 처리
+        int articleTotalCount = searchService.getReviewSearchTotal(paramMap);
+        vo.setTotal(articleTotalCount);
+        PageCreate pageCreate = new PageCreate(articleTotalCount, vo);
+        model.addAttribute("pageMaker", pageCreate);
+		return "board/list";
+	}	
 
 	// 게시글 리스트 출력 및 10개씩 페이징
 	@GetMapping("")
-	public String reviewList(Model model, PageVO vo) {
-		// 페이지 수 만큼 10개씩 노출
-		List<ReviewBoardVO> pageList = reviewBoardService.getFreeBoard();
+	public String reviewList(Model model, @ModelAttribute PageVO vo) {
+		if (vo.getPageNum() == 0) {
+			vo.setPageNum(1);
+		}
+		if (vo.getCountPerPage() == 0) {
+			vo.setCountPerPage(10);
+		}
+
+		// 페이지 offset 계산
+		vo.setOffset((vo.getPageNum() - 1) * vo.getCountPerPage());
+
+		List<ReviewBoardVO> pageList = reviewBoardService.getBoard(vo);
 		model.addAttribute("list", pageList);
-		//jsp에 pageCreate PageVo, articleTotalCount, endPage, beginPage, prev, next 정보 전송
-		model.addAttribute("pageMaker", new PageCreate());
-		
+
+		// 페이징 처리
+		int articleTotalCount = reviewBoardService.getTotal(vo);
+		vo.setTotal(articleTotalCount);
+
+		PageCreate pageCreate = new PageCreate(articleTotalCount, vo);
+		model.addAttribute("pageMaker", pageCreate);
+
 		return "board/list";
 	}
 
@@ -55,55 +90,37 @@ public class ReviewBoardController {
 	}
 
 	@PostMapping("/new")
-	public String register(ReviewBoardVO vo, RedirectAttributes rttr) {
+	public String register(@ModelAttribute ReviewBoardVO vo, RedirectAttributes rttr) {
 		reviewBoardService.register(vo);
 		return "redirect:/review";
 	}
 
 	// 게시글 읽기 페이지
 	@GetMapping("/read")
-	public String readBoard() {
+	public String readBoard(@RequestParam("reviewId") int reviewId, Model model) {
+		ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+		model.addAttribute("board", board);
 		return "board/read";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-//페이징 기존 작성 코드(보류)	
-//	@GetMapping("")
-//	public String reviewList(Model model, PageVO vo) {
-//		if (vo.getPageNum() == 0) {
-//			vo.setPageNum(1);
-//		}
-//		if (vo.getCountPerPage() == 0) {
-//			vo.setCountPerPage(10); // 페이지 당 기본 항목 수 설정
-//		}
-//		// 페이지 수 만큼 10개씩 노출
-//		List<ReviewBoardVO> pageList = reviewBoardService.getFreeBoard();
-//		model.addAttribute("list", pageList);
-//
-//		// 게시물 전체 숫자 DB 카운트 후 total에 담기 ex.총 10개 total 조회후 10 나누기 + 반올림 후 +1
-//		int total = reviewBoardService.getTotal(vo);
-//
-//		int pageCountResult = (int) Math.ceil((total / vo.getCountPerPage()) + 1);
-//		// 11.0 값 나옴
-//
-//		int pageCount = (int) Math.ceil(total / vo.getCountPerPage());
-//		int startPage = (int) pageCountResult - pageCount;
-//		int endPage = (int) pageCount;
-//
-//		Map<String, Object> getPageLength = new HashMap<>();
-//		List<Integer> pageNumbers = new ArrayList<>();
-//
-//		for (int i = 1; i <= endPage; i++) {
-//			pageNumbers.add(i);
-//		}
-//
-//		getPageLength.put("pages", pageNumbers);
-	
-}
+	// 게시글 수정 페이지로 이동
+	@GetMapping("/edit")
+	public String editBoard(@RequestParam("reviewId") int reviewId, Model model) {
+		ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
+		model.addAttribute("board", board);
+		return "board/new"; // 기존의 글쓰기 화면을 활용
+	}
+
+	// 게시글 수정
+	@PostMapping("/edit")
+	public String updateBoard(@ModelAttribute ReviewBoardVO vo, RedirectAttributes rttr) {
+		reviewBoardService.updateBoard(vo);
+		return "redirect:/review/read?reviewId=" + vo.getReviewId();
+	}
+
+	// 게시글 삭제
+	@PostMapping("/delete")
+	public String deleteBoard(@RequestParam("reviewId") int reviewId, RedirectAttributes rttr) {
+		reviewBoardService.deleteBoard(reviewId);
+		return "redirect:/review";
+	}

@@ -7,7 +7,7 @@
 }
 
 .board_wrap .board_title .search .search-option{
-  width: 8%;
+  width: 7%;
   border: 1px solid #bbb;
   border-radius: 8px;
   padding: 10px 12px;
@@ -38,7 +38,7 @@
 }
 
 .board_wrap .board_title .search input {
-  width: 25%;
+  width: 20%;
   border: 1px solid #bbb;
   border-radius: 8px;
   padding: 10px 12px;
@@ -167,7 +167,7 @@
   justify-content: center;
 }
 
-.board_page a {
+.board_page button {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -178,27 +178,33 @@
   line-height: 100%;
 }
 
-.board_page a.btn {
+.board_page .btn {
   padding-top: 10px;
   font-size: 1.2rem;
   letter-spacing: -1px;
 }
 
-.board_page a.pnum {
+.board_page .pnum {
   padding-top: 9px;
   font-size: 1.4rem;
 }
 
-.board_page a.pnum.on {
+.board_page .pnum.on {
   border-color: #000;
   background: #000;
   color: #fff;
 }
 
-.board_page a:first-child {
+.board_page button:hover {
+  background: #c0c0c0; /* 마우스 오버 시 배경색 설정 */
+  color: #333; /* 마우스 오버 시 글자색 설정 */
+}
+
+.board_page button:first-child {
   border-left: 1px solid #ddd;
 }
 
+/****board-view********/
 .board_view {
   width: 100%;
   border-top: 2px solid #000;

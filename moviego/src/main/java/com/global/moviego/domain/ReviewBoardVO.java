@@ -10,6 +10,16 @@ public class ReviewBoardVO {
 	private int movieId;
 	
 	private int readCnt;
+
+	private String movieNm;
+	
+	private String title;
+	
+	private String posterUrl;
+	
+	private String createdAt;
+	
+	private String comment;
 	
 	public int getReadCnt() {
 		return readCnt;
@@ -23,15 +33,6 @@ public class ReviewBoardVO {
 		this.createdAt = createdAt;
 	}
 
-	private String movieNm;
-	
-	private String title;
-	
-	private String posterUrl;
-	
-	private String createdAt;
-	
-	private String comment;
 	
 	public String getComment() {
 		return comment;
