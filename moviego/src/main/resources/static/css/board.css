@@ -54,6 +54,7 @@
 .board_wrap {
   width: 80%;
   margin: auto;
+  padding-bottom: 2em;
 }
 
 .board_title {
