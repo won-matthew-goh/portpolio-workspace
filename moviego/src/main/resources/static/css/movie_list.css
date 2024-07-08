@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
 }
+.content-wrapper .content-wrap .no-results {color: white;}
 
 .content-wrapper .content-wrap .box {display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; gap: 2em 2%;}
 
@@ -183,7 +184,10 @@
 }
 
 .modal-wrap .modal-wp .modal-info > div .title {
-  width: 35%;
+  width: 30%;
+}
+.modal-wrap .modal-wp .modal-info > div .content {
+  width: 70%;
 }
 
 .modal-wrap .modal-box {

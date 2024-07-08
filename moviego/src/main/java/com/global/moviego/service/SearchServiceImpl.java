@@ -1,16 +1,21 @@
 package com.global.moviego.service;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.LocaleResolver;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -18,6 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.global.moviego.domain.MovieListVO;
 import com.global.moviego.domain.ReviewBoardVO;
 import com.global.moviego.mapper.ReviewBoardMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class SearchServiceImpl implements SearchService {
@@ -54,21 +61,39 @@ public class SearchServiceImpl implements SearchService {
 	// MovieList 검색창
 	@Autowired
 	private RestTemplate restTemplate;
+	
+  @Autowired
+  private LocaleResolver localeResolver;
 
 	@Value("${search.tmdb.url}")
 	private String searchApiUrl;
 
 	@Override
-	public Map<String, Object> getMovieSearch(Map<String, Object> paramMap) {
-		String paramQuery = (String) paramMap.get("query");
+	public Map<String, Object> getMovieSearch(Map<String, Object> paramMap, HttpServletRequest request) {
+	    String paramQuery = (String) paramMap.get("query");
+	    if (paramQuery == null || paramQuery.isEmpty()) {
+	        return Collections.emptyMap();
+	    }
 
-		try {
-			String response = restTemplate.getForObject(searchApiUrl + paramQuery, String.class);
-			return parseSearch(response);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return Collections.emptyMap();
-		}
+	    Locale locale = localeResolver.resolveLocale(request);
+	    String languageCode = locale.getLanguage();
+	    String url = searchApiUrl + "&language=" + languageCode + "&query=" + encodeValue(paramQuery);
+
+	    try {
+	        String response = restTemplate.getForObject(url, String.class);
+	        return parseSearch(response);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return Collections.emptyMap();
+	    }
+	}
+
+	private String encodeValue(String value) {
+	    try {
+	        return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+	    } catch (UnsupportedEncodingException ex) {
+	        throw new RuntimeException(ex.getCause());
+	    }
 	}
 
 	private Map<String, Object> parseSearch(String response) throws IOException {

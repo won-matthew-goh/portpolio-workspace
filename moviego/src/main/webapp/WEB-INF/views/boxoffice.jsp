@@ -4,15 +4,15 @@
 <link rel="stylesheet" href="/css/boxoffice.css" />
     <div class="content-wrapper w100">
       <div class="rank-wrap">
-      <h1>한 주간 관객별 박스오피스 순위</h1>
+      <h1><spring:message code="boxoffice.title"/></h1>
         <table class="rank-table">
           <thead>
             <tr>
-              <th scope="col">순위</th>
-              <th scope="col">영화명</th>
-              <th scope="col">개봉일</th>
-              <th scope="col">주간 관객수</th>
-              <th scope="col">누적 관객수</th>
+              <th scope="col"><spring:message code="boxoffice.col.rank"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.movieNm"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.release"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.audiWeek"/></th>
+              <th scope="col"><spring:message code="boxoffice.col.audiAll"/></th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +29,7 @@
         </table>
       </div>
       <div class="chart-wrap">
-        <h1>관객수 증감</h1>
+        <h1><spring:message code="boxoffice.chart.title"/></h1>
         <div class="chart-wp">
           <canvas id="weekChart" width="300" height="100"></canvas>
         </div>

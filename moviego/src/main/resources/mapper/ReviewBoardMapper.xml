@@ -6,16 +6,16 @@
 	<select id="getReviewSearch"
 		resultType="com.global.moviego.domain.ReviewBoardVO">
 		SELECT r.review_id,
-		r.user_id,
-		u.username AS username,
-		r.rating,
-		r.title,
-		r.movie_id,
-		r.movie_nm,
-		r.poster_url,
-		r.comment,
-		r.read_cnt,
-		r.created_at
+          r.user_id,
+          u.username AS username,
+          r.rating,
+          r.title,
+          r.movie_id,
+          r.movie_nm,
+          r.poster_url,
+          r.comment,
+          r.read_cnt,
+          r.created_at
 		FROM tb_reviews r
 		JOIN tb_users u ON r.user_id = u.user_id
 		WHERE
@@ -50,26 +50,26 @@
 	<!-- 게시글 등록 -->
 	<insert id="insert">
 		insert into tb_reviews (
-		user_id,
-		username,
-		movie_id,
-		movie_nm,
-		poster_url,
-		title,
-		rating,
-		comment,
-		created_at
-		)
+                user_id,
+                username,
+                movie_id,
+                movie_nm,
+                poster_url,
+                title,
+                rating,
+                comment,
+                created_at
+                )
 		values (
-		#{userId},
-		#{username},
-		#{movieId},
-		#{movieNm},
-		#{posterUrl},
-		#{title},
-		#{rating},
-		#{comment},
-		now()
+            #{userId},
+            #{username},
+            #{movieId},
+            #{movieNm},
+            #{posterUrl},
+            #{title},
+            #{rating},
+            #{comment},
+            now()
 		)
 	</insert>
 
@@ -77,16 +77,16 @@
 	<select id="getBoard"
 		resultType="com.global.moviego.domain.ReviewBoardVO">
 		SELECT r.review_id,
-		r.user_id,
-		u.username AS user_name,
-		r.rating,
-		r.title,
-		r.movie_id,
-		r.movie_nm,
-		r.poster_url,
-		r.comment,
-		r.read_cnt,
-		r.created_at
+          r.user_id,
+          u.username AS user_name,
+          r.rating,
+          r.title,
+          r.movie_id,
+          r.movie_nm,
+          r.poster_url,
+          r.comment,
+          r.read_cnt,
+          r.created_at
 		FROM tb_reviews r
 		JOIN tb_users u ON r.user_id = u.user_id
 		ORDER BY r.review_id DESC
@@ -105,16 +105,16 @@
 		parameterType="com.global.moviego.domain.ReviewBoardVO"
 		resultType="com.global.moviego.domain.ReviewBoardVO">
 		SELECT r.review_id,
-		r.user_id,
-		u.username AS user_name,
-		r.rating,
-		r.title,
-		r.movie_id,
-		r.movie_nm,
-		r.poster_url,
-		r.comment,
-		r.read_cnt,
-		r.created_at
+          r.user_id,
+          u.username AS user_name,
+          r.rating,
+          r.title,
+          r.movie_id,
+          r.movie_nm,
+          r.poster_url,
+          r.comment,
+          r.read_cnt,
+          r.created_at
 		FROM tb_reviews r
 		JOIN tb_users u ON r.user_id = u.user_id
 		WHERE r.review_id = #{reviewId}
@@ -149,5 +149,15 @@
 		SET read_cnt = read_cnt + 1
 		WHERE review_id = #{reviewId}
 	</update> -->
+	
+	<!-- 관리자 페이지 -->
+	 <select id="getAllReviews" resultType="com.global.moviego.domain.ReviewBoardVO">
+        SELECT *
+        FROM tb_reviews
+    </select>
 
+    <delete id="deleteReview">
+        DELETE FROM tb_reviews
+        WHERE reviewId = #{reviewId}
+    </delete>
 </mapper>

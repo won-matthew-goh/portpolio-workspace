@@ -12,19 +12,12 @@ import com.global.moviego.domain.ReviewBoardVO;
 @Repository
 @Mapper
 public interface ReviewBoardMapper {
-	//search
-    List<ReviewBoardVO> getReviewSearch(
-            @Param("keyword") String keyword,
-            @Param("searchOption") String searchOption,
-            @Param("offset") int offset,
-            @Param("countPerPage") int countPerPage
-        );
+	// search
+	List<ReviewBoardVO> getReviewSearch(@Param("keyword") String keyword, @Param("searchOption") String searchOption,
+			@Param("offset") int offset, @Param("countPerPage") int countPerPage);
 
-        int getReviewSearchTotal(
-            @Param("keyword") String keyword,
-            @Param("searchOption") String searchOption
-        );
-		
+	int getReviewSearchTotal(@Param("keyword") String keyword, @Param("searchOption") String searchOption);
+
 	// mapper.xml에서 id=insert 실행
 	void insert(ReviewBoardVO vo);
 
@@ -37,8 +30,8 @@ public interface ReviewBoardMapper {
 	void updateBoard(ReviewBoardVO vo);
 
 	void deleteBoard(@Param("reviewId") int reviewId);
-	
-	//getPosterUrl 가져오기
+
+	// getPosterUrl 가져오기
 	ReviewBoardVO getPosterUrl(@Param("posterUrl") String posterUrl);
 	
 	//게시글 신고 카운트
@@ -46,4 +39,9 @@ public interface ReviewBoardMapper {
 
 	//조회수 추가
 //    void incrementReadCount(@Param("reviewId") int reviewId);
+
+	List<ReviewBoardVO> getAllReviews();
+
+	void deleteReview(int reviewId);
+
 }

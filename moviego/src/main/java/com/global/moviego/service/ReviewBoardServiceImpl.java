@@ -64,5 +64,13 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 //    public void incrementReadCount(int reviewId) {
 //    	reviewBoardMapper.incrementReadCount(reviewId);
 //    }
+	// 관리자 페이지
+    public List<ReviewBoardVO> getAllReviews() {
+        return reviewBoardMapper.getAllReviews();
+    }
+
+    public void deleteReview(int reviewId) {
+        reviewBoardMapper.deleteReview(reviewId);
+    }
 
 }
