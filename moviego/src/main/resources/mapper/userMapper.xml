@@ -46,5 +46,16 @@
   <select id="findByUsername" resultMap="userResultMap">
     SELECT * FROM tb_users WHERE username = #{username}
   </select>
+  
+    <!-- 관리자 페이지 -->
+     <select id="getAllUsers" resultType="com.global.moviego.domain.UserVO">
+        SELECT *
+        FROM tb_users
+    </select>
+
+    <delete id="deleteUser">
+        DELETE FROM tb_users
+        WHERE userId = #{userId}
+    </delete>
 
 </mapper>
