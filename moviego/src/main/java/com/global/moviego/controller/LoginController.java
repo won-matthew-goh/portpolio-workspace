@@ -39,6 +39,6 @@ public class LoginController {
             return "user/login";
         }
         // 실제 인증 처리는 Spring Security에 의해 수행됩니다.
-        return "redirect:/";
+        return "redirect: /";
     }
 }
