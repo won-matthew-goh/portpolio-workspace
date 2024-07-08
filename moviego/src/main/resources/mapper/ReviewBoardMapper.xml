@@ -128,4 +128,16 @@
 		delete from tb_reviews
 		where review_id = #{reviewId}
 	</delete>
+	
+	
+	<!-- 관리자 페이지 -->
+	 <select id="getAllReviews" resultType="com.global.moviego.domain.ReviewBoardVO">
+        SELECT *
+        FROM tb_reviews
+    </select>
+
+    <delete id="deleteReview">
+        DELETE FROM tb_reviews
+        WHERE reviewId = #{reviewId}
+    </delete>
 </mapper>

@@ -51,5 +51,14 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		reviewBoardMapper.deleteBoard(reviewId);
 
 	}
+	
+	// 관리자 페이지
+    public List<ReviewBoardVO> getAllReviews() {
+        return reviewBoardMapper.getAllReviews();
+    }
+
+    public void deleteReview(int reviewId) {
+        reviewBoardMapper.deleteReview(reviewId);
+    }
 
 }

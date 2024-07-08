@@ -1,5 +1,7 @@
 package com.global.moviego.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
@@ -18,5 +20,10 @@ public interface UserMapper {
   void insertMemberJoin(UserVO user);
   
   UserVO findByUsername(String username);
-  
+
+  //@Select("SELECT * FROM users")
+  List<UserVO> getAllUsers();
+
+ // @Delete("DELETE FROM users WHERE userId = #{userId}")
+  void deleteUser(Long userId);
 }
