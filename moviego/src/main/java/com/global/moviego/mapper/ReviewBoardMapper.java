@@ -38,6 +38,4 @@ public interface ReviewBoardMapper {
 
 	void deleteBoard(@Param("reviewId") int reviewId);
 
-
-
 }

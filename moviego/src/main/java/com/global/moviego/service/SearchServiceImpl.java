@@ -21,6 +21,7 @@ import com.global.moviego.mapper.ReviewBoardMapper;
 
 @Service
 public class SearchServiceImpl implements SearchService {
+
 	// ReviewBoard 검색창
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
@@ -51,7 +52,6 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	// MovieList 검색창
-
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -99,4 +99,8 @@ public class SearchServiceImpl implements SearchService {
 		return movieMap;
 	}
 
+		Map<String, Object> movieMap = new HashMap<>();
+		movieMap.put("movies", movies);
+		return movieMap;
+	}
 }

@@ -43,7 +43,6 @@
 						<div class="date">${lists.createdAt}</div>
 					</div>
 				</c:forEach>
-
 			</div>
 			<!-- action에 설정한 컨트롤러 경로로 데이터 전송 -->
 			<form action="/review" method="get">

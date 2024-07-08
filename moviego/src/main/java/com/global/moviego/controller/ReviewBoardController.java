@@ -22,12 +22,13 @@ import com.global.moviego.service.SearchServiceImpl;
 @Controller
 @RequestMapping("/review")
 public class ReviewBoardController {
-	@Autowired
+	
+  @Autowired
 	private ReviewBoardServiceImpl reviewBoardService;
+
 
 	@Autowired
 	SearchServiceImpl searchService;
-
 	 // 검색 요청 처리
     @GetMapping("/search")
     public String search(@RequestParam Map<String, Object> paramMap, Model model, PageVO vo) {
@@ -123,4 +124,3 @@ public class ReviewBoardController {
 		reviewBoardService.deleteBoard(reviewId);
 		return "redirect:/review";
 	}
-}
