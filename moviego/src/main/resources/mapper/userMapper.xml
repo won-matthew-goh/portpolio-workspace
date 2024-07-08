@@ -29,9 +29,22 @@
 
   </insert>
   
+  <resultMap id="userResultMap" type="com.global.moviego.domain.UserVO">
+    <id property="userId" column="user_id"/>
+    <result property="username" column="username"/>
+    <result property="passwd" column="passwd"/>
+    <result property="email" column="email"/>
+    <result property="createdAt" column="created_at"/>
+    <result property="updatedAt" column="updated_at"/>
+    <result property="deletedAt" column="deleted_at"/>
+    <result property="provider" column="provider"/>
+    <result property="providerId" column="provider_id"/>
+    <result property="grade" column="grade" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+  </resultMap>
+  
   <!-- 로그인 -->
-  <select id="findByUsername" resultType="com.global.moviego.domain.UserVO">
-        SELECT * FROM tb_users WHERE username = #{username}
+  <select id="findByUsername" resultMap="userResultMap">
+    SELECT * FROM tb_users WHERE username = #{username}
   </select>
 
 </mapper>

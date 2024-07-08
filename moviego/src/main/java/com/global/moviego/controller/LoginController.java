@@ -6,6 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import jakarta.validation.Valid;
 import com.global.moviego.domain.LoginVO;
 
@@ -39,6 +41,6 @@ public class LoginController {
             return "user/login";
         }
         // 실제 인증 처리는 Spring Security에 의해 수행됩니다.
-        return "redirect: /";
+        return "redirect:/";
     }
 }

@@ -1,11 +1,16 @@
 package com.global.moviego.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.global.moviego.service.CustomUserDetailsService;
 
 /**
  * Spring Security 설정 클래스
@@ -15,6 +20,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
   
+  @Autowired
+  private CustomUserDetailsService userDetailsService;
+  
   /**
    * 비밀번호 암호화를 위한 BCryptPasswordEncoder 빈을 생성합니다.
    * @return BCryptPasswordEncoder 인스턴스
@@ -22,6 +30,11 @@ public class SecurityConfig {
   @Bean
   public BCryptPasswordEncoder bCryptPasswordEncoder() {
     return new BCryptPasswordEncoder();
+  }
+  
+  @Bean
+  public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+      return authConfig.getAuthenticationManager();
   }
 
   /**
@@ -63,7 +76,10 @@ public class SecurityConfig {
           .logout(logout -> logout
                 // 로그아웃 성공 시 리다이렉트 경로
                 .logoutSuccessUrl("/login?logout")
-                .permitAll());
+                .permitAll()
+          )
+          .userDetailsService(userDetailsService);
+    
     
     // CSRF 보호 기능 비활성화
     // 주의: 실제 운영 환경에서는 CSRF 보호를 활성화하는 것이 좋습니다.
