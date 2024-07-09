@@ -43,11 +43,11 @@ request.setAttribute("userId", userId);
 						<h2>리뷰 글쓰기</h2>
 				</c:otherwise>
 			</c:choose>
-			<div class="txt">
+			<div class="txt colh">
 				<p class="listcolumn">사용자명</p>
 				<span class="txtspan">${username}</span>
 			</div>
-			<div class="txt">
+			<div class="txt colh">
 				<p class="listcolumn">영화명</p>
 				<span class="txtspan">
 				<c:choose>
@@ -61,13 +61,13 @@ request.setAttribute("userId", userId);
 			</span>
 			</div>
 
-			<div class="title txt">
+			<div class="title txt colh">
 				<p class="listcolumn">글제목</p>
 				<input name="title" class="title-input" type="text"
 					placeholder="제목을 입력해주세요" value="${board.title}" />
 			</div>
 
-			<div class="score txt">
+			<div class="score txt colh">
 				<p class="listcolumn">평점</p>
 				<div class="rating">
 					<c:forEach var="i" items="${ratings}" varStatus="status">

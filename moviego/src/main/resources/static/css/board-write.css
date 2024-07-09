@@ -50,6 +50,15 @@
   width: 14%
 }
 
+.content-wrapper .content-wrap .content .title.txt .listcolumn {
+  align-content: center;
+}
+
+.content-wrapper .content-wrap .content .txt.colh {
+  height: 1.5em;
+  align-content: center;
+}
+
 .content-wrapper .content-wrap .content .movienm-input, .title-input {
   width: 50%;
   line-height: 200%;

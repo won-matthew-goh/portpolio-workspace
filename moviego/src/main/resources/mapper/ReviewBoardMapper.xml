@@ -51,7 +51,6 @@
 	<insert id="insert">
 		insert into tb_reviews (
                 user_id,
-                username,
                 movie_id,
                 movie_nm,
                 poster_url,
@@ -62,7 +61,6 @@
                 )
 		values (
             #{userId},
-            #{username},
             #{movieId},
             #{movieNm},
             #{posterUrl},
