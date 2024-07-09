@@ -59,10 +59,10 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
   }
 
   // 조회수 추가
-//    @Override
-//    public void incrementReadCount(int reviewId) {
-//    	reviewBoardMapper.incrementReadCount(reviewId);
-//    }
+    @Override
+    public void incrementReadCount(int reviewId) {
+    	reviewBoardMapper.incrementReadCount(reviewId);
+    }
 
   // 관리자 페이지
   public List<ReviewBoardVO> getReportedReviews() {
