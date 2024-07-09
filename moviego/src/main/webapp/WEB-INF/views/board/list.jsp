@@ -5,16 +5,16 @@
 <div class="board-wrapper">
 	<div class="board_wrap">
 		<div class="board_title">
-			<h2>관객 리뷰</h2>
+			<h2><spring:message code="review.title" /></h2>
 			<form name="searchForm" method="get" action="/review/search">
 				<div class="search">
 					<select class="search-option" name="searchOption"
 						onchange="updatePlaceholder()">
-						<option value="0">선택</option>
-						<option value="movie_nm">영화명</option>
-						<option value="title">글제목</option>
+						<option value="0"><spring:message code="review.choice" /></option>
+						<option value="movie_nm"><spring:message code="review.movieTitle" /></option>
+						<option value="title"><spring:message code="review.contentTitle" /></option>
 					</select> <input id="searchInput" name="keyword" type="text"
-						placeholder="검색 옵션을 선택해주세요" />
+						placeholder="<spring:message code="review.selectValidation" />" />
 					<button id="searchButton" type="submit">
 						<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
 					</button>
@@ -25,11 +25,11 @@
 			<div class="board_list">
 				<div class="top">
 					<div class="pnum">NO</div>
-					<div class="name">영화명</div>
-					<div class="title">글제목</div>
-					<div class="writer">사용자</div>
-					<div class="readCnt">조회수</div>
-					<div class="date">작성일자</div>
+					<div class="name"><spring:message code="review.movieTitle" /></div>
+					<div class="title"><spring:message code="review.contentTitle" /></div>
+					<div class="writer"><spring:message code="review.username" /></div>
+					<div class="readCnt"><spring:message code="review.readCnt" /></div>
+					<div class="date"><spring:message code="review.date" /></div>
 				</div>
 				<!-- 글목록 조회 + 게시글 클릭 시 조회수 카운트 동작 -->
 				<form action="<c:url value='/review/read'/>">

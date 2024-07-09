@@ -72,24 +72,25 @@
 	</insert>
 
 	<!-- 게시글 리스트 조회 -->
-	<select id="getBoard"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT r.review_id,
-          r.user_id,
-          u.username AS user_name,
-          r.rating,
-          r.title,
-          r.movie_id,
-          r.movie_nm,
-          r.poster_url,
-          r.comment,
-          r.read_cnt,
-          r.created_at
-		FROM tb_reviews r
-		JOIN tb_users u ON r.user_id = u.user_id
-		ORDER BY r.review_id DESC
-		LIMIT #{offset}, #{countPerPage}
-	</select>
+	<select id="getBoard" resultType="com.global.moviego.domain.ReviewBoardVO">
+      SELECT r.review_id
+           , r.user_id
+           , u.username AS user_name
+           , r.rating
+           , r.title
+           , r.movie_id
+           , r.movie_nm
+           , COALESCE(r.movie_nm_en, r.movie_nm) as movie_nm_en
+           , COALESCE(r.movie_nm_ja, r.movie_nm) as movie_nm_ja
+           , r.poster_url
+           , r.comment
+           , r.read_cnt
+           , r.created_at
+      FROM tb_reviews r
+      JOIN tb_users u ON r.user_id = u.user_id
+      ORDER BY r.review_id DESC
+      LIMIT #{offset}, #{countPerPage}
+  </select>
 
 	<!-- 총 게시글 수 조회 -->
 	<select id="getTotal" resultType="Integer">
@@ -99,24 +100,22 @@
 	</select>
 
 	<!-- 특정 게시글 조회 -->
-	<select id="getBoardById"
-		parameterType="com.global.moviego.domain.ReviewBoardVO"
-		resultType="com.global.moviego.domain.ReviewBoardVO">
-		SELECT r.review_id,
-          r.user_id,
-          u.username AS user_name,
-          r.rating,
-          r.title,
-          r.movie_id,
-          r.movie_nm,
-          r.poster_url,
-          r.comment,
-          r.read_cnt,
-          r.created_at
-		FROM tb_reviews r
-		JOIN tb_users u ON r.user_id = u.user_id
-		WHERE r.review_id = #{reviewId}
-	</select>
+	<select id="getBoardById" parameterType="int" resultType="com.global.moviego.domain.ReviewBoardVO">
+    SELECT r.review_id,
+           r.user_id,
+           u.username AS user_name,
+           r.rating,
+           r.title,
+           r.movie_id,
+           r.movie_nm,
+           r.poster_url,
+           r.comment,
+           r.read_cnt,
+           r.created_at
+    FROM tb_reviews r
+    JOIN tb_users u ON r.user_id = u.user_id
+    WHERE r.review_id = #{reviewId}
+</select>
 
 	<!-- 게시글 수정 -->
 	<update id="updateBoard">

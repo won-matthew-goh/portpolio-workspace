@@ -27,14 +27,14 @@ request.setAttribute("userId", userId);
 		<div class="content">
 			<c:choose>
 				<c:when test="${not empty board}">
-					<form action="<c:url value='/review/edit'/>" method="post">
+					<form action="<c:url value='/review/edit'/>" method="post" onsubmit="return validateForm()">
 						<input type="hidden" name="reviewId" value="${board.reviewId}" />
 						<input type="hidden" name="userId" value="${board.userId}" />
 						<input type="hidden" name="username" value="${board.username}" />
 						<h2>리뷰 수정</h2>
 				</c:when>
 				<c:otherwise>
-					<form action="<c:url value='/review/new'/>" method="post">
+					<form action="<c:url value='/review/new'/>" method="post" onsubmit="return validateForm()">
 						<input type="hidden" name="movieId" value="${movieId}" />
 						<input type="hidden" name="movieNm" value="${movieTitle}" />
 						<input type="hidden" name="posterUrl" value="${posterPath}" />
@@ -44,11 +44,11 @@ request.setAttribute("userId", userId);
 				</c:otherwise>
 			</c:choose>
 			<div class="txt colh">
-				<p class="listcolumn">사용자명</p>
+				<p class="listcolumn"><spring:message code="review.username" /></p>
 				<span class="txtspan">${username}</span>
 			</div>
 			<div class="txt colh">
-				<p class="listcolumn">영화명</p>
+				<p class="listcolumn"><spring:message code="review.movieTitle" /></p>
 				<span class="txtspan">
 				<c:choose>
 					<c:when test="${not empty board.movieNm || empty movieTitle}">
@@ -62,13 +62,13 @@ request.setAttribute("userId", userId);
 			</div>
 
 			<div class="title txt colh">
-				<p class="listcolumn">글제목</p>
+				<p class="listcolumn"><spring:message code="review.contentTitle" /></p>
 				<input name="title" class="title-input" type="text"
 					placeholder="제목을 입력해주세요" value="${board.title}" />
 			</div>
 
 			<div class="score txt colh">
-				<p class="listcolumn">평점</p>
+				<p class="listcolumn"><spring:message code="review.rating" /></p>
 				<div class="rating">
 					<c:forEach var="i" items="${ratings}" varStatus="status">
 						<c:set var="starId" value="star${status.index}" />
@@ -84,18 +84,18 @@ request.setAttribute("userId", userId);
 			</div>
 
 			<div class="txt txtarea-div">
-				<p class="listcolumn">관객평</p>
-				<textarea name="comment" placeholder="관객평을 입력해주세요">${board.comment}</textarea>
+				<p class="listcolumn"><spring:message code="review.content" /></p>
+				<textarea name="comment" placeholder="<spring:message code="review.contentPHolder" />">${board.comment}</textarea>
 			</div>
 
 			<div class="bottom-btn">
 				<button class="nav-bt bt-black" type="submit">
 					<c:choose>
-						<c:when test="${not empty board}">수정</c:when>
-						<c:otherwise>등록</c:otherwise>
+						<c:when test="${not empty board}"><spring:message code="review.edit" /></c:when>
+						<c:otherwise><spring:message code="review.write" /></c:otherwise>
 					</c:choose>
 				</button>
-				<a href="/movieList" class="nav-bt bt-gray">취소</a>
+				<a href="/movieList" class="nav-bt bt-gray"><spring:message code="review.cancel" /></a>
 			</div>
 			</form>
 		</div>

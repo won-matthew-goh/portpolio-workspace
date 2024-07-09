@@ -94,3 +94,22 @@ function initStars() {
     stars[i].classList.remove('filled');
   }
 }
+
+// 폼 내용 및 제목 Validation
+function validateForm() {
+  var title = document.querySelector('input[name="title"]').value.trim();
+  var comment = document.querySelector('textarea[name="comment"]').value.trim();
+
+  if (title === "") {
+    alert("제목을 입력해주세요. \nPlease enter the title. \nタイトルを入力してください。");
+    return false; // Prevent form submission
+  }
+
+  if (comment === "") {
+    alert("내용을 입력해주세요. \nPlease enter the content. \n内容を入力してください。");
+    return false; // Prevent form submission
+  }
+
+  return true; // Allow form submission
+}
+

@@ -1,7 +1,7 @@
 package com.global.moviego.domain;
 
 public class ReviewBoardVO {
-	private int reviewId;
+	private Long reviewId;
 	
 	private int userId;
 	
@@ -24,6 +24,10 @@ public class ReviewBoardVO {
 	private String comment;
 	
 	private String username;
+	
+	private String movieNmEn;
+	
+  private String movieNmJa;
 	
 	public int getReportCnt() {
 		return reportCnt;
@@ -71,11 +75,11 @@ public class ReviewBoardVO {
 		this.createdAt = createdAt;
 	}
 
-	public int getReviewId() {
+	public Long getReviewId() {
 		return reviewId;
 	}
 
-	public void setReviewId(int reviewId) {
+	public void setReviewId(Long reviewId) {
 		this.reviewId = reviewId;
 	}
 
@@ -127,6 +131,20 @@ public class ReviewBoardVO {
 		this.posterUrl = posterUrl;
 	}
 
+  public String getMovieNmEn() {
+    return movieNmEn;
+  }
 
+  public void setMovieNmEn(String movieNmEn) {
+    this.movieNmEn = movieNmEn;
+  }
+
+  public String getMovieNmJa() {
+    return movieNmJa;
+  }
+
+  public void setMovieNmJa(String movieNmJa) {
+    this.movieNmJa = movieNmJa;
+  }
 
 }

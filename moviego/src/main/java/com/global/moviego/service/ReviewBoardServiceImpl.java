@@ -18,6 +18,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
   // 글삽입 메소드(Create)
   @Override
   public void register(ReviewBoardVO vo) {
+    // vo에 이미 userId가 설정되어 있으므로, 그대로 매퍼를 호출합니다.
     reviewBoardMapper.insert(vo);
   }
 
@@ -59,10 +60,10 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
   }
 
   // 조회수 추가
-    @Override
-    public void incrementReadCount(int reviewId) {
-    	reviewBoardMapper.incrementReadCount(reviewId);
-    }
+  @Override
+  public void incrementReadCount(int reviewId) {
+    reviewBoardMapper.incrementReadCount(reviewId);
+  }
 
   // 관리자 페이지
   public List<ReviewBoardVO> getReportedReviews() {
