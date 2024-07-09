@@ -30,9 +30,6 @@ public class UserController {
 
   @Autowired
   private JoinService joinService;
-  
-  @Autowired
-  private UserService userService;
 
   @Autowired
   private MessageSource messageSource;
@@ -70,46 +67,5 @@ public class UserController {
       return "user/join";
     }
   }
-  
-  @GetMapping("/mypage")
-  public String myPage() {
-    return "user/mypage";
-  }
-  
-//  @PostMapping("/changePassword")
-//  public String changePassword(@RequestParam("currentPassword") String currentPassword,
-//                               @RequestParam("newPassword") String newPassword,
-//                               @RequestParam("newPasswordConfirm") String newPasswordConfirm,
-//                               Model model, Principal principal, Locale locale) {
-//
-//      // Validate input
-//      if (!newPassword.equals(newPasswordConfirm)) {
-//          model.addAttribute("error", "Passwords do not match");
-//          return "redirect:/mypage"; // Redirect to mypage with error message
-//      }
-//
-//      try {
-//          userService.changePassword(principal.getName(), currentPassword, newPassword);
-//          model.addAttribute("successMessage", "Password changed successfully");
-//      } catch (PasswordChangeException e) {
-//          model.addAttribute("error", e.getMessage());
-//      }
-//
-//      return "redirect:/mypage";
-//  }
-//
-//  @PostMapping("/changeEmail")
-//  public String changeEmail(@RequestParam("newEmail") String newEmail,
-//                            Model model, Principal principal, Locale locale) {
-//
-//      try {
-//          userService.changeEmail(principal.getName(), newEmail);
-//          model.addAttribute("successMessage", "Email changed successfully");
-//      } catch (EmailChangeException e) {
-//          model.addAttribute("error", e.getMessage());
-//      }
-//
-//      return "redirect:/mypage";
-//  }
 
 }
