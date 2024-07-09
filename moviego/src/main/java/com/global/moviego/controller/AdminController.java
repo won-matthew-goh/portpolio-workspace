@@ -34,6 +34,8 @@ public class AdminController {
   @GetMapping("")
   public String adminList(Model model) {
     List<UserVO> users = userService.getAllUsers();
+    List<ReviewBoardVO> reportedReviews = reviewService.getReportedReviews();
+    model.addAttribute("reportedReviews", reportedReviews);
     model.addAttribute("users", users);
     return "user/admin";
   }
@@ -61,6 +63,7 @@ public class AdminController {
   @GetMapping("/reportedReviews")
   public String getReportedReviews(Model model) {
       List<ReviewBoardVO> reportedReviews = reviewService.getReportedReviews();
+      System.out.println(reportedReviews);
       model.addAttribute("reportedReviews", reportedReviews);
       return "user/admin"; // 이 경로가 JSP 파일의 위치와 일치해야 합니다.
   }

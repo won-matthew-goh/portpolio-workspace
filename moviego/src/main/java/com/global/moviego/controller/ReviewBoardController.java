@@ -176,7 +176,8 @@ public class ReviewBoardController {
       // 기존 코드...
       ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
       model.addAttribute("board", board);
-
+   // 조회수 증가
+  	reviewBoardService.incrementReadCount(reviewId);
       if (userDetails != null) {
           UserVO currentUser = userMapper.findByUsername(userDetails.getUsername());
           model.addAttribute("currentUser", currentUser);
