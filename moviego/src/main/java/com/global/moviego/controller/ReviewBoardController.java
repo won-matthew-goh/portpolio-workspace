@@ -6,10 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.global.moviego.domain.PageCreate;
 import com.global.moviego.domain.PageVO;
 import com.global.moviego.domain.ReviewBoardVO;
@@ -29,6 +28,7 @@ import com.global.moviego.mapper.ReviewBoardMapper;
 import com.global.moviego.mapper.UserMapper;
 import com.global.moviego.service.ReviewBoardServiceImpl;
 import com.global.moviego.service.SearchServiceImpl;
+import com.global.moviego.service.TmdbService;
 import com.global.moviego.service.UserService;
 
 @Controller
@@ -42,13 +42,16 @@ public class ReviewBoardController {
   private ReviewBoardServiceImpl reviewBoardService;
 
   @Autowired
-  SearchServiceImpl searchService;
+  private TmdbService tmdbService;
 
   @Autowired
-  UserService userService;
-  
+  private SearchServiceImpl searchService;
+
   @Autowired
-  UserMapper userMapper;
+  private UserService userService;
+
+  @Autowired
+  private UserMapper userMapper;
 
   @Value("${poster.tmdb.url}")
   private String imageApiUrl;
@@ -112,15 +115,6 @@ public class ReviewBoardController {
     return "board/list";
   }
 
-//  private String getLocalizedMovieTitle(ReviewBoardVO review, Locale locale) {
-//    if (locale.getLanguage().equals("en")) {
-//      return StringUtils.hasText(review.getMovieNmEn()) ? review.getMovieNmEn() : review.getMovieNm();
-//    } else if (locale.getLanguage().equals("ja")) {
-//      return StringUtils.hasText(review.getMovieNmJa()) ? review.getMovieNmJa() : review.getMovieNm();
-//    }
-//    return review.getMovieNm();
-//  }
-
   private String getLocalizedMovieTitle(ReviewBoardVO review, Locale locale) {
     if (locale.getLanguage().equals("en")) {
       return review.getMovieNmEn() != null && !review.getMovieNmEn().isEmpty() ? review.getMovieNmEn()
@@ -162,6 +156,21 @@ public class ReviewBoardController {
       vo.setUserId(userIdInt);
       vo.setUsername(username);
 
+      // TMDB API를 사용하여 여러 언어의 영화 제목 가져오기
+      JsonNode movieDetailsKo = tmdbService.searchMovie(vo.getMovieNm(), "ko-KR");
+      JsonNode movieDetailsEn = tmdbService.searchMovie(vo.getMovieNm(), "en-US");
+      JsonNode movieDetailsJa = tmdbService.searchMovie(vo.getMovieNm(), "ja-JP");
+
+      if (movieDetailsKo != null) {
+        vo.setMovieNm(movieDetailsKo.path("title").asText());
+      }
+      if (movieDetailsEn != null) {
+        vo.setMovieNmEn(movieDetailsEn.path("title").asText());
+      }
+      if (movieDetailsJa != null) {
+        vo.setMovieNmJa(movieDetailsJa.path("title").asText());
+      }
+
       reviewBoardService.register(vo);
       return "redirect:/review";
     } else {
@@ -190,7 +199,6 @@ public class ReviewBoardController {
   public String editBoard(@RequestParam("reviewId") int reviewId, Model model) {
     ReviewBoardVO board = reviewBoardService.getBoardById(reviewId);
     board.setMovieNm(board.getMovieNm());
-    System.out.println(board.getMovieNm());
     model.addAttribute("board", board);
     return "board/new"; // 기존의 글쓰기 화면을 활용
   }
