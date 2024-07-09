@@ -27,6 +27,9 @@ public class BoxofficeServiceImpl implements BoxofficeService {
     
     @Autowired
     private LocaleResolver localeResolver;
+    
+    @Autowired
+    private TmdbService tmdbService;
 
     @Value("${api.boxoffice.url}")
     private String apiUrl;
@@ -51,6 +54,11 @@ public class BoxofficeServiceImpl implements BoxofficeService {
                 movie.setAudiInten(movieNode.path("audiInten").asInt());
                 movie.setAudiAcc(movieNode.path("audiAcc").asInt());
                 movie.setRank(movieNode.path("rank").asInt());
+                JsonNode tmdbMovie = tmdbService.searchMovie(movie.getMovieNm(), movie.getOpenDt());
+                if (tmdbMovie != null) {
+                    movie.setTitleEn(tmdbMovie.path("title").asText());
+                    movie.setTitleJa(tmdbMovie.path("title").asText()); // 일본어 제목은 별도 API 호출 필요
+                }
                 movies.add(movie);
             }
             
