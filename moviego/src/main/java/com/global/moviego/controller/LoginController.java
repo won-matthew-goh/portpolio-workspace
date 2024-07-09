@@ -32,9 +32,5 @@ public class LoginController {
     }
     return "user/login";
   }
-
-  @GetMapping("/mypage")
-  public String myPage() {
-    return "user/mypage";
-  }
+  
 }

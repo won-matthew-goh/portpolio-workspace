@@ -77,7 +77,7 @@
   </update>
 
   <update id="updatePassword">
-      UPDATE tb_users SET passwd = #{passwd} WHERE user_id = #{userId}
+      UPDATE tb_users SET passwd = #{password} WHERE user_id = #{userId}
   </update>
   
   <select id="getUserById" parameterType="java.lang.Long" resultType="com.global.moviego.domain.UserVO">
