@@ -3,19 +3,18 @@
 .content-wrapper h1 {font-weight: bold; color: #555; padding: 2em 0;}
 
 .content-wrapper .rank-wrap {margin: auto; width: 1247px;}
-.content-wrapper .rank-wrap .rank-table {width: 100%; font-size: 16px;}
-.content-wrapper .rank-wrap .rank-table thead {height: 1.5em; border-bottom: 0.1px solid #555;}
-.content-wrapper .rank-wrap .rank-table thead tr th {text-align: center;}
+.content-wrapper .rank-wrap .rank-table {width: 100%; font-size: 16px; border-collapse: separate; border-spacing: 0;}
+.content-wrapper .rank-wrap .rank-table thead {height: 3em; border-bottom: 2px solid #555;}
+.content-wrapper .rank-wrap .rank-table thead tr th {text-align: center; padding: 15px 10px; font-weight: 600; color: #333; background-color: #f8f8f8; border-bottom: 2px solid #555;}
 .content-wrapper .rank-wrap .rank-table th:nth-child(1) {width: 5%;}
-.content-wrapper .rank-wrap .rank-table th:nth-child(2) {width: 55%;}
-.content-wrapper .rank-wrap .rank-table th:nth-child(3) {width: 14%;}
-.content-wrapper .rank-wrap .rank-table th:nth-child(4) {width: 13%;}
-.content-wrapper .rank-wrap .rank-table th:nth-child(5) {width: 13%;}
-.content-wrapper .rank-wrap .rank-table tbody tr {height: 2.5em;}
-.content-wrapper .rank-wrap .rank-table tbody tr:hover {background-color: #ddd;}
-.content-wrapper .rank-wrap .rank-table tbody tr td {text-align: center; border-left: 0.1px solid #777;}
-.content-wrapper .rank-wrap .rank-table tbody tr td:nth-child(1) {border-left: 0px solid #777;}
-.content-wrapper .rank-wrap .rank-table tbody tr td:nth-child(2) {text-align:justify; padding-left: 5%;}
+.content-wrapper .rank-wrap .rank-table th:nth-child(2) {width: 25%;}
+.content-wrapper .rank-wrap .rank-table th:nth-child(3) {width: 20%;}
+.content-wrapper .rank-wrap .rank-table th:nth-child(4) {width: 20%;}
+.content-wrapper .rank-wrap .rank-table th:nth-child(5) {width: 15%;}
+.content-wrapper .rank-wrap .rank-table tbody tr {height: 2.5em; transition: background-color 0.3s ease;}
+.content-wrapper .rank-wrap .rank-table tbody tr:hover {background-color: #f0f0f0;}
+.content-wrapper .rank-wrap .rank-table tbody tr td {text-align: center; padding: 12px 10px; border-bottom: 1px solid #ddd;}
+/* .content-wrapper .rank-wrap .rank-table tbody tr td:nth-child(2,3,4) {text-align: left; padding-left: 20px;} */
 
-.content-wrapper .chart-wrap {margin: auto; margin-bottom: 5%;  width: 1247px; display: flex; flex-direction: column;}
+.content-wrapper .chart-wrap {margin: auto; margin-bottom: 5%; width: 1247px; display: flex; flex-direction: column;}
 /* .content-wrapper .chart-wrap .chart-wp {height: 600px;} */
