@@ -38,7 +38,7 @@ public interface ReviewBoardMapper {
   void incrementReportCount(@Param("reviewId") int reviewId);
 
   // 조회수 추가
-//    void incrementReadCount(@Param("reviewId") int reviewId);
+    void incrementReadCount(@Param("reviewId") int reviewId);
 
   // ---관리자 페이지 로직---
   // 신고 받은 리뷰 조회

@@ -31,44 +31,41 @@
 					<div class="readCnt">조회수</div>
 					<div class="date">작성일자</div>
 				</div>
-				<c:forEach var="lists" items="${list}">
-					<div class="inside" onclick="location.href='/review/read?reviewId=${lists.reviewId}'">
-						<div class="pnum">${lists.reviewId}</div>
-						<div class="name">
-							<a>${lists.movieNm}</a>
+				<!-- 글목록 조회 + 게시글 클릭 시 조회수 카운트 동작 -->
+				<form action="<c:url value='/review/read'/>">
+					<c:forEach var="lists" items="${list}">
+						<div class="inside"
+							onclick="location.href='/review/read?reviewId=${lists.reviewId}'">
+							<div class="pnum">${lists.reviewId}</div>
+							<div class="name">
+								<a>${lists.movieNm}</a>
+							</div>
+							<div class="title">${lists.title}</div>
+							<div class="writer">${lists.username}</div>
+							<div class="readCnt">${lists.readCnt}</div>
+							<div class="date">${lists.createdAt}</div>
 						</div>
-						<div class="title">${lists.title}</div>
-						<div class="writer">${lists.username}</div>
-						<div class="readCnt">${lists.readCnt}</div>
-						<div class="date">${lists.createdAt}</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</form>
 			</div>
 			<!-- action에 설정한 컨트롤러 경로로 데이터 전송 -->
 			<form action="/review" method="get">
 				<div class="board_page">
 					<c:if test="${pageMaker.prev}">
-						<button type="submit" name="pageNum"
-							value="${pageMaker.vo.pageNum - 1}" class="btn prev">◀</button>
-						<button type="submit" name="pageNum"
-							value="${pageMaker.beginPage - 1}" class="btn first">◀◀</button>
+						<button type="submit" name="pageNum" value="${pageMaker.vo.pageNum - 1}" class="btn prev">◀◀</button>
+						<button type="submit" name="pageNum" value="${pageMaker.beginPage - 1}" class="btn first">◀</button>
 					</c:if>
 
-					<c:forEach var="num" begin="${pageMaker.beginPage}"
-						end="${pageMaker.endPage}">
-						<button type="submit" name="pageNum" value="${num}"
-							class="pnum click">${num}</button>
+					<c:forEach var="num" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}">
+						<button type="submit" name="pageNum" value="${num}" class="pnum click">${num}</button>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next}">
-						<button type="submit" name="pageNum"
-							value="${pageMaker.vo.pageNum + 1}" class="btn next">▶</button>
-						<button type="submit" name="pageNum"
-							value="${pageMaker.endPage + 1}" class="btn last">▶▶</button>
+						<button type="submit" name="pageNum" value="${pageMaker.vo.pageNum + 1}" class="btn next">▶</button>
+						<button type="submit" name="pageNum" value="${pageMaker.endPage + 1}" class="btn last">▶▶</button>
 					</c:if>
 
-					<input type="hidden" name="countPerPage"
-						value="${pageMaker.vo.countPerPage}">
+					<input type="hidden" name="countPerPage" value="${pageMaker.vo.countPerPage}">
 				</div>
 			</form>
 		</div>
