@@ -1,5 +1,7 @@
 # 🎬 Project <Movie Go!> Portfolio
 
+## 프로젝트 PPT (Canva) 링크 [*클릭*](https://www.canva.com/design/DAGKbQ8BoXk/EJTcRdU5cA2F8vfTii6sNA/view?utm_content=DAGKbQ8BoXk&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
 ## -- 프로젝트 설명 --
 본 프로젝트는 24/06/11 ~ 24/07/09 기간 진행된 *Java Spring Boot* 기반 *영화 리뷰 웹 포트폴리오* 입니다.
 
