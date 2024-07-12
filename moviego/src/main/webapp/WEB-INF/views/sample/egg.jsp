@@ -1,0 +1,112 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최악의 회원가입 경험</title>
+    <link rel="stylesheet" href="/css/egg.css" />
+    <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.2.1/build/decomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.18.0/build/matter.min.js"></script>
+  </head>
+  <body>
+    <h1>최악의 회원가입 경험에 오신 것을 환영합니다!</h1>
+    <form id="signupForm">
+      <label for="username">사용자 이름:</label>
+      <input type="text" id="username" required />
+
+      <h4>비밀번호 입력</h4>
+      <div id="errorMessage" style="color: red; margin-bottom: 10px"></div>
+      <div class="locks">
+        <svg class="lock" viewBox="0 0 100 100">
+          <defs>
+            <path id="path" d="M50,17a33,33 0 1,1 0,66a33,33 0 1,1 0,-66" />
+          </defs>
+          <path class="cursor" d="M50 10 l-2 -4 l4 0 z" />
+          <text fill="#fff" font-size="5" font-family="monospace" letter-spacing="2.74">
+            <textPath href="#path"></textPath>
+          </text>
+          <circle class="grab" cx="50" cy="50" r="40" />
+          <circle cx="50" cy="50" r="30" />
+        </svg>
+
+        <input type="text" class="text" disabled />
+
+        <div>
+          <button type="button" class="clear">CLEAR</button>
+        </div>
+      </div>
+
+      <h4>비밀번호 확인</h4>
+      <div class="locks">
+        <svg class="lock confirm-lock" viewBox="0 0 100 100">
+          <defs>
+            <path id="confirmPath" d="M50,17a33,33 0 1,1 0,66a33,33 0 1,1 0,-66" />
+          </defs>
+          <path class="cursor" d="M50 10 l-2 -4 l4 0 z" />
+          <text fill="#fff" font-size="5" font-family="monospace" letter-spacing="2.74">
+            <textPath href="#confirmPath"></textPath>
+          </text>
+          <circle class="grab" cx="50" cy="50" r="40" />
+          <circle cx="50" cy="50" r="30" />
+        </svg>
+
+        <input type="text" class="text confirm-text" disabled />
+
+        <div>
+          <button type="button" class="clear confirm-clear">CLEAR</button>
+        </div>
+      </div>
+
+      <div>
+        <label for="emailInput">이메일 주소: @은 그려넣어주세요.</label>
+        <input type="text" id="emailInput" />
+        <canvas class="atcanvas" id="canvas" width="100" height="100"></canvas>
+        <!-- <button type="button" id="addAtSymbolBtn">@그려넣기</button> -->
+      </div>
+
+      <label for="phoneSlider">전화번호:</label>
+      <input type="range" id="phoneSlider" min="1000000000000" max="9999999999999" value="5555555555555" />
+      <div id="phoneDisplay"></div>
+
+      <div>
+        <input id="advancedMode" type="checkbox" />
+        <label for="advancedMode" style="text-align: center; font-style: italic; margin-bottom: 2em">전화번호 입력이 어려우신가요? 체크하여 "전화번호 선택 보조 모드"를 써보세요!</label>
+        <input id="angleSlider" type="range" min="-10" max="10" step="0.02" style="display: none" value="0" />
+      </div>
+
+      <label>생년월일:</label>
+      <div id="birthdayContainer">
+        <button type="button" id="earlierBtn" style="justify-items: center; margin: 0">빠름</button>
+        <span id="birthdayDisplay" style="align-content: center"></span>
+        <button type="button" id="laterBtn" style="justify-items: center; margin: 0">늦음</button>
+      </div>
+
+      <div id="nationalCheck">
+        <h1 id="question" style="font-size: 24px; margin-top: 3em">당신은 내국인입니까?</h1>
+        <div id="checks">
+          <div>
+            <div id="renderer"></div>
+            <svg width="500" height="96" id="buttons">
+              <a class="option" href="#" onclick="choose(100)">
+                <rect x="100" y="0" width="100" height="96" fill="transparent"></rect>
+              </a>
+              <a class="option" href="#" onclick="choose(300)">
+                <rect x="300" y="0" width="100" height="96" fill="transparent"></rect>
+              </a>
+            </svg>
+            <div id="option-titles">
+              <span>Yes</span>
+              <span>No</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" id="sendButton">가입하기</button>
+    </form>
+
+    <script src="/js/egg.js"></script>
+  </body>
+</html>
