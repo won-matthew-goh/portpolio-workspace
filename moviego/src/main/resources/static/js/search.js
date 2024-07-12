@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function searchEvent() {
         currentquery = searchInput.value.trim();
         if (currentquery == 'SAMUI') {
-          document.location.href = '/SAMUI';
+          document.location.href = '/easteregggggggg/SAMUI';
         }
         if (currentquery) {
             const movies = await fetchSearch(currentquery);

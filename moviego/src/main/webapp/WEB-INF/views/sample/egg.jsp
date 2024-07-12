@@ -12,8 +12,30 @@
   </head>
   <body>
     <h1>최악의 회원가입 경험에 오신 것을 환영합니다!</h1>
+    <h2>당신은 회원가입에 성공할 수 있나요?</h1>
     <form id="signupForm">
-      <label for="username">사용자 이름:</label>
+    <div id="nationalCheck">
+        <h1 id="question" style="font-size: 16px; color: black; margin-top: 3em; text-align: left">당신은 내국인입니까?</h1>
+        <div id="checks">
+          <div>
+            <div id="renderer"></div>
+            <svg width="500" height="96" id="buttons">
+              <a class="option" href="#" onclick="choose(100)">
+                <rect x="100" y="0" width="100" height="96" fill="transparent"></rect>
+              </a>
+              <a class="option" href="#" onclick="choose(300)">
+                <rect x="300" y="0" width="100" height="96" fill="transparent"></rect>
+              </a>
+            </svg>
+            <div id="option-titles">
+              <span>Yes</span>
+              <span>No</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <label for="username"><h4>사용자 이름:</h4></label>
       <input type="text" id="username" required />
 
       <h4>비밀번호 입력</h4>
@@ -60,13 +82,14 @@
       </div>
 
       <div>
-        <label for="emailInput">이메일 주소: @은 그려넣어주세요.</label>
+        <label for="emailInput"><h4>이메일 주소: </h4></label>
         <input type="text" id="emailInput" />
         <canvas class="atcanvas" id="canvas" width="100" height="100"></canvas>
+        <h6 style="margin-top: 0">👆이게 뭘까요?</h4>
         <!-- <button type="button" id="addAtSymbolBtn">@그려넣기</button> -->
       </div>
 
-      <label for="phoneSlider">전화번호:</label>
+      <label for="phoneSlider"><h4>전화번호:</h4></label>
       <input type="range" id="phoneSlider" min="1000000000000" max="9999999999999" value="5555555555555" />
       <div id="phoneDisplay"></div>
 
@@ -76,35 +99,14 @@
         <input id="angleSlider" type="range" min="-10" max="10" step="0.02" style="display: none" value="0" />
       </div>
 
-      <label>생년월일:</label>
+      <label><h4>생년월일:</h4></label>
       <div id="birthdayContainer">
         <button type="button" id="earlierBtn" style="justify-items: center; margin: 0">빠름</button>
         <span id="birthdayDisplay" style="align-content: center"></span>
         <button type="button" id="laterBtn" style="justify-items: center; margin: 0">늦음</button>
       </div>
 
-      <div id="nationalCheck">
-        <h1 id="question" style="font-size: 24px; margin-top: 3em">당신은 내국인입니까?</h1>
-        <div id="checks">
-          <div>
-            <div id="renderer"></div>
-            <svg width="500" height="96" id="buttons">
-              <a class="option" href="#" onclick="choose(100)">
-                <rect x="100" y="0" width="100" height="96" fill="transparent"></rect>
-              </a>
-              <a class="option" href="#" onclick="choose(300)">
-                <rect x="300" y="0" width="100" height="96" fill="transparent"></rect>
-              </a>
-            </svg>
-            <div id="option-titles">
-              <span>Yes</span>
-              <span>No</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button type="submit" id="sendButton" style="margin: 3em">가입하기</button>
+      <button type="submit" id="sendButton" style="margin-top: 3em">가입하기</button>
     </form>
     <div style="height:50px"> </div>
 

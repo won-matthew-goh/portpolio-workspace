@@ -100,7 +100,7 @@ select {
 button {
   padding: 10px;
   margin-top: 20px;
-  background-color: #4caf50;
+  background-color: #666;
   color: white;
   border: none;
   border-radius: 5px;
@@ -112,9 +112,10 @@ button {
 }
 #birthdayContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 10px;
+  gap: 3em;
 }
 #birthdayDisplay {
   font-size: 18px;

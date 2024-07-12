@@ -5,6 +5,7 @@
 	  <div class="content-wrapper">
       <div class="content-wrap" id="content-wrap">
       <div class="search">
+          <h5>Search 'SAMUI'!!</h5>
           <input id="searchInput" type="text" placeholder="<spring:message code='movie.search.placeholder'/>" name="query" />
           <button id="searchButton" type="submit">
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>

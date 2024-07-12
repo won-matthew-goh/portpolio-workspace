@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
   emailInput.addEventListener('keypress', function (e) {
     if (e.key === '@') {
       e.preventDefault();
-      alert("'@' 문자는 그려서 입력해주세요!");
+      alert("'@' 문자는 하단 정사각형에 그려서 입력해주세요!");
     }
   });
 

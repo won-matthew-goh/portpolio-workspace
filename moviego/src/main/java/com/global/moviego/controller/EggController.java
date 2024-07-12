@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EggController {
 
-  @GetMapping("/SAMUI")
+  @GetMapping("/easteregggggggg/SAMUI")
   public String samui() {
     return "sample/egg";
   }
