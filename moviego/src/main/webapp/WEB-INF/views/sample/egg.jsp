@@ -104,8 +104,9 @@
         </div>
       </div>
 
-      <button type="submit" id="sendButton">가입하기</button>
+      <button type="submit" id="sendButton" style="margin: 3em">가입하기</button>
     </form>
+    <div style="height:50px"> </div>
 
     <script src="/js/egg.js"></script>
   </body>
