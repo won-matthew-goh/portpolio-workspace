@@ -106,9 +106,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-#phoneSlider,
-#angleSlider {
+#phoneSlider {
   width: 100%;
+}
+#angleSlider {
+  width: 30%;
+  margin: auto;
 }
 #birthdayContainer {
   display: flex;

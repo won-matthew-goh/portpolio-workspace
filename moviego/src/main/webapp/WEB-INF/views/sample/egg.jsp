@@ -15,7 +15,7 @@
     <h2>당신은 회원가입에 성공할 수 있나요?</h1>
     <form id="signupForm">
     <div id="nationalCheck">
-        <h1 id="question" style="font-size: 16px; color: black; margin-top: 3em; text-align: left">당신은 내국인입니까?</h1>
+        <h1 id="question" style="font-size: 16px; color: black; margin-top: 3em; text-align: left">당신은 외국인입니까?</h1>
         <div id="checks">
           <div>
             <div id="renderer"></div>
